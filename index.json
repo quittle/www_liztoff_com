@@ -1,0 +1,22 @@
+{
+    "lang": "en",
+    "title": "Liz Toff",
+    "meta": [
+        {
+            "name": "description",
+            "content": "Personal website for Liz Toff - she has the write stuff."
+        },
+        {
+            "name": "author",
+            "content": "Elizabeth Toff"
+        },
+        {
+            "name": "viewport",
+            "content": "width=device-width, initial-scale=1"
+        },
+        {
+            "name": "theme-color",
+            "content": "#bbb"
+        }
+    ]
+}
