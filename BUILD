@@ -1,9 +1,9 @@
 # Copyright (c) 2018 Dustin Toff
-# Licensed under Apache License v2.0
 
 load("@rules_web//html:html.bzl",
     "html_page",
     "minify_html",
+    "validate_html",
 )
 
 load("@rules_web//images:images.bzl",
@@ -58,12 +58,19 @@ html_page(
     name = "index",
     config = "//:index.json",
     body = "//:index_body.html",
+    css_files = [
+        "//sass:all_css",
+    ],
     # favicon_images = favicon_images,
     # favicon_sizes = favicon_sizes,
 )
 
 minify_html(
     name = "index_min",
+    src = ":index",
+)
+validate_html(
+    name = "validate_html",
     src = ":index",
 )
 
