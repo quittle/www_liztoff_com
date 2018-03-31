@@ -1,0 +1,10 @@
+env:
+    - BAZEL_VERSION='0.10.0'
+
+sudo: required
+
+before_install:
+    - ./travis/before_install.sh
+
+script:
+    - bazel build ...

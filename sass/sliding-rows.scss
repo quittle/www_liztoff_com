@@ -1,0 +1,40 @@
+// Copyright (c) 2018 Dustin Toff
+
+$row-width: 50vw;
+
+.sliding-rows {
+    padding: (100 - $row-width) / 2;
+    counter-reset: sliding-row;
+    .row {
+        counter-increment: sliding-row;
+        background: red;
+        width: $row-width;
+        font-size: 1.5em;
+        text-align: center;
+        padding: .5em;
+        margin-bottom: .5em;
+        transition: all ease-in 370ms;
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                transform: skewX(5deg * $i * $i * $i % 40 - 20);
+            }
+        }
+
+        &:active {
+            background: orange;
+        }
+    }
+
+    &:active {
+        .row {
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    transform: translateX($row-width - (($i * $i * $i * 23) % 100));
+                }
+            }
+
+            opacity: 0;
+        }
+    }
+}
