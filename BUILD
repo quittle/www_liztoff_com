@@ -72,6 +72,7 @@ minify_html(
 validate_html(
     name = "validate_html",
     src = ":index",
+    filter_file = "w3_validator.filter",
 )
 
 # minify_png(
