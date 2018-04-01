@@ -2,4 +2,9 @@
 
 @import 'reset';
 @import 'global';
+@import 'jacobs-ladder';
 @import 'sliding-rows';
+
+section {
+    padding: 2em 10vw;
+}

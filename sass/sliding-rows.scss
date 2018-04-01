@@ -1,9 +1,10 @@
 // Copyright (c) 2018 Dustin Toff
 
+$max-rows: 10;
 $row-width: 50vw;
 
 .sliding-rows {
-    padding: (100 - $row-width) / 2;
+    padding: 20vh (100 - $row-width) / 2;
     counter-reset: sliding-row;
     .row {
         counter-increment: sliding-row;
@@ -15,22 +16,40 @@ $row-width: 50vw;
         margin-bottom: .5em;
         transition: all ease-in 370ms;
 
-        @for $i from 1 through 10 {
-            &:nth-child(#{$i}) {
-                transform: skewX(5deg * $i * $i * $i % 40 - 20);
+        @for $i from 1 through $max-rows {
+            &:nth-child(#{$i}):not(:active) {
+                $skewX: 5deg * $i * $i * $i % 40 - 20;
+
+                $translationX: (.3 * $row-width) * (($i * 53) % 100 / 100);
+                &.row-left {
+                    transform: translateX($translationX) skewX($skewX);
+                }
+
+                &.row-right {
+                    transform: translateX(-$translationX) skewX(-$skewX);
+                }
             }
         }
 
         &:active {
             background: orange;
+            transform: translateY(-10em);
+            transition-delay: 1s;
         }
     }
 
     &:active {
-        .row {
-            @for $i from 1 through 10 {
+        .row:not(:active) {
+            @for $i from 1 through $max-rows {
                 &:nth-child(#{$i}) {
-                    transform: translateX($row-width - (($i * $i * $i * 23) % 100));
+                    transition-duration: 200ms + $i * 100ms;
+                    $translateX: $row-width;
+                    &.row-left {
+                        transform: translateX($translateX);
+                    }
+                    &.row-right {
+                        transform: translateX(-$translateX);
+                    }
                 }
             }
 
