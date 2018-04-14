@@ -3,3 +3,43 @@
 html {
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
+section {
+    padding: 2em 10vw;
+}
+
+h1 {
+    font-family: cursive;
+    font-size: 3em;
+    text-align: center;
+}
+
+@mixin card {
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+}
+
+@mixin card-left {
+    @include card;
+
+    &::before {
+        transform: skewX(30deg);
+    }
+}
+
+@mixin card-right {
+    @include card;
+
+    &::before {
+        transform: skewX(-30deg);
+    }
+}

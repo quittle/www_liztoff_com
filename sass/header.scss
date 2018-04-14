@@ -1,0 +1,68 @@
+// Copyright (c) 2018 Dustin Toff
+
+$title-font-size: 5em;
+
+header {
+    text-align: center;
+    padding: $title-font-size / 2;
+
+    * {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+#title-link {
+    font-family: cursive;
+}
+
+#title {
+    font-size: $title-font-size;
+}
+
+#logo-lt::before {
+    content: 'LT';
+    border: .1em solid black;
+    font-size: .7em;
+    padding: .1em;
+}
+
+#tagline {
+    font-size: $title-font-size / 3;
+    padding: .5em 0;
+    margin-bottom: .5em;
+}
+
+#top-links a {
+    padding: .2em 3em;
+    display: inline-block;
+    margin-left: -.5em;
+    // position: relative;
+
+    &::before {
+        border: .1em solid black;
+        // position: absolute;
+        // left: 0;
+        // top: 0;
+        // bottom: 0;
+        // right: 0;
+    }
+
+    &:nth-child(even) {
+        @include card-left;
+    }
+
+    &:nth-child(odd) {
+        @include card-right;
+    }
+
+    // $link-skew: 30deg;
+
+    // &:nth-child(even)::before {
+    //     transform: skewX($link-skew);
+    // }
+
+    // &:nth-child(odd)::before {
+    //     transform: skewX(-$link-skew);
+    // }
+}

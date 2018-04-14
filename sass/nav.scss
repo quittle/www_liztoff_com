@@ -1,0 +1,29 @@
+// Copyright (c) 2018 Dustin Toff
+
+nav {
+    text-align: center;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 3em;
+        color: white;
+        padding: 1em;
+
+        &:nth-child(even) {
+            @include card-left;
+        }
+
+        &:nth-child(odd) {
+            @include card-right;
+        }
+
+        &::before {
+            background: #bedbed;
+        }
+
+        &::after {
+            content: '';
+        }
+    }
+}
