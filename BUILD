@@ -61,6 +61,9 @@ html_page(
     css_files = [
         "//sass:all_css",
     ],
+    deferred_js_files = [
+        "//js:all_js",
+    ],
     # favicon_images = favicon_images,
     # favicon_sizes = favicon_sizes,
 )

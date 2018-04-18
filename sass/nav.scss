@@ -1,5 +1,33 @@
 // Copyright (c) 2018 Dustin Toff
 
+$nav-cards: (
+    (
+        background: #beedd1,
+        x-offset: -2,
+        target: 'playful+fun',
+    ),
+    (
+        background: #c5beed,
+        x-offset: 1,
+        target: 'hip+trendy',
+    ),
+    (
+        background: #edbee9,
+        x-offset: 0,
+        target: 'elevated+editorial',
+    ),
+    (
+        background: #edbebe,
+        x-offset: -2,
+        target: 'quippy+lighthearted',
+    ),
+    (
+        background: #bedbed,
+        x-offset: 1,
+        target: 'knowledgeable+genuine',
+    ),
+);
+
 nav {
     text-align: center;
 
@@ -9,21 +37,70 @@ nav {
         font-size: 3em;
         color: white;
         padding: 1em;
+        min-width: 50%;
+        margin-top: 1em;
+        transition: all 750ms ease-in-out;
 
-        &:nth-child(even) {
-            @include card-left;
+        @for $i from 1 through length($nav-cards) {
+            $card: nth($nav-cards, $i);
+            $offset: map-get($card, x-offset);
+
+            &:nth-child(#{$i}) {
+                @if $offset == 0 {
+                    $translation-offset: 2;
+                } @else {
+                    $translation-offset: $offset;
+                }
+                transition-delay: 50ms * $i;
+                transform: translateX(100vw * $translation-offset);
+
+                @if $offset < 0 {
+                    @include card-left;
+                } @else {
+                    @include card-right;
+                }
+
+                body.js-on-home & {
+                    transform: translateX($offset * 1em);
+                }
+
+                &::before {
+                    background: map-get($card, background);
+                }
+            }
         }
 
-        &:nth-child(odd) {
-            @include card-right;
-        }
+        // &:nth-child(even) {
+        //     @include card-left;
+        // }
 
-        &::before {
-            background: #bedbed;
-        }
+        // &:nth-child(odd) {
+        //     @include card-right;
+        // }
 
-        &::after {
-            content: '';
-        }
+
+        // &:nth-child(1)::before {
+        //     background: #beedd1;
+        // }
+
+        // &:nth-child(2)::before {
+        //     background: #c5beed;
+        // }
+
+        // &:nth-child(3)::before {
+        //     background: #edbee9;
+        // }
+
+        // &:nth-child(4)::before {
+        //     background: #edbebe;
+        // }
+
+        // &:nth-child(5)::before {
+        //     background: #beedcf;
+        // }
+
+        // &::before {
+        //     background: #bedbed;
+        // }
     }
 }
