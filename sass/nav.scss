@@ -1,5 +1,7 @@
 // Copyright (c) 2018 Dustin Toff
 
+@import 'global';
+
 $nav-cards: (
     (
         background: #beedd1,
@@ -28,8 +30,25 @@ $nav-cards: (
     ),
 );
 
+@keyframes disappear {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        height: 0;
+    }
+}
+
 nav {
+    $transition-duration: 750ms;
+
     text-align: center;
+
+    @include not-on-home {
+        animation: disappear 0s $transition-duration forwards;
+    }
 
     a {
         display: inline-block;
@@ -39,7 +58,7 @@ nav {
         padding: 1em;
         min-width: 50%;
         margin-top: 1em;
-        transition: all 750ms ease-in-out;
+        transition: all $transition-duration ease-in-out;
 
         @for $i from 1 through length($nav-cards) {
             $card: nth($nav-cards, $i);
@@ -69,38 +88,5 @@ nav {
                 }
             }
         }
-
-        // &:nth-child(even) {
-        //     @include card-left;
-        // }
-
-        // &:nth-child(odd) {
-        //     @include card-right;
-        // }
-
-
-        // &:nth-child(1)::before {
-        //     background: #beedd1;
-        // }
-
-        // &:nth-child(2)::before {
-        //     background: #c5beed;
-        // }
-
-        // &:nth-child(3)::before {
-        //     background: #edbee9;
-        // }
-
-        // &:nth-child(4)::before {
-        //     background: #edbebe;
-        // }
-
-        // &:nth-child(5)::before {
-        //     background: #beedcf;
-        // }
-
-        // &::before {
-        //     background: #bedbed;
-        // }
     }
 }

@@ -1,10 +1,25 @@
 // Copyright (c) 2018 Dustin Toff
 
+@import 'global';
+
 $title-font-size: 5em;
+$not-on-home-width-center: 50%;
+$not-on-home-width-side: (100% - $not-on-home-width-center) / 2;
 
 header {
     text-align: center;
     padding: $title-font-size / 2;
+    display: flex;
+    flex-direction: column;
+
+    @include not-on-home {
+        flex-direction: row-reverse;
+
+        &::before {
+            content: '';
+            flex-basis: $not-on-home-width-side;
+        }
+    }
 
     * {
         text-decoration: none;
@@ -14,6 +29,10 @@ header {
 
 #title-link {
     font-family: cursive;
+
+    @include not-on-home {
+        flex-basis: $not-on-home-width-center;
+    }
 }
 
 #title {
@@ -31,38 +50,43 @@ header {
     font-size: $title-font-size / 3;
     padding: .5em 0;
     margin-bottom: .5em;
+
+    @include not-on-home {
+        display: none;
+    }
 }
 
-#top-links a {
-    padding: .2em 3em;
-    display: inline-block;
-    margin-left: -.5em;
-    // position: relative;
-
-    &::before {
-        border: .1em solid black;
-        // position: absolute;
-        // left: 0;
-        // top: 0;
-        // bottom: 0;
-        // right: 0;
+#top-links {
+    @include not-on-home {
+        display: inline-flex;
+        flex-basis: $not-on-home-width-side;
+        flex-direction: column;
     }
 
-    &:nth-child(even) {
-        @include card-left;
+    a {
+        padding: .2em 3em;
+        display: inline-block;
+        margin-left: -.5em;
+
+        @include not-on-home {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+
+        &::before {
+            border: .1em solid black;
+        }
+
+        &:nth-child(even) {
+            @include card-left;
+
+            align-self: flex-end;
+        }
+
+        &:nth-child(odd) {
+            @include card-right;
+
+            align-self: flex-start;
+        }
     }
-
-    &:nth-child(odd) {
-        @include card-right;
-    }
-
-    // $link-skew: 30deg;
-
-    // &:nth-child(even)::before {
-    //     transform: skewX($link-skew);
-    // }
-
-    // &:nth-child(odd)::before {
-    //     transform: skewX(-$link-skew);
-    // }
 }

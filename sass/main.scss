@@ -1,0 +1,16 @@
+// Copyright (c) 2018 Dustin Toff
+
+@import 'jacobs-ladder';
+
+section {
+    position: relative;
+
+    ul {
+        @include jacobs-ladder('li', '@at-root section:target ul', 2em);
+
+        li {
+            background: red;
+
+        }
+    }
+}

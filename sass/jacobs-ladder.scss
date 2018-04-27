@@ -13,6 +13,55 @@ $product-img-size: 4em;
     border-radius: .2em;
 }
 
+@mixin jacobs-ladder($child-selector, $open-selector, $row-height, $max-items: 10, $swing-time: 1s) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    #{$open-selector} {
+        #{$child-selector} {
+            @for $i from 1 through $max-items {
+                &:nth-child(#{$i}) {
+                    transform: translateY(($i - 1) * $row-height);
+                    transition-delay: ($i - 1) * 0 *  $swing-time;
+                    z-index: (-100 - $i);
+
+                    & > * {
+                        transition-delay: ($i - 1) * 0.2 * $swing-time;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &:nth-child(odd) > * {
+                transform: rotateX(0);
+            }
+            &:nth-child(even) > * {
+                transform: rotateX(360deg);
+            }
+        }
+    }
+
+    #{$child-selector} {
+        transition: all ease-in 700ms;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        & > * {
+            display: block;
+            transition: all cubic-bezier(0.42, 0, 0.41, 1.64) $swing-time, opacity linear 1ms;
+            transform-origin: top;
+            transform: rotateX(180deg);
+            opacity: 0;
+        }
+    }
+}
+
 .jacobs-ladder {
     .row {
         display: block;

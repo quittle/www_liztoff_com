@@ -4,6 +4,10 @@ html {
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 section {
     padding: 2em 10vw;
 }
@@ -41,5 +45,17 @@ h1 {
 
     &::before {
         transform: skewX(-30deg);
+    }
+}
+
+@mixin not-on-home() {
+    body:not(.js-on-home) & {
+        @content;
+    }
+}
+
+@mixin on-home() {
+    body.js-on-home & {
+        @content;
     }
 }
