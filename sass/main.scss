@@ -2,15 +2,15 @@
 
 @import 'jacobs-ladder';
 
+@include jacobs-ladder('section ul', 'li', 'section:target ul', 10em);
+
 section {
     position: relative;
 
-    ul {
-        @include jacobs-ladder('li', '@at-root section:target ul', 2em);
-
-        li {
-            background: red;
-
-        }
+    ul li a {
+        background: #bedbed;
+        padding: 1em;
+        font-size: 3em;
+        backface-visibility: hidden;
     }
 }

@@ -61,6 +61,7 @@ header {
         display: inline-flex;
         flex-basis: $not-on-home-width-side;
         flex-direction: column;
+        max-width: 20em;
     }
 
     a {

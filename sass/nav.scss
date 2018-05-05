@@ -38,6 +38,7 @@ $nav-cards: (
     to {
         opacity: 0;
         height: 0;
+        top: -9999px;
     }
 }
 
@@ -48,6 +49,7 @@ nav {
 
     @include not-on-home {
         animation: disappear 0s $transition-duration forwards;
+        position: absolute;
     }
 
     a {

@@ -13,14 +13,16 @@ $product-img-size: 4em;
     border-radius: .2em;
 }
 
-@mixin jacobs-ladder($child-selector, $open-selector, $row-height, $max-items: 10, $swing-time: 1s) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+@mixin jacobs-ladder($parent, $child-selector, $parent-open-selector, $row-height, $max-items: 10, $swing-time: 1s) {
+    #{$parent} {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
 
-    #{$open-selector} {
+    #{$parent-open-selector} {
         #{$child-selector} {
             @for $i from 1 through $max-items {
                 &:nth-child(#{$i}) {
