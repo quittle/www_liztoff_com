@@ -64,83 +64,83 @@ $product-img-size: 4em;
     }
 }
 
-.jacobs-ladder {
-    .row {
-        display: block;
-        margin-bottom: $jacobs-ladder-spacing;
+// .jacobs-ladder {
+//     .row {
+//         display: block;
+//         margin-bottom: $jacobs-ladder-spacing;
 
-        & > div {
-            background: #efefef;
-            padding: $jacobs-ladder-margin;
-            border-radius: .1em;
-            overflow: auto;
-        }
+//         & > div {
+//             background: #efefef;
+//             padding: $jacobs-ladder-margin;
+//             border-radius: .1em;
+//             overflow: auto;
+//         }
 
-        .product-img {
-            float: left;
-            margin-right: $jacobs-ladder-margin;
-        }
-    }
+//         .product-img {
+//             float: left;
+//             margin-right: $jacobs-ladder-margin;
+//         }
+//     }
 
-    // animation
-    & {
-        background: blue;
-        position: absolute;
-        top: 0;
-        width: 80%;
-        left: 10%;
-        z-index: 100;
+//     // animation
+//     & {
+//         background: blue;
+//         position: absolute;
+//         top: 0;
+//         width: 80%;
+//         left: 10%;
+//         z-index: 100;
 
-        $swing-time: 1s;
+//         $swing-time: 1s;
 
-        .row {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+//         .row {
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 100%;
 
-            transition: all ease-in 700ms;
+//             transition: all ease-in 700ms;
 
-            & > div {
-                transition: all cubic-bezier(0.42, 0, 0.41, 1.64) $swing-time, opacity linear 1ms;
-                transform-origin: top;
-                transform: rotateX(180deg);
-                opacity: 0;
-            }
-        }
+//             & > div {
+//                 transition: all cubic-bezier(0.42, 0, 0.41, 1.64) $swing-time, opacity linear 1ms;
+//                 transform-origin: top;
+//                 transform: rotateX(180deg);
+//                 opacity: 0;
+//             }
+//         }
 
-        &:hover {
-            .row {
-                @for $i from 1 through $jacobs-ladder-max-items {
-                    &:nth-child(#{$i}) {
-                        transform: translateY(($i - 1) * ($product-img-size + $jacobs-ladder-margin * 2 + $jacobs-ladder-spacing));
-                        transition-delay: ($i - 1) * 0 *  $swing-time;
-                        z-index: (-100 - $i);
+//         &:hover {
+//             .row {
+//                 @for $i from 1 through $jacobs-ladder-max-items {
+//                     &:nth-child(#{$i}) {
+//                         transform: translateY(($i - 1) * ($product-img-size + $jacobs-ladder-margin * 2 + $jacobs-ladder-spacing));
+//                         transition-delay: ($i - 1) * 0 *  $swing-time;
+//                         z-index: (-100 - $i);
 
-                        & > div {
-                            transition-delay: ($i - 1) * 0.2 * $swing-time;
-                            opacity: 1;
-                        }
-                    }
-                }
+//                         & > div {
+//                             transition-delay: ($i - 1) * 0.2 * $swing-time;
+//                             opacity: 1;
+//                         }
+//                     }
+//                 }
 
-                &:nth-child(odd) > div {
-                    transform: rotateX(0);
-                }
-                &:nth-child(even) > div {
-                    transform: rotateX(360deg);
-                }
-            }
-            &:active {
-                .row {
-                    @for $i from 1 through $jacobs-ladder-max-items {
-                        &:nth-child(#{$i}) {
-                            transform: translateY($i * 20 + 120vh) rotateZ(#{($i * 29 * $i * $i) % 40 - 20}deg);
-                            transition-delay: 60ms * ($jacobs-ladder-max-items - $i);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+//                 &:nth-child(odd) > div {
+//                     transform: rotateX(0);
+//                 }
+//                 &:nth-child(even) > div {
+//                     transform: rotateX(360deg);
+//                 }
+//             }
+//             &:active {
+//                 .row {
+//                     @for $i from 1 through $jacobs-ladder-max-items {
+//                         &:nth-child(#{$i}) {
+//                             transform: translateY($i * 20 + 120vh) rotateZ(#{($i * 29 * $i * $i) % 40 - 20}deg);
+//                             transition-delay: 60ms * ($jacobs-ladder-max-items - $i);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

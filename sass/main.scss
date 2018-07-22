@@ -3,8 +3,9 @@
 @import 'global';
 @import 'jacobs-ladder';
 
+$ITEM-HEIGHT: 8em;
 
-@include jacobs-ladder('section ul', 'li', 'section:target ul', 3em);
+@include jacobs-ladder('section ul', 'li', 'section:target ul', $ITEM-HEIGHT + 1em);
 
 section {
     position: relative;
@@ -25,9 +26,43 @@ section {
             a {
                 padding: 1em;
                 backface-visibility: hidden;
+                height: $ITEM-HEIGHT;
 
                 &::before {
                     background: #bedbed;
+                    border: .2em inset #c7e0f0;
+                }
+
+                img {
+                    float: left;
+                    margin: 1em;
+
+                    display: inline-block;
+                    width: $product-img-size;
+                    height: $product-img-size;
+                    background: #ace;
+                    border-radius: .2em;
+                }
+
+                div {
+                    overflow: hidden;
+                    // display: block;
+                    // text-overflow: ellipsis;
+                    margin-right: 1.5em;
+                    height: 100%;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        background: linear-gradient(to right, rgba(190,219,237,0) 0%, #bedbed 100%);
+                        // display: inline-block;
+                        height: 1em;
+                        width: 8em;
+                        // float: right;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                    }
                 }
             }
         }
