@@ -8,43 +8,54 @@ body {
     overflow-x: hidden;
 }
 
-section {
-    padding: 2em 10vw;
-}
-
 h1 {
     font-family: cursive;
     font-size: 3em;
     text-align: center;
 }
 
-@mixin card {
+@mixin card($background-color: transparent, $skew-width: 7em, $skew-deg: 20) {
+    $slant-correction: $skew-deg / 45 * $skew-width;
+
+    background: $background-color;
     position: relative;
 
-    &::before {
+    &:before, &:after {
         content: '';
+        background: $background-color;
+
+        width: $skew-width;
+        height: 100%;
         position: absolute;
-        left: 0;
         top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
+
+        z-index: -1; // ??
+    }
+
+    &:before {
+        left: -1 * $slant-correction;
+        border-right: 0;
+    }
+
+    &:after {
+        right: -1 * $slant-correction;
+        border-left: 0;
     }
 }
 
-@mixin card-left {
-    @include card;
+@mixin card-left($background-color: transparent, $skew-width: 7em, $skew-deg: 20) {
+    @include card($background-color, $skew-width, $skew-deg);
 
-    &::before {
-        transform: skewX(30deg);
+    &::before, &:after {
+        transform: skewX($skew-deg * 1deg);
     }
 }
 
-@mixin card-right {
-    @include card;
+@mixin card-right($background-color: transparent, $skew-width: 7em, $skew-deg: 20) {
+    @include card($background-color, $skew-width, $skew-deg);
 
-    &::before {
-        transform: skewX(-30deg);
+    &::before, &:after {
+        transform: skewX($skew-deg * -1deg);
     }
 }
 

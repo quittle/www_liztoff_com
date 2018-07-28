@@ -5,37 +5,58 @@
 
 $ITEM-HEIGHT: 8em;
 
+$product-img-size: 8em;
+
 @include jacobs-ladder('section ul', 'li', 'section:target ul', $ITEM-HEIGHT + 1em);
 
 section {
     position: relative;
+    padding: 2em 20vw;
 
     ul {
-        width: 80%;
-        left: 10%;
         list-style-type: none;
 
         li {
+            min-height: $product-img-size + 2em;
+            margin-bottom: 1em;
+
+            $background-color: #bedbed;
+
             &:nth-child(even) a {
-                @include card-left;
+                @include card-left($background-color, 7em, 20);
             }
+
             &:nth-child(odd) a {
-                @include card-right;
+                @include card-right($background-color, 7em, 20);
             }
 
             a {
-                padding: 1em;
-                backface-visibility: hidden;
-                height: $ITEM-HEIGHT;
+                $border-height: 0.2em;
+                $link-padding: 1em;
 
-                &::before {
-                    background: #bedbed;
-                    border: .2em inset #c7e0f0;
+                padding: $link-padding;
+                backface-visibility: hidden;
+                border: $border-height inset #c7e0f0;
+                min-height: $product-img-size + 2 * $link-padding;
+
+                &:before, &:after {
+                    border: $border-height inset #c7e0f0;
+                    top: -$border-height !important;
+
+                    z-index: -1; // ??
+                }
+
+                &:before {
+                    border-right: 0;
+                }
+
+                &:after {
+                    border-left: 0;
                 }
 
                 img {
                     float: left;
-                    margin: 1em;
+                    margin-right: $link-padding;
 
                     display: inline-block;
                     width: $product-img-size;
@@ -44,25 +65,28 @@ section {
                     border-radius: .2em;
                 }
 
-                div {
-                    overflow: hidden;
-                    // display: block;
-                    // text-overflow: ellipsis;
-                    margin-right: 1.5em;
-                    height: 100%;
-                    position: relative;
+                .title {
+                    font-weight: bold;
+                    font-size: 1.3em;
+                    display: inline;
 
                     &::after {
-                        content: '';
-                        background: linear-gradient(to right, rgba(190,219,237,0) 0%, #bedbed 100%);
-                        // display: inline-block;
-                        height: 1em;
-                        width: 8em;
-                        // float: right;
-                        position: absolute;
-                        bottom: 0;
-                        right: 0;
+                        content: '|';
+                        margin: 0 0.3em;
+                        font-weight: normal;
                     }
+                }
+
+                .highlight {
+                    font-size: 1.1em;
+                    font-style: italic;
+                    display: inline-block;
+                    word-break: keep-all;
+                }
+
+                .description {
+                    height: 100%;
+                    text-align: justify;
                 }
             }
         }

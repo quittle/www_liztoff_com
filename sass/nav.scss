@@ -85,7 +85,7 @@ nav {
                     transform: translateX($offset * 1em);
                 }
 
-                &::before {
+                &, &::before, &::after {
                     background: map-get($card, background);
                 }
             }

@@ -65,27 +65,33 @@ header {
     }
 
     a {
+        $border-width: 0.1em;
+        $border: $border-width solid black;
+
         padding: .2em 3em;
         display: inline-block;
-        margin-left: -.5em;
+        margin-left: 0.4em;
+        border-top: $border;
+        border-bottom: $border;
 
         @include not-on-home {
             font-size: 1.2em;
             margin-bottom: 1em;
         }
 
-        &::before {
-            border: .1em solid black;
+        &::before, &::after {
+            border: $border;
+            margin-top: -1 * $border-width;
         }
 
         &:nth-child(even) {
-            @include card-left;
+            @include card-left($skew-width: 1em);
 
             align-self: flex-end;
         }
 
         &:nth-child(odd) {
-            @include card-right;
+            @include card-right($skew-width: 1em);
 
             align-self: flex-start;
         }
