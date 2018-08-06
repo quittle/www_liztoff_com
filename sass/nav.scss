@@ -50,6 +50,10 @@ nav {
     @include not-on-home {
         animation: disappear 0s $transition-duration forwards;
         position: absolute;
+
+        h1 {
+            animation: disappear $transition-duration / 2 forwards;
+        }
     }
 
     a {

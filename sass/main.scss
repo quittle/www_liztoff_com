@@ -9,6 +9,12 @@ $product-img-size: 8em;
 
 @include jacobs-ladder('section ul', 'li', 'section:target ul', $ITEM-HEIGHT + 1em);
 
+main {
+    @include on-home {
+        // display: none; // This makes it jump into existence, no animation
+    }
+}
+
 section {
     position: relative;
     padding: 2em 20vw;
