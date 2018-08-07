@@ -50,11 +50,24 @@ header {
 
 #tagline {
     font-size: $title-font-size / 3;
-    // padding: .5em 0;
-    // margin-bottom: .5em;
 
     @include not-on-home {
         display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+    header {
+        border-width: 0.4em;
+    }
+
+    #title {
+        font-size: 20vw;
+    }
+
+    #tagline {
+        font-size: 5vw;
     }
 }
 

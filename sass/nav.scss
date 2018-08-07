@@ -48,7 +48,6 @@ nav {
     text-align: center;
     font-size: 1.3em;
 
-
     @include not-on-home {
         animation: disappear 0s $transition-duration forwards;
         position: absolute;
@@ -56,6 +55,10 @@ nav {
         h1, p {
             animation: disappear $transition-duration / 2 forwards;
         }
+    }
+
+    p {
+        margin: 0 3em;
     }
 
     a {
@@ -68,6 +71,33 @@ nav {
         min-width: 50%;
         margin-bottom: 1em;
         transition: all $transition-duration ease-in-out;
+
+        @media (max-width: 1200px) {
+            & {
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 700px) {
+            & {
+                float: left;
+                font-size: 8vw;
+                text-align: left;
+
+                @for $i from 1 through length($nav-cards) {
+                    $card: nth($nav-cards, $i);
+                    $offset: map-get($card, x-offset);
+                    &:nth-child(#{$i}) {
+                        width: 60vw + 4vw * $offset;
+                    }
+                }
+
+                &::before {
+                    display: none;
+                }
+                // transform: translateX(-2em) !important;
+            }
+        }
 
         &:first-child {
             margin-top: 1em;

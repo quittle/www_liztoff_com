@@ -37,45 +37,55 @@
         }
     }
 
-    label > div {
-        > * {
-            font-size: 1em;
-        }
+    blockquote {
+        text-align: justify;
+        font-size: 1.5em;
 
-        cite {
-            display: block;
+        p {
+            text-indent: 2em;
 
-            &::before {
-                content: '\2014  ';
-            }
-        }
-
-        .name::after + .role {
-            content: ', ';
-        }
-
-        div {
-            background: none;
-            border: none;
-            display: inline;
-            cursor: pointer;
-
-            &::before {
-                content: '{';
-            }
-
-            &::after {
-                content: '}';
+            &:last-child {
+                margin: 0;
             }
         }
     }
 
-    blockquote p {
-        margin-bottom: 0.5em;
-        text-indent: 2em;
+    label {
+        > * {
+            margin-top: 2em;
+        }
 
-        &:last-child {
-            margin: 0;
+        > div {
+            > * {
+                font-size: 1.5em;
+            }
+
+            cite {
+                display: block;
+
+                &::before {
+                    content: '\2014  ';
+                }
+            }
+
+            .name::after + .role {
+                content: ', ';
+            }
+
+            div {
+                background: none;
+                border: none;
+                display: inline;
+                cursor: pointer;
+
+                &::before {
+                    content: '{';
+                }
+
+                &::after {
+                    content: '}';
+                }
+            }
         }
     }
 }
