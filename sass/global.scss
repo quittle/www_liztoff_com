@@ -1,7 +1,12 @@
 // Copyright (c) 2018 Dustin Toff
 
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Rouge+Script|Lobster+Two');
+
+$TITLE-FONT-FAMILY: 'Lobster Two', 'Rouge Script', cursive, serif;
+$BODY-FONT-FAMILY: 'Playfair Display', serif;
+
 html {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: $BODY-FONT-FAMILY;
 }
 
 body {
@@ -12,6 +17,14 @@ h1 {
     font-family: cursive;
     font-size: 3em;
     text-align: center;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $TITLE-FONT-FAMILY;
 }
 
 @mixin card($background-color: transparent, $skew-width: 7em, $skew-deg: 20) {

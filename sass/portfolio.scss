@@ -1,0 +1,41 @@
+// Copyright (c) 2018 Dustin Toff
+
+#portfolio {
+    & > * {
+        margin-bottom: 1em;
+    }
+
+    p {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        // align-content: stretch;
+        justify-content: space-between;
+    }
+
+    li {
+        $margin: 2em;
+
+        width: calc(50% - #{$margin / 2});
+        padding: 2em;
+        box-sizing: border-box;
+        display: inline-block;
+        text-align: center;
+        border: 0.2em solid black;
+        font-size: 2.5em;
+        margin-bottom: $margin;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+}

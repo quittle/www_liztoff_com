@@ -1,0 +1,81 @@
+// Copyright (c) 2018 Dustin Toff
+
+#recommendations {
+    li {
+        display: block;
+        margin-bottom: 6em;
+        text-align: center;
+    }
+
+    input {
+        display: none;
+
+        &~blockquote {
+            display: none;
+        }
+
+        &:checked {
+            & ~ blockquote {
+                display: block;
+            }
+            & ~ div > div {
+                display: none;
+            }
+        }
+    }
+
+    h3 {
+        font-family: $BODY-FONT-FAMILY;
+        text-align: justify;
+
+        &::before {
+            content: open-quote;
+        }
+
+        &::after {
+            content: close-quote;
+        }
+    }
+
+    label > div {
+        > * {
+            font-size: 1em;
+        }
+
+        cite {
+            display: block;
+
+            &::before {
+                content: '\2014  ';
+            }
+        }
+
+        .name::after + .role {
+            content: ', ';
+        }
+
+        div {
+            background: none;
+            border: none;
+            display: inline;
+            cursor: pointer;
+
+            &::before {
+                content: '{';
+            }
+
+            &::after {
+                content: '}';
+            }
+        }
+    }
+
+    blockquote p {
+        margin-bottom: 0.5em;
+        text-indent: 2em;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}

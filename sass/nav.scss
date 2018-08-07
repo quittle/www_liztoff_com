@@ -46,25 +46,32 @@ nav {
     $transition-duration: 750ms;
 
     text-align: center;
+    font-size: 1.3em;
+
 
     @include not-on-home {
         animation: disappear 0s $transition-duration forwards;
         position: absolute;
 
-        h1 {
+        h1, p {
             animation: disappear $transition-duration / 2 forwards;
         }
     }
 
     a {
+        font-family: $TITLE-FONT-FAMILY;
         display: inline-block;
         text-decoration: none;
-        font-size: 3em;
+        font-size: 2em;
         color: white;
         padding: 1em;
         min-width: 50%;
-        margin-top: 1em;
+        margin-bottom: 1em;
         transition: all $transition-duration ease-in-out;
+
+        &:first-child {
+            margin-top: 1em;
+        }
 
         @for $i from 1 through length($nav-cards) {
             $card: nth($nav-cards, $i);
