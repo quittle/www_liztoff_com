@@ -1,0 +1,49 @@
+// Copyright (c) 2018 Dustin TOff
+
+$link-padding: 1em;
+
+
+@include jacobs-ladder('[id^=voice-]:target ul', '[id^=voice-] li', '[id^=voice-] ul', $ITEM-HEIGHT + 1em);
+
+[id^=voice-] {
+    li {
+        display: block;
+        background: #bedbed;
+        padding: $link-padding;
+    }
+
+    img {
+        float: left;
+        margin-right: $link-padding;
+
+        display: inline-block;
+        width: $product-img-size;
+        height: $product-img-size;
+        background: #ace;
+        border-radius: .2em;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 1.3em;
+        display: inline;
+
+        &::after {
+            content: '|';
+            margin: 0 0.3em;
+            font-weight: normal;
+        }
+    }
+}
+
+.highlight {
+    font-size: 1.1em;
+    font-style: italic;
+    display: inline-block;
+    word-break: keep-all;
+}
+
+.description {
+    height: 100%;
+    text-align: justify;
+}

@@ -64,7 +64,7 @@ html_page(
     deferred_js_files = [
         "//js:all_js",
     ],
-    deps = ["Dustin.Toff.Resume.pdf"],
+    deps = ["Liz_Toff_CV.pdf"],
     # favicon_images = favicon_images,
     # favicon_sizes = favicon_sizes,
 )

@@ -7,7 +7,7 @@ $ITEM-HEIGHT: 8em;
 
 $product-img-size: 8em;
 
-@include jacobs-ladder('section ul', 'li', 'section:target ul', $ITEM-HEIGHT + 1em);
+// @include jacobs-ladder('section ul', 'li', 'section:target ul', $ITEM-HEIGHT + 1em);
 
 main {
     @include on-home {
