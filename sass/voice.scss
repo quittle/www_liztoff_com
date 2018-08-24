@@ -2,14 +2,20 @@
 
 $link-padding: 1em;
 
-
-@include jacobs-ladder('[id^=voice-]:target ul', '[id^=voice-] li', '[id^=voice-] ul', $ITEM-HEIGHT + 1em);
+// @include jacobs-ladder('[id^=voice-] ul', 'li', '[id^=voice-]:target ul', $ITEM-HEIGHT + 1em);
 
 [id^=voice-] {
     li {
         display: block;
         background: #bedbed;
         padding: $link-padding;
+        margin-bottom: 1em;
+
+        &::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
     }
 
     img {
