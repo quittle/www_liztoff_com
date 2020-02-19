@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es2015",
+        "lib": ["es6", "dom"],
+        "target": "es6",
+        "jsx": "react"
+    },
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}

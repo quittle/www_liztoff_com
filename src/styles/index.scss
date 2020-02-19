@@ -1,0 +1,86 @@
+@import './colors.scss'; 
+
+@font-face {
+    font-family: 'Architex';
+    src: url('/fonts/Architex.ttf');
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Architex';
+    background: $color-sky;
+    overflow-x: hidden;
+}
+
+.star {
+    width: 1px;
+    height: 1px;
+    // animation: sparkle .5s linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    display: inline-block;
+    position: absolute;
+    background: $color-star;
+}
+
+.star[data-key="0"] {
+    animation: sparkle .5s linear;
+    animation-delay: 0ms;
+    animation-duration: 100ms;
+}
+.star[data-key="1"] {
+    animation-delay: 100ms;
+    animation-duration: 200ms;
+}
+.star[data-key="2"] {
+    animation-delay: 150ms;
+    animation-duration: 300ms;
+}
+.star[data-key="3"] {
+    animation-delay: 75ms;
+    animation-duration: 400ms;
+}
+.star[data-key="4"] {
+    animation-delay: 200ms;
+    animation-duration: 500ms;
+}
+.star[data-key="5"] {
+    animation-delay: 120ms;
+    animation-duration: 600ms;
+}
+.star[data-key="6"] {
+    animation-delay: 80ms;
+    animation-duration: 700ms;
+}
+.star[data-key="7"] {
+    animation-delay: 160ms;
+    animation-duration: 800ms;
+}
+.star[data-key="8"] {
+    animation-delay: 40ms;
+    animation-duration: 900ms;
+}
+.star[data-key="9"] {
+    animation-delay: 140ms;
+    animation-duration: 1000ms;
+}
+
+@keyframes sparkle {
+    0% {
+        height: 1px;
+        width: 6px;
+    }
+    50% {
+        height: 2px;
+        width: 2px;
+        margin-left: 2px;
+        margin-top: -1px;
+    }
+    100% {
+        height: 6px;
+        width: 1px;
+        margin-left: 2.5px;
+        margin-top: -2.5px;
+    }
+} 
