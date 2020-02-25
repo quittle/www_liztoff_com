@@ -17,6 +17,6 @@ export const StarLine = (props: StarLineProps) =>
             transform: `
                 translate(${props.translationX || 0}px, ${props.translationY || 0}px)
                 rotate(${props.rotationDegrees || 0}deg)`,
-            "--animation-delay": (props.index * 2 / 3) + "s",
+            ["--animation-delay" as any]: (props.index * 2 / 3) + "s",
         }} />
 ;

@@ -12,8 +12,12 @@ setInterval(() => {
     window.scrollBy(0, window.innerHeight / -2);
 }, 10);
 
-export const Spark = () => 
-    <svg id="spark" style={{width: 100}}>
+export interface SparkProps {
+    className: string
+};
+
+export const Spark = (props: SparkProps) => 
+    <svg id="spark" className={props.className} style={{width: 100}}>
         <g transform="translate(20, 30)">`
             {
                 lines.map(i =>
@@ -40,4 +44,3 @@ export const Spark = () =>
         <rect fill="#fff" width="60" height="1"></rect>
         <rect fill="#fff" width="60" height="1"></rect> */}
     </svg>
-;

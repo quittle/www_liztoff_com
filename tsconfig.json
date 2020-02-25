@@ -6,10 +6,12 @@
         "module": "es2015",
         "lib": ["es6", "dom"],
         "target": "es6",
-        "jsx": "react"
+        "jsx": "react",
+        "allowJs": true,
+        "moduleResolution": "Node",
     },
     "exclude": [
-        "node_modules",
+        // "node_modules",
         "build"
     ]
 }

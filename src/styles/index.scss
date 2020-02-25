@@ -1,3 +1,6 @@
+// @use "sass:list";
+// @use "sass:map";
+
 @import './colors.scss'; 
 
 @font-face {
@@ -83,4 +86,41 @@ body {
         margin-left: 2.5px;
         margin-top: -2.5px;
     }
-} 
+}
+
+.title-large {
+    font-size: 5em;
+    color: $color-star;
+}
+
+.mainTextHighlight {
+    color: #ffce39;
+}
+// #spark {
+//     position: relative;
+//     transition: transform 600ms; // This must match Apps timeout
+// }
+
+// $spark-positions: (
+//     (x: 0, y: 0, scale: 1),
+//     (x: 0, y: 250, scale: 1),
+//     (x: -220, y: 335, scale: 1),
+//     (x: -240, y: 325, scale: 0),
+//     (x: -300, y: 380, scale: 0),
+//     (x: -300, y: 440, scale: 1),
+//     (x: 130, y: 530, scale: 1)
+// );
+
+// @for $i from 1 through length($spark-positions) {
+//     #spark.pos#{$i} {
+//         $state: nth($spark-positions, $i);
+//         transform: translateX(map-get($state, "x") * 1px) translateY(map-get($state, "y") * 1px) scale(map-get($state, "scale"));
+//     }
+// }
+// @each $position in $spark-positions {
+//     #spark.pos#{}
+// }
+
+// #spark.pos1 {
+//     transform: translateX(0), tralateY(200);
+// }

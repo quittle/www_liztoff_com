@@ -1,11 +1,9 @@
 import * as React from "react";
-import { Star, StarProp } from "./Star";
+import { Star } from "./Star";
 import { Colors } from "./styles";
-import { Spark } from "./Spark";
-import { Z_BLOCK } from "zlib";
-import { StarLine } from "./StarLine";
-
+import { motion, useCycle, useAnimation, AnimationControls, TargetAndTransition } from "framer-motion";
 import "../styles/firework.scss";
+import { FrontPage } from "./FrontPage";
 
 const STAR_LOCATIONS: [number, number][] = [];
 const STAR_WIDTH = 1500;
@@ -16,91 +14,77 @@ for (let i = 0; i < NUM_OF_STARS; i++) {
     STAR_LOCATIONS.push([Math.random() * STAR_WIDTH, Math.random() * STAR_HEIGHT]);
 }
 
-const titleStyle = {
-    fontSize: "3em",
+const animationChain = (animations: TargetAndTransition[]): AnimationControls => {
+    const control = useAnimation();
+    const masterAnimation: any = {};
+
+    for (const animation of animations) {
+        Object.keys(animation).forEach((key: string) => {
+            if (!(key in masterAnimation)) {
+                masterAnimation[key] = [];
+            }
+            masterAnimation[key].push((animation as any)[key]);
+        });
+        // await control.start(animation);
+    }
+    control.start(masterAnimation);
+    // control.start({x: 100, transition: { duration: 0.5 }})
+    return control;
+}
+
+const sparkAnimationDurationMs = 1200;
+
+interface SimpleStyle {
+    x?: number,
+    y?: number,
+    scale?: number,
+    color?: string,
+}
+
+const styleize = (styles: AnimationSimpleStyle): AnimationList => {
+    return styles.map(style => ({
+        transform: `translateX(${style.x}px) translateY(${style.y}px) scale(${style.scale})`,
+        ...(style.color ? {color: style.color} : {}),
+    })) as AnimationList;
 };
 
-const titleSmallStyle = {
-    fontSize: "3em",
-    color: "white",
-}
+type AnimationSimpleStyle = [
+    SimpleStyle,
+    SimpleStyle,
+    SimpleStyle,
+    SimpleStyle,
+    SimpleStyle,
+    SimpleStyle,
+    SimpleStyle,
+];
 
-const titleLargeStyle = {
-    fontSize: "5em",
-    color: Colors.Star,
-}
+type AnimationList = [
+    React.CSSProperties,
+    React.CSSProperties,
+    React.CSSProperties,
+    React.CSSProperties,
+    React.CSSProperties,
+    React.CSSProperties,
+    React.CSSProperties,
+];
 
-export const App = () => {
-    let starLineIndex = 0;
-    return <div>
-        <div style={{
-            backgroundColor: Colors.Sky,
-            // position: "absolute",
-            // top: 0,
-            // bottom: 0,
-            // left: 0,
-            // right: 0,
-            overflowX: "hidden",
-            zIndex: -1,
-        }}>
-            {
-                STAR_LOCATIONS.map(([x, y], idx) => <Star offsetId={idx} key={idx} x={x} y={y} />)
-            }
-        </div>
-        {/* <div className="firework"></div> */}
-        <div style={{
-                textAlign: "center",
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                alignItems: "center",
-                // position: "fixed",
-                height: "100%",
-                width: "100%",
-                fontStyle: "serif",
-                paddingTop: "12em",
-            }}>
-            <div className="title-small" style={titleSmallStyle}>All it takes is the</div>
-            <br />
-            <span className="title-large" style={titleLargeStyle}>SPARK</span>
-            <br />
-            <span className="title-small" style={titleSmallStyle}>of an idea</span>
-            <br />
-            <span className="title-small" style={titleSmallStyle}>(in the right hands)</span>
-            <br />
-            <Spark />
-            {/* <br />
-            <img src="http://giphygifs.s3.amazonaws.com/media/11lVFn0Di6NOIU/giphy.gif" height={40} /> */}
-        
-            <div>
-                <StarLine index={starLineIndex++} length={100} />
-                <br />
-                <StarLine index={starLineIndex++} length={200} rotationDegrees={65} translationX={-113} translationY={-37} />
-            </div>
+
+export class App extends React.Component {
+
+    render() {
+        let starLineIndex = 0;
+        return <div>
             <div style={{
-                transform: "translate(-332px, -202px)",
+                backgroundColor: Colors.Sky,
+                overflowX: "hidden",
+                zIndex: -1,
             }}>
-                <div className="title-small" style={{
-                        ...titleSmallStyle,
-                        transform: "translate(48px, 32px)",
-                    }}>to</div>
-                <br />
-                <span className="title-large" style={titleLargeStyle}>inspire</span>
-                <br />
-                <div className="title-small" style={{
-                    ...titleSmallStyle,
-                    transform: "translate(84px, -32px)",
-                    }}>imaginations</div>
-                <StarLine index={starLineIndex++} length={450} rotationDegrees={-79} translationX={243} translationY={-198} />
+                {
+                    STAR_LOCATIONS.map(([x, y], idx) => <Star offsetId={idx} key={idx} x={x} y={y} />)
+                }
             </div>
-            <div style={{transform: "translate(155px, -662px)"}}>
-                <div className="title-small" style={{
-                            ...titleSmallStyle,
-                            transform: "translate(48px, 32px)",
-                        }}>change</div>
-                <br />
-                <span className="title-large" style={titleLargeStyle}>perspectives</span>
-            </div>
-        </div>
-    </div>;
+            {/* <div className="firework"></div> */}
+            <FrontPage />
+        </div>;
+    }
 };
