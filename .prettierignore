@@ -1,0 +1,5 @@
+/dist
+.gitignore
+.prettierignore
+package-lock.json
+*.ttf

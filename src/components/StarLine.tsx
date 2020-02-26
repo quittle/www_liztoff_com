@@ -8,15 +8,18 @@ export interface StarLineProps {
     rotationDegrees?: number;
     translationX?: number;
     translationY?: number;
-};
+}
 
-export const StarLine = (props: StarLineProps) =>
-    <span className="star-line"
+export const StarLine = (props: StarLineProps) => (
+    <span
+        className="star-line"
         style={{
             height: props.length,
             transform: `
-                translate(${props.translationX || 0}px, ${props.translationY || 0}px)
+                translate(${props.translationX || 0}px, ${props.translationY ||
+                0}px)
                 rotate(${props.rotationDegrees || 0}deg)`,
-            ["--animation-delay" as any]: (props.index * 2 / 3) + "s",
-        }} />
-;
+            ["--animation-delay" as any]: (props.index * 2) / 3 + "s"
+        }}
+    />
+);

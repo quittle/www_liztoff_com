@@ -6,7 +6,4 @@ import { App } from "./components/App";
 import "./styles/index.scss";
 import "./fonts/Architex.ttf";
 
-ReactDOM.render(
-    <App />,
-    document.getElementById("react-root")
-);
+ReactDOM.render(<App />, document.getElementById("react-root"));

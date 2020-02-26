@@ -8,20 +8,43 @@ const lineLength = 60;
 const durationMs = 700;
 
 export interface SparkProps {
-    className: string
-};
+    className: string;
+}
 
-export const Spark = (props: SparkProps) => 
-    <svg id="spark" className={props.className} style={{width: 100}}>
-        <g transform="translate(20, 30)">`
-            {
-                lines.map(i =>
-                    <rect key={i} fill={Colors.Star} width={lineLength} height="2" transform={`rotate(${22.5 * (i + 4)}, ${lineLength / 2}, 0) translate(0, -1)`}>
-                        <animate attributeType="SVG" values={`${lineLength};${lineLength / 2};${lineLength}`} attributeName="width" from={lineLength / 2} to={lineLength} dur={durationMs + "ms"} repeatCount="indefinite" />
-                        <animate attributeType="SVG" values={`0;${lineLength / 3};0`} attributeName="x" from="0" to={lineLength / 2} dur={durationMs + "ms"} begin={`${durationMs / i}ms`} repeatCount="indefinite" />
-                    </rect>
-                )
-            }
+export const Spark = (props: SparkProps) => (
+    <svg id="spark" className={props.className} style={{ width: 100 }}>
+        <g transform="translate(20, 30)">
+            `
+            {lines.map(i => (
+                <rect
+                    key={i}
+                    fill={Colors.Star}
+                    width={lineLength}
+                    height="2"
+                    transform={`rotate(${22.5 * (i + 4)}, ${lineLength /
+                        2}, 0) translate(0, -1)`}
+                >
+                    <animate
+                        attributeType="SVG"
+                        values={`${lineLength};${lineLength / 2};${lineLength}`}
+                        attributeName="width"
+                        from={lineLength / 2}
+                        to={lineLength}
+                        dur={durationMs + "ms"}
+                        repeatCount="indefinite"
+                    />
+                    <animate
+                        attributeType="SVG"
+                        values={`0;${lineLength / 3};0`}
+                        attributeName="x"
+                        from="0"
+                        to={lineLength / 2}
+                        dur={durationMs + "ms"}
+                        begin={`${durationMs / i}ms`}
+                        repeatCount="indefinite"
+                    />
+                </rect>
+            ))}
             {/* <rect fill="#fff" width="60" height="2">
                 <animate attributeType="SVG" attributeName="width" from="30" to="60" dur="400ms" repeatCount="indefinite" />
             </rect>
@@ -39,3 +62,4 @@ export const Spark = (props: SparkProps) =>
         <rect fill="#fff" width="60" height="1"></rect>
         <rect fill="#fff" width="60" height="1"></rect> */}
     </svg>
+);

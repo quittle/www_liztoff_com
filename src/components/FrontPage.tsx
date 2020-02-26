@@ -8,20 +8,20 @@ const sparkAnimationDurationMs = 1200;
 
 const sparkHolderStyle = {
     display: "inline-block",
-    transition: `transform ${sparkAnimationDurationMs}ms`,
+    transition: `transform ${sparkAnimationDurationMs}ms`
 };
 
 interface SimpleStyle {
-    _tag?: AnimationTag, // Used to identify the frame for triggering other events
-    x?: number | string,
-    y?: number | string,
-    scale?: number,
-    color?: string,
+    _tag?: AnimationTag; // Used to identify the frame for triggering other events
+    x?: number | string;
+    y?: number | string;
+    scale?: number;
+    color?: string;
 }
 
 const styleize = (styles: AnimationSimpleStyle): AnimationList => {
     return styles.map(style => {
-        let {x, y, scale} = style;
+        let { x, y, scale } = style;
         if (typeof x === "number") {
             x = `${x}px`;
         }
@@ -30,7 +30,7 @@ const styleize = (styles: AnimationSimpleStyle): AnimationList => {
         }
         return {
             transform: `translateX(${x}) translateY(${y}) scale(${scale})`,
-            ...(style.color ? {color: style.color} : {}),
+            ...(style.color ? { color: style.color } : {})
         };
     }) as AnimationList;
 };
@@ -42,15 +42,15 @@ type AnimationList = React.CSSProperties[];
 type AnimationTag = "spark" | "inspire" | "perspectives";
 
 const sparkStylesRaw: SimpleStyle[] = [
-    {x: 0, y: "-14vh", scale: 0},
-    {x: 0, y: "-14vh", scale: 1, _tag: "spark"},
-    {x: 0, y: 250, scale: 1},
-    {x: -220, y: 335, scale: 1},
-    {x: -240, y: 325, scale: 0, _tag: "inspire"},
-    {x: -300, y: 380, scale: 0},
-    {x: -300, y: 440, scale: 1},
-    {x: 130, y: 530, scale: 1},
-    {x: 130, y: 530, scale: 0, _tag: "perspectives"},
+    { x: 0, y: "-14vh", scale: 0 },
+    { x: 0, y: "-14vh", scale: 1, _tag: "spark" },
+    { x: 0, y: 250, scale: 1 },
+    { x: -220, y: 335, scale: 1 },
+    { x: -240, y: 325, scale: 0, _tag: "inspire" },
+    { x: -300, y: 380, scale: 0 },
+    { x: -300, y: 440, scale: 1 },
+    { x: 130, y: 530, scale: 1 },
+    { x: 130, y: 530, scale: 0, _tag: "perspectives" }
 ];
 const sparkPositions: AnimationList = styleize(sparkStylesRaw);
 
@@ -76,7 +76,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         super(props);
 
         this.state = {
-            starPos: 0,
+            starPos: 0
         };
     }
 
@@ -89,7 +89,10 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
     componentDidUpdate(prevProps: FrontPageProps) {
         if (this.props.animationCanStart && !prevProps.animationCanStart) {
             this.startAnimation();
-        } else if (!this.props.animationCanStart && prevProps.animationCanStart) {
+        } else if (
+            !this.props.animationCanStart &&
+            prevProps.animationCanStart
+        ) {
             this.cleanupAnimation();
         }
     }
@@ -110,7 +113,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                 // Clean up as there's nothing left to do
                 this.cleanupAnimation();
             } else {
-                this.setState({starPos});
+                this.setState({ starPos });
             }
         }, sparkAnimationDurationMs);
     }
@@ -123,7 +126,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
 
         // Used to track if the user scrolled separately from the scroll-jacking
         let lastScrolledToYPosition = window.scrollY;
-        
+
         // Constantly scroll to the spark
         this.scrollingInterval = window.setInterval(() => {
             document.getElementById("spark").scrollIntoView();
@@ -167,76 +170,139 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
 
     private getMainTextHighlightClass(textName: AnimationTag): string {
         const findTagIndex = (tag: AnimationTag): number => {
-            return sparkStylesRaw.findIndex((entry => entry._tag === tag));
+            return sparkStylesRaw.findIndex(entry => entry._tag === tag);
         };
 
         return {
-            "spark": findTagIndex("spark"),
-            "inspire": findTagIndex("inspire"),
-            "perspectives": findTagIndex("perspectives"),
-        }[textName] <= this.state.starPos ? "mainTextHighlight" : "";
+            spark: findTagIndex("spark"),
+            inspire: findTagIndex("inspire"),
+            perspectives: findTagIndex("perspectives")
+        }[textName] <= this.state.starPos
+            ? "mainTextHighlight"
+            : "";
     }
 
     render() {
         let starLineIndex = 0;
         return (
-            <div style={{
-                textAlign: "center",
-                // display: "flex",
-                // justifyContent: "center",
-                // flexDirection: "column",
-                // alignItems: "center",
-                // // position: "fixed",
-                // height: "100%",
-                // width: "100%",
-                // fontStyle: "serif",
-                // paddingTop: "12em",
-            }}>
-                <div style={{
-                    paddingTop: "50vh",
-                    transform: "translateY(-25%)",
-                }}>
+            <div
+                style={{
+                    textAlign: "center"
+                    // display: "flex",
+                    // justifyContent: "center",
+                    // flexDirection: "column",
+                    // alignItems: "center",
+                    // // position: "fixed",
+                    // height: "100%",
+                    // width: "100%",
+                    // fontStyle: "serif",
+                    // paddingTop: "12em",
+                }}
+            >
+                <div
+                    style={{
+                        paddingTop: "50vh",
+                        transform: "translateY(-25%)"
+                    }}
+                >
                     <div className="title-small">All it takes is the</div>
                     <br />
-                    <span id="mainText-spark" className={`title-large ${this.getMainTextHighlightClass("spark")}`}>SPARK</span>
+                    <span
+                        id="mainText-spark"
+                        className={`title-large ${this.getMainTextHighlightClass(
+                            "spark"
+                        )}`}
+                    >
+                        SPARK
+                    </span>
                     <br />
                     <span className="title-small">of an idea</span>
                     <br />
                     <span className="title-small">(in the right hands)</span>
                 </div>
                 <br />
-                <span style={{...sparkHolderStyle, ...sparkPositions[this.state.starPos]}}>
+                <span
+                    style={{
+                        ...sparkHolderStyle,
+                        ...sparkPositions[this.state.starPos]
+                    }}
+                >
                     <Spark className={`pos${this.state.starPos}`} />
                 </span>
                 {/* <br />
                 <img src="http://giphygifs.s3.amazonaws.com/media/11lVFn0Di6NOIU/giphy.gif" height={40} /> */}
-            
+
                 <div>
                     <StarLine index={starLineIndex++} length={100} />
                     <br />
-                    <StarLine index={starLineIndex++} length={200} rotationDegrees={65} translationX={-113} translationY={-37} />
+                    <StarLine
+                        index={starLineIndex++}
+                        length={200}
+                        rotationDegrees={65}
+                        translationX={-113}
+                        translationY={-37}
+                    />
                 </div>
-                <div style={{
-                    transform: "translate(-332px, -202px)",
-                }}>
-                    <div className="title-small" style={{
-                            transform: "translate(48px, 32px)",
-                        }}>to</div>
+                <div
+                    style={{
+                        transform: "translate(-332px, -202px)"
+                    }}
+                >
+                    <div
+                        className="title-small"
+                        style={{
+                            transform: "translate(48px, 32px)"
+                        }}
+                    >
+                        to
+                    </div>
                     <br />
-                    <span id="mainText-inspire" className={`title-large ${this.getMainTextHighlightClass("inspire")}`}>inspire</span> {/*fil text with background gradient to get the fill effect*/}
+                    <span
+                        id="mainText-inspire"
+                        className={`title-large ${this.getMainTextHighlightClass(
+                            "inspire"
+                        )}`}
+                    >
+                        inspire
+                    </span>{" "}
+                    {/*fil text with background gradient to get the fill effect*/}
                     <br />
-                    <div className="title-small" style={{
-                        transform: "translate(84px, -32px)",
-                        }}>imaginations</div>
-                    <StarLine index={starLineIndex++} length={450} rotationDegrees={-79} translationX={243} translationY={-198} />
+                    <div
+                        className="title-small"
+                        style={{
+                            transform: "translate(84px, -32px)"
+                        }}
+                    >
+                        imaginations
+                    </div>
+                    <StarLine
+                        index={starLineIndex++}
+                        length={450}
+                        rotationDegrees={-79}
+                        translationX={243}
+                        translationY={-198}
+                    />
                 </div>
-                <div style={{transform: "translate(155px, -662px)"}}>
-                    <div className="title-small" style={{
-                                transform: "translate(48px, 32px)",
-                            }}>change</div>
+                <div style={{ transform: "translate(155px, -662px)" }}>
+                    <div
+                        className="title-small"
+                        style={{
+                            transform: "translate(48px, 32px)"
+                        }}
+                    >
+                        change
+                    </div>
                     <br />
-                    <span id="mainText-perspectives" className={`title-large ${this.getMainTextHighlightClass("perspectives")}`}>perspectives</span>
+                    <span
+                        id="mainText-perspectives"
+                        className={`title-large ${this.getMainTextHighlightClass(
+                            "perspectives"
+                        )}`}
+                    >
+                        perspectives
+                    </span>
                 </div>
-            </div>);
+            </div>
+        );
     }
 }

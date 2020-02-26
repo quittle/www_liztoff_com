@@ -9,8 +9,8 @@ export interface StarProp {
     y: number;
 }
 
-export const Star = (props: StarProp) => 
-    <span 
+export const Star = (props: StarProp) => (
+    <span
         className="star"
         data-key={props.offsetId % 10}
         style={{
@@ -18,7 +18,7 @@ export const Star = (props: StarProp) =>
             // width: 3,
             // height: 2,
             top: props.y,
-            left: props.x,
-        }}>
-    </span>
-;
+            left: props.x
+        }}
+    ></span>
+);

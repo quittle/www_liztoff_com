@@ -1,4 +1,4 @@
-@import './colors.scss'; 
+@import "./colors.scss";
 
 .star {
     width: 1px;
@@ -13,7 +13,8 @@
 
     --opacity-transition-duration: 1s;
     --opacity-transition-delay: 0s;
-    transition: opacity var(--opacity-transition-duration) ease-in-out var(--opacity-transition-delay);
+    transition: opacity var(--opacity-transition-duration) ease-in-out
+        var(--opacity-transition-delay);
 }
 
 .show .star {
@@ -21,18 +22,18 @@
 }
 
 .star[data-key="0"] {
-    animation: sparkle .5s linear;
+    animation: sparkle 0.5s linear;
     animation-delay: 0ms;
     animation-duration: 100ms;
 
-    --opacity-transition-delay: .5s;
+    --opacity-transition-delay: 0.5s;
 }
 .star[data-key="1"] {
     animation-delay: 100ms;
     animation-duration: 200ms;
 
     --opacity-transition-duration: 4s;
-    --opacity-transition-delay: .2s;
+    --opacity-transition-delay: 0.2s;
 }
 .star[data-key="2"] {
     animation-delay: 150ms;
@@ -45,8 +46,8 @@
     animation-delay: 75ms;
     animation-duration: 400ms;
 
-    --opacity-transition-duration: .9s;
-    --opacity-transition-delay: .5s;
+    --opacity-transition-duration: 0.9s;
+    --opacity-transition-delay: 0.5s;
 }
 .star[data-key="4"] {
     animation-delay: 200ms;
