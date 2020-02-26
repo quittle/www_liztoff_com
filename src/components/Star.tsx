@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Colors } from "./styles";
 
+import "../styles/star.scss";
+
 export interface StarProp {
     offsetId: number;
     x: number;

@@ -1,7 +1,6 @@
-// @use "sass:list";
-// @use "sass:map";
-
 @import './colors.scss'; 
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho&display=swap');
 
 @font-face {
     font-family: 'Architex';
@@ -12,115 +11,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Architex';
+    // font-family: 'Sawarabi Mincho'; // nicer font but not spaced for it
     background: $color-sky;
     overflow-x: hidden;
 }
-
-.star {
-    width: 1px;
-    height: 1px;
-    // animation: sparkle .5s linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    display: inline-block;
-    position: absolute;
-    background: $color-star;
-}
-
-.star[data-key="0"] {
-    animation: sparkle .5s linear;
-    animation-delay: 0ms;
-    animation-duration: 100ms;
-}
-.star[data-key="1"] {
-    animation-delay: 100ms;
-    animation-duration: 200ms;
-}
-.star[data-key="2"] {
-    animation-delay: 150ms;
-    animation-duration: 300ms;
-}
-.star[data-key="3"] {
-    animation-delay: 75ms;
-    animation-duration: 400ms;
-}
-.star[data-key="4"] {
-    animation-delay: 200ms;
-    animation-duration: 500ms;
-}
-.star[data-key="5"] {
-    animation-delay: 120ms;
-    animation-duration: 600ms;
-}
-.star[data-key="6"] {
-    animation-delay: 80ms;
-    animation-duration: 700ms;
-}
-.star[data-key="7"] {
-    animation-delay: 160ms;
-    animation-duration: 800ms;
-}
-.star[data-key="8"] {
-    animation-delay: 40ms;
-    animation-duration: 900ms;
-}
-.star[data-key="9"] {
-    animation-delay: 140ms;
-    animation-duration: 1000ms;
-}
-
-@keyframes sparkle {
-    0% {
-        height: 1px;
-        width: 6px;
-    }
-    50% {
-        height: 2px;
-        width: 2px;
-        margin-left: 2px;
-        margin-top: -1px;
-    }
-    100% {
-        height: 6px;
-        width: 1px;
-        margin-left: 2.5px;
-        margin-top: -2.5px;
-    }
-}
-
-.title-large {
-    font-size: 5em;
-    color: $color-star;
-}
-
-.mainTextHighlight {
-    color: #ffce39;
-}
-// #spark {
-//     position: relative;
-//     transition: transform 600ms; // This must match Apps timeout
-// }
-
-// $spark-positions: (
-//     (x: 0, y: 0, scale: 1),
-//     (x: 0, y: 250, scale: 1),
-//     (x: -220, y: 335, scale: 1),
-//     (x: -240, y: 325, scale: 0),
-//     (x: -300, y: 380, scale: 0),
-//     (x: -300, y: 440, scale: 1),
-//     (x: 130, y: 530, scale: 1)
-// );
-
-// @for $i from 1 through length($spark-positions) {
-//     #spark.pos#{$i} {
-//         $state: nth($spark-positions, $i);
-//         transform: translateX(map-get($state, "x") * 1px) translateY(map-get($state, "y") * 1px) scale(map-get($state, "scale"));
-//     }
-// }
-// @each $position in $spark-positions {
-//     #spark.pos#{}
-// }
-
-// #spark.pos1 {
-//     transform: translateX(0), tralateY(200);
-// }

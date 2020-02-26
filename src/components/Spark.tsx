@@ -7,11 +7,6 @@ const lines = [0, 1, 2, 3, 4, 5, 6, 7];
 const lineLength = 60;
 const durationMs = 700;
 
-setInterval(() => {
-    document.getElementById("spark").scrollIntoView();
-    window.scrollBy(0, window.innerHeight / -2);
-}, 10);
-
 export interface SparkProps {
     className: string
 };

@@ -1,0 +1,15 @@
+@import "./colors.scss";
+
+.title-small {
+    font-size: 3em;
+    color: white;
+}
+
+.title-large {
+    font-size: 5em;
+    color: $color-star;
+}
+
+.mainTextHighlight {
+    color: #ffce39;
+}

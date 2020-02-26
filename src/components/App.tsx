@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Star } from "./Star";
 import { Colors } from "./styles";
-import { motion, useCycle, useAnimation, AnimationControls, TargetAndTransition } from "framer-motion";
 import "../styles/firework.scss";
 import { FrontPage } from "./FrontPage";
 
@@ -14,67 +13,44 @@ for (let i = 0; i < NUM_OF_STARS; i++) {
     STAR_LOCATIONS.push([Math.random() * STAR_WIDTH, Math.random() * STAR_HEIGHT]);
 }
 
-const animationChain = (animations: TargetAndTransition[]): AnimationControls => {
-    const control = useAnimation();
-    const masterAnimation: any = {};
+let windowLoaded = false;
 
-    for (const animation of animations) {
-        Object.keys(animation).forEach((key: string) => {
-            if (!(key in masterAnimation)) {
-                masterAnimation[key] = [];
-            }
-            masterAnimation[key].push((animation as any)[key]);
-        });
-        // await control.start(animation);
-    }
-    control.start(masterAnimation);
-    // control.start({x: 100, transition: { duration: 0.5 }})
-    return control;
-}
-
-const sparkAnimationDurationMs = 1200;
-
-interface SimpleStyle {
-    x?: number,
-    y?: number,
-    scale?: number,
-    color?: string,
-}
-
-const styleize = (styles: AnimationSimpleStyle): AnimationList => {
-    return styles.map(style => ({
-        transform: `translateX(${style.x}px) translateY(${style.y}px) scale(${style.scale})`,
-        ...(style.color ? {color: style.color} : {}),
-    })) as AnimationList;
+interface AppState {
+    windowLoaded: boolean;
+    starsLoaded: boolean;
 };
 
-type AnimationSimpleStyle = [
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-];
+export class App extends React.Component<{}, AppState> {
+    constructor(props: unknown) {
+        super(props);
 
-type AnimationList = [
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-];
+        const defaultState = {
+            starsLoaded: false
+        };
 
+        if (windowLoaded) {
+            this.state = {...defaultState, windowLoaded: true};
+            this.postStarsInitialize();
+        } else {
+            this.state = {...defaultState, windowLoaded: false};
+        }
+    }
 
-export class App extends React.Component {
+    componentDidMount() {
+        window.scrollTo(0, 0);
+
+        const onLoad = () => {
+            windowLoaded = true;
+            this.setState({...this.state, windowLoaded: true});
+            this.postStarsInitialize();
+            window.removeEventListener("load", onLoad);
+        }
+        window.addEventListener("load", onLoad);
+    }
 
     render() {
-        let starLineIndex = 0;
         return <div>
-            <div style={{
+            <div className={this.state.windowLoaded ? "show" : ""} style={{
                 backgroundColor: Colors.Sky,
                 overflowX: "hidden",
                 zIndex: -1,
@@ -84,7 +60,12 @@ export class App extends React.Component {
                 }
             </div>
             {/* <div className="firework"></div> */}
-            <FrontPage />
+            <FrontPage animationCanStart={this.state.starsLoaded} />
         </div>;
+    }
+
+    private postStarsInitialize() {
+        console.log("stars queued");
+        window.setTimeout(() => this.setState({...this.state, starsLoaded: true}), 5000);
     }
 };

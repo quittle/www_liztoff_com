@@ -2,107 +2,178 @@ import * as React from "react";
 import { Spark } from "./Spark";
 import { StarLine } from "./StarLine";
 
-interface AppState {
-    starPos: number;
-}
+import "../styles/front-page.scss";
 
 const sparkAnimationDurationMs = 1200;
 
 const sparkHolderStyle = {
-    // position: "relative",
+    display: "inline-block",
     transition: `transform ${sparkAnimationDurationMs}ms`,
 };
 
 interface SimpleStyle {
-    x?: number,
-    y?: number,
-    scale?: number,
-    color?: string,
-}
-
-interface AppState {
-    starPos: number;
-}
-
-interface SimpleStyle {
-    x?: number,
-    y?: number,
+    _tag?: AnimationTag, // Used to identify the frame for triggering other events
+    x?: number | string,
+    y?: number | string,
     scale?: number,
     color?: string,
 }
 
 const styleize = (styles: AnimationSimpleStyle): AnimationList => {
-    return styles.map(style => ({
-        transform: `translateX(${style.x}px) translateY(${style.y}px) scale(${style.scale})`,
-        ...(style.color ? {color: style.color} : {}),
-    })) as AnimationList;
+    return styles.map(style => {
+        let {x, y, scale} = style;
+        if (typeof x === "number") {
+            x = `${x}px`;
+        }
+        if (typeof y === "number") {
+            y = `${y}px`;
+        }
+        return {
+            transform: `translateX(${x}) translateY(${y}) scale(${scale})`,
+            ...(style.color ? {color: style.color} : {}),
+        };
+    }) as AnimationList;
 };
 
-type AnimationSimpleStyle = [
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-    SimpleStyle,
-];
+type AnimationSimpleStyle = SimpleStyle[];
 
-type AnimationList = [
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-    React.CSSProperties,
-];
+type AnimationList = React.CSSProperties[];
 
-const sparkPositions: AnimationList = styleize([
-    {x: 0, y: 0, scale: 1},
+type AnimationTag = "spark" | "inspire" | "perspectives";
+
+const sparkStylesRaw: SimpleStyle[] = [
+    {x: 0, y: "-14vh", scale: 0},
+    {x: 0, y: "-14vh", scale: 1, _tag: "spark"},
     {x: 0, y: 250, scale: 1},
     {x: -220, y: 335, scale: 1},
-    {x: -240, y: 325, scale: 0},
+    {x: -240, y: 325, scale: 0, _tag: "inspire"},
     {x: -300, y: 380, scale: 0},
     {x: -300, y: 440, scale: 1},
     {x: 130, y: 530, scale: 1},
-]);
+    {x: 130, y: 530, scale: 0, _tag: "perspectives"},
+];
+const sparkPositions: AnimationList = styleize(sparkStylesRaw);
 
-const titleStyle = {
-    fontSize: "3em",
-};
-
-const titleSmallStyle = {
-    fontSize: "3em",
-    color: "white",
+export interface FrontPageProps {
+    animationCanStart: boolean;
 }
 
-const titleLargeStyle = {};
+interface FrontPageState {
+    starPos: number;
+}
 
-export class FrontPage extends React.Component<{}, AppState> {
+export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
+    /** Handles the animation of the spark moving throughout the page */
+    private sparkAnimationInterval?: number;
+    /** Triggers the page to scroll to the spark. Perhaps should use requestAnimationFrame */
+    private scrollingInterval?: number;
+    /** Marks if scroll-jacking was canceled and shouldn't be re-attached */
+    private disableScrollJacking: boolean = false;
+    /** Listener checking if the user wants to break out of spark animation */
+    private scrollListener?: () => void;
 
-    constructor(props: unknown) {
+    constructor(props: FrontPageProps) {
         super(props);
+
         this.state = {
             starPos: 0,
         };
     }
 
     componentDidMount() {
-        setInterval(() => {
+        if (this.props.animationCanStart) {
+            this.startAnimation();
+        }
+    }
+
+    componentDidUpdate(prevProps: FrontPageProps) {
+        if (this.props.animationCanStart && !prevProps.animationCanStart) {
+            this.startAnimation();
+        } else if (!this.props.animationCanStart && prevProps.animationCanStart) {
+            this.cleanupAnimation();
+        }
+    }
+
+    componentWillUnmount() {
+        this.cleanupAnimation();
+    }
+
+    private startAnimation() {
+        this.sparkAnimationInterval = window.setInterval(() => {
+            // This must be kicked off inside the interval as the timer may not fire
+            // at the right time and cancel the scroll-jacking
+            this.tryStartScrollJacking();
+
+            // Iterate forward in the state machine
             let starPos = this.state.starPos + 1;
-            if (starPos > 7) {
-                starPos = 0;
+            if (starPos >= sparkPositions.length) {
+                // Clean up as there's nothing left to do
+                this.cleanupAnimation();
+            } else {
+                this.setState({starPos});
             }
-            this.setState({starPos});
         }, sparkAnimationDurationMs);
     }
 
-    private getMainTextHighlightClass(textName: "spark" | "inspire" | "perspectives"): string {
+    private tryStartScrollJacking() {
+        // Return early if scrolljacking is disabled or if it's already set up
+        if (this.disableScrollJacking || this.scrollingInterval) {
+            return;
+        }
+
+        // Used to track if the user scrolled separately from the scroll-jacking
+        let lastScrolledToYPosition = window.scrollY;
+        
+        // Constantly scroll to the spark
+        this.scrollingInterval = window.setInterval(() => {
+            document.getElementById("spark").scrollIntoView();
+            window.scrollBy(0, window.innerHeight / -2);
+            lastScrolledToYPosition = window.scrollY;
+        }, 10);
+
+        // Listener for scroll events
+        this.scrollListener = () => {
+            // Cancel if the user scrolled separately from the scroll-jacking
+            if (lastScrolledToYPosition !== window.scrollY) {
+                this.cancelScrollJacking();
+            }
+        };
+
+        window.addEventListener("scroll", this.scrollListener);
+    }
+
+    /**
+     * Remove all listeners and intervals used for the animation
+     */
+    private cleanupAnimation() {
+        this.cancelScrollJacking();
+
+        window.clearInterval(this.sparkAnimationInterval);
+        this.sparkAnimationInterval = null;
+    }
+
+    /**
+     * Stops and cleans up the scroll-jacking.
+     */
+    private cancelScrollJacking() {
+        window.clearInterval(this.scrollingInterval);
+        this.scrollingInterval = null;
+
+        window.removeEventListener("scroll", this.scrollListener);
+        this.scrollListener = null;
+
+        this.disableScrollJacking = true;
+    }
+
+    private getMainTextHighlightClass(textName: AnimationTag): string {
+        const findTagIndex = (tag: AnimationTag): number => {
+            return sparkStylesRaw.findIndex((entry => entry._tag === tag));
+        };
+
         return {
-            "spark": 1,
-            "inspire": 3,
-            "perspectives": 7,
+            "spark": findTagIndex("spark"),
+            "inspire": findTagIndex("inspire"),
+            "perspectives": findTagIndex("perspectives"),
         }[textName] <= this.state.starPos ? "mainTextHighlight" : "";
     }
 
@@ -111,38 +182,29 @@ export class FrontPage extends React.Component<{}, AppState> {
         return (
             <div style={{
                 textAlign: "center",
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                alignItems: "center",
-                // position: "fixed",
-                height: "100%",
-                width: "100%",
-                fontStyle: "serif",
-                paddingTop: "12em",
+                // display: "flex",
+                // justifyContent: "center",
+                // flexDirection: "column",
+                // alignItems: "center",
+                // // position: "fixed",
+                // height: "100%",
+                // width: "100%",
+                // fontStyle: "serif",
+                // paddingTop: "12em",
             }}>
-                <div className="title-small" style={titleSmallStyle}>All it takes is the</div>
+                <div style={{
+                    paddingTop: "50vh",
+                    transform: "translateY(-25%)",
+                }}>
+                    <div className="title-small">All it takes is the</div>
+                    <br />
+                    <span id="mainText-spark" className={`title-large ${this.getMainTextHighlightClass("spark")}`}>SPARK</span>
+                    <br />
+                    <span className="title-small">of an idea</span>
+                    <br />
+                    <span className="title-small">(in the right hands)</span>
+                </div>
                 <br />
-                <span id="mainText-spark" className={`title-large ${this.getMainTextHighlightClass("spark")}`} style={titleLargeStyle}>SPARK</span>
-                <br />
-                <span className="title-small" style={titleSmallStyle}>of an idea</span>
-                <br />
-                <span className="title-small" style={titleSmallStyle}>(in the right hands)</span>
-                <br />
-                {/* <motion.span animate={animationChain([
-                        {x: 0, y: 0, scale: 1},
-                        {x: 0, y: 250, scale: 1},
-                        {x: -220, y: 335, scale: 1},
-                        {x: -240, y: 325, scale: 0},
-                        {x: -300, y: 380, scale: 0},
-                        {x: -300, y: 440, scale: 1},
-                        {x: 130, y: 530, scale: 1},
-                    ])} transition={{  type: "inertia",  velocity: .2, duration: 15, loop: Infinity}}>
-                    <Spark />
-                </motion.span> */}
-                {/* <Anime loop={true}>
-                    <Spark />
-                </Anime> */}
                 <span style={{...sparkHolderStyle, ...sparkPositions[this.state.starPos]}}>
                     <Spark className={`pos${this.state.starPos}`} />
                 </span>
@@ -158,25 +220,22 @@ export class FrontPage extends React.Component<{}, AppState> {
                     transform: "translate(-332px, -202px)",
                 }}>
                     <div className="title-small" style={{
-                            ...titleSmallStyle,
                             transform: "translate(48px, 32px)",
                         }}>to</div>
                     <br />
-                    <span id="mainText-inspire" className={`title-large ${this.getMainTextHighlightClass("inspire")}`} style={titleLargeStyle}>inspire</span> {/*fil text with background gradient to get the fill effect*/}
+                    <span id="mainText-inspire" className={`title-large ${this.getMainTextHighlightClass("inspire")}`}>inspire</span> {/*fil text with background gradient to get the fill effect*/}
                     <br />
                     <div className="title-small" style={{
-                        ...titleSmallStyle,
                         transform: "translate(84px, -32px)",
                         }}>imaginations</div>
                     <StarLine index={starLineIndex++} length={450} rotationDegrees={-79} translationX={243} translationY={-198} />
                 </div>
                 <div style={{transform: "translate(155px, -662px)"}}>
                     <div className="title-small" style={{
-                                ...titleSmallStyle,
                                 transform: "translate(48px, 32px)",
                             }}>change</div>
                     <br />
-                    <span id="mainText-perspectives" className={`title-large ${this.getMainTextHighlightClass("perspectives")}`} style={titleLargeStyle}>perspectives</span>
+                    <span id="mainText-perspectives" className={`title-large ${this.getMainTextHighlightClass("perspectives")}`}>perspectives</span>
                 </div>
             </div>);
     }
