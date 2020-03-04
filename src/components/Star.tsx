@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Colors } from "./styles";
 
 import "../styles/star.scss";
 
@@ -20,5 +19,5 @@ export const Star = (props: StarProp) => (
             top: props.y,
             left: props.x
         }}
-    ></span>
+    />
 );

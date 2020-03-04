@@ -21,62 +21,91 @@
     opacity: 1;
 }
 
-.star[data-key="0"] {
-    animation: sparkle 0.5s linear;
-    animation-delay: 0ms;
-    animation-duration: 100ms;
-
+.star:nth-child(2) {
     --opacity-transition-delay: 0.5s;
 }
-.star[data-key="1"] {
-    animation-delay: 100ms;
-    animation-duration: 200ms;
 
-    --opacity-transition-duration: 4s;
+.star:nth-child(2n+1) {
     --opacity-transition-delay: 0.2s;
 }
-.star[data-key="2"] {
-    animation-delay: 150ms;
-    animation-duration: 300ms;
 
-    --opacity-transition-duration: 2s;
+.star:nth-child(3n+2) {
+    --opacity-transition-delay: 1.2s;
+}
+
+.st:nth-child(11n) {
+    --opacity-transition-duration: 0.3s;
+}
+
+.star:nth-child(7n+3) {
     --opacity-transition-delay: 2s;
 }
-.star[data-key="3"] {
-    animation-delay: 75ms;
-    animation-duration: 400ms;
 
-    --opacity-transition-duration: 0.9s;
-    --opacity-transition-delay: 0.5s;
+.star:nth-child(3n) {
+    --opacity-transition-duration: .4s;
+    --opacity-transition-delay: 2s;
 }
-.star[data-key="4"] {
-    animation-delay: 200ms;
-    animation-duration: 500ms;
 
-    --opacity-transition-duration: 3s;
+.star:nth-child(9n+5) {
+    --opacity-transition-duration: 1.3s;
 }
-.star[data-key="5"] {
-    animation-delay: 120ms;
-    animation-duration: 600ms;
 
-    --opacity-transition-duration: 2.5s;
-}
-.star[data-key="6"] {
-    animation-delay: 80ms;
-    animation-duration: 700ms;
-}
-.star[data-key="7"] {
-    animation-delay: 160ms;
-    animation-duration: 800ms;
-}
-.star[data-key="8"] {
-    animation-delay: 40ms;
-    animation-duration: 900ms;
-}
-.star[data-key="9"] {
-    animation-delay: 140ms;
-    animation-duration: 1000ms;
-}
+// .star[data-key="0"] {
+//     animation: sparkle 0.5s linear;
+//     animation-delay: 0ms;
+//     animation-duration: 100ms;
+
+//     --opacity-transition-delay: 0.5s;
+// }
+// .star[data-key="1"] {
+//     animation-delay: 100ms;
+//     animation-duration: 200ms;
+
+//     --opacity-transition-duration: 4s;
+//     --opacity-transition-delay: 0.2s;
+// }
+// .star[data-key="2"] {
+//     animation-delay: 150ms;
+//     animation-duration: 300ms;
+
+//     --opacity-transition-duration: 2s;
+//     --opacity-transition-delay: 2s;
+// }
+// .star[data-key="3"] {
+//     animation-delay: 75ms;
+//     animation-duration: 400ms;
+
+//     --opacity-transition-duration: 0.9s;
+//     --opacity-transition-delay: 0.5s;
+// }
+// .star[data-key="4"] {
+//     animation-delay: 200ms;
+//     animation-duration: 500ms;
+
+//     --opacity-transition-duration: 3s;
+// }
+// .star[data-key="5"] {
+//     animation-delay: 120ms;
+//     animation-duration: 600ms;
+
+//     --opacity-transition-duration: 2.5s;
+// }
+// .star[data-key="6"] {
+//     animation-delay: 80ms;
+//     animation-duration: 700ms;
+// }
+// .star[data-key="7"] {
+//     animation-delay: 160ms;
+//     animation-duration: 800ms;
+// }
+// .star[data-key="8"] {
+//     animation-delay: 40ms;
+//     animation-duration: 900ms;
+// }
+// .star[data-key="9"] {
+//     animation-delay: 140ms;
+//     animation-duration: 1000ms;
+// }
 
 @keyframes sparkle {
     0% {

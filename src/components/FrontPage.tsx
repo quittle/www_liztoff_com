@@ -103,12 +103,13 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
 
     private startAnimation() {
         this.sparkAnimationInterval = window.setInterval(() => {
-            // This must be kicked off inside the interval as the timer may not fire
-            // at the right time and cancel the scroll-jacking
-            this.tryStartScrollJacking();
-
             // Iterate forward in the state machine
             let starPos = this.state.starPos + 1;
+            if (starPos == 2) {
+                // This must be kicked off inside the interval as the timer may not fire
+                // at the right time and cancel the scroll-jacking
+                this.tryStartScrollJacking();
+            }
             if (starPos >= sparkPositions.length) {
                 // Clean up as there's nothing left to do
                 this.cleanupAnimation();
@@ -124,13 +125,17 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
             return;
         }
 
+        console.log(document.getElementById("spark").getBoundingClientRect());
+        const offsetY = document.getElementById("spark").getBoundingClientRect().y;
+
         // Used to track if the user scrolled separately from the scroll-jacking
         let lastScrolledToYPosition = window.scrollY;
 
         // Constantly scroll to the spark
         this.scrollingInterval = window.setInterval(() => {
             document.getElementById("spark").scrollIntoView();
-            window.scrollBy(0, window.innerHeight / -2);
+            // window.scrollBy(0, window.innerHeight / -2);
+            window.scrollBy(0, -offsetY);
             lastScrolledToYPosition = window.scrollY;
         }, 10);
 
@@ -188,15 +193,6 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
             <div
                 style={{
                     textAlign: "center"
-                    // display: "flex",
-                    // justifyContent: "center",
-                    // flexDirection: "column",
-                    // alignItems: "center",
-                    // // position: "fixed",
-                    // height: "100%",
-                    // width: "100%",
-                    // fontStyle: "serif",
-                    // paddingTop: "12em",
                 }}
             >
                 <div
@@ -209,7 +205,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                     <br />
                     <span
                         id="mainText-spark"
-                        className={`title-large ${this.getMainTextHighlightClass(
+                        className={`title-large from-bottom ${this.getMainTextHighlightClass(
                             "spark"
                         )}`}
                     >
@@ -259,7 +255,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                     <br />
                     <span
                         id="mainText-inspire"
-                        className={`title-large ${this.getMainTextHighlightClass(
+                        className={`title-large from-right ${this.getMainTextHighlightClass(
                             "inspire"
                         )}`}
                     >
@@ -295,7 +291,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                     <br />
                     <span
                         id="mainText-perspectives"
-                        className={`title-large ${this.getMainTextHighlightClass(
+                        className={`title-large from-left ${this.getMainTextHighlightClass(
                             "perspectives"
                         )}`}
                     >
