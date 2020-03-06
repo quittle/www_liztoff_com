@@ -20,7 +20,7 @@ export class App extends React.Component<{}, AppState> {
 
         this.state = {
             starsLoaded: false,
-            windowLoaded: windowLoaded,
+            windowLoaded: windowLoaded
         };
     }
 
@@ -48,7 +48,8 @@ export class App extends React.Component<{}, AppState> {
                     starWidth={STAR_WIDTH}
                     starHeight={STAR_HEIGHT}
                     starDensity={STAR_DENSITY}
-                    onFadeInComplete={() => this.onStarFieldFadeInComplete()} />
+                    onFadeInComplete={() => this.onStarFieldFadeInComplete()}
+                />
                 {/* <div className="firework"></div> */}
                 <FrontPage animationCanStart={this.state.starsLoaded} />
             </div>

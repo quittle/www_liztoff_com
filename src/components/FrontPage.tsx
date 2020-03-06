@@ -126,7 +126,8 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         }
 
         console.log(document.getElementById("spark").getBoundingClientRect());
-        const offsetY = document.getElementById("spark").getBoundingClientRect().y;
+        const offsetY = document.getElementById("spark").getBoundingClientRect()
+            .y;
 
         // Used to track if the user scrolled separately from the scroll-jacking
         let lastScrolledToYPosition = window.scrollY;

@@ -10,7 +10,6 @@
     color: $color-star;
     transition: all 1s;
 
-
     // background: -webkit-linear-gradient($color-star,  #ffce39);
     // background: linear-gradient(to right, $color-star, $color-star, $color-star,  #ffce39, #ffce39);
     background-size: 400% 400%;
@@ -19,17 +18,38 @@
     -webkit-text-fill-color: transparent;
 
     &.from-left {
-        background-image: linear-gradient(to left, $color-star, $color-star, $color-star,  #ffce39, #ffce39);
+        background-image: linear-gradient(
+            to left,
+            $color-star,
+            $color-star,
+            $color-star,
+            #ffce39,
+            #ffce39
+        );
         background-position-x: 100%;
     }
 
     &.from-right {
-        background-image: linear-gradient(to right, $color-star, $color-star, $color-star,  #ffce39, #ffce39);
+        background-image: linear-gradient(
+            to right,
+            $color-star,
+            $color-star,
+            $color-star,
+            #ffce39,
+            #ffce39
+        );
         background-position-x: 0%;
     }
 
     &.from-bottom {
-        background-image: linear-gradient(to top, $color-star, $color-star, $color-star,  #ffce39, #ffce39);
+        background-image: linear-gradient(
+            to top,
+            $color-star,
+            $color-star,
+            $color-star,
+            #ffce39,
+            #ffce39
+        );
         background-position-y: 100%;
     }
 }

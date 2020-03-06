@@ -25,11 +25,11 @@
     --opacity-transition-delay: 0.5s;
 }
 
-.star:nth-child(2n+1) {
+.star:nth-child(2n + 1) {
     --opacity-transition-delay: 0.2s;
 }
 
-.star:nth-child(3n+2) {
+.star:nth-child(3n + 2) {
     --opacity-transition-delay: 1.2s;
 }
 
@@ -37,16 +37,16 @@
     --opacity-transition-duration: 0.3s;
 }
 
-.star:nth-child(7n+3) {
+.star:nth-child(7n + 3) {
     --opacity-transition-delay: 2s;
 }
 
 .star:nth-child(3n) {
-    --opacity-transition-duration: .4s;
+    --opacity-transition-duration: 0.4s;
     --opacity-transition-delay: 2s;
 }
 
-.star:nth-child(9n+5) {
+.star:nth-child(9n + 5) {
     --opacity-transition-duration: 1.3s;
 }
 
