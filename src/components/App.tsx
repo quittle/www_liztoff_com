@@ -24,7 +24,7 @@ export class App extends React.Component<{}, AppState> {
         };
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         window.addEventListener("unload", () => {
             window.scrollTo(0, 0);
         });
@@ -32,7 +32,7 @@ export class App extends React.Component<{}, AppState> {
             window.scrollTo(0, 0);
         });
 
-        const onLoad = () => {
+        const onLoad = (): void => {
             windowLoaded = true;
             this.setState({ ...this.state, windowLoaded: true });
             window.removeEventListener("load", onLoad);
@@ -40,7 +40,7 @@ export class App extends React.Component<{}, AppState> {
         window.addEventListener("load", onLoad);
     }
 
-    render() {
+    render(): JSX.Element {
         return (
             <div>
                 <StarField
@@ -48,7 +48,7 @@ export class App extends React.Component<{}, AppState> {
                     starWidth={STAR_WIDTH}
                     starHeight={STAR_HEIGHT}
                     starDensity={STAR_DENSITY}
-                    onFadeInComplete={() => this.onStarFieldFadeInComplete()}
+                    onFadeInComplete={(): void => this.onStarFieldFadeInComplete()}
                 />
                 {/* <div className="firework"></div> */}
                 <FrontPage animationCanStart={this.state.starsLoaded} />
@@ -56,7 +56,7 @@ export class App extends React.Component<{}, AppState> {
         );
     }
 
-    private onStarFieldFadeInComplete() {
+    private onStarFieldFadeInComplete(): void {
         this.setState({ ...this.state, starsLoaded: true });
     }
 }

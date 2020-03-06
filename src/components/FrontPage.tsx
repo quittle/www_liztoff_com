@@ -68,7 +68,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
     /** Triggers the page to scroll to the spark. Perhaps should use requestAnimationFrame */
     private scrollingInterval?: number;
     /** Marks if scroll-jacking was canceled and shouldn't be re-attached */
-    private disableScrollJacking: boolean = false;
+    private disableScrollJacking = false;
     /** Listener checking if the user wants to break out of spark animation */
     private scrollListener?: () => void;
 
@@ -80,13 +80,13 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         };
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         if (this.props.animationCanStart) {
             this.startAnimation();
         }
     }
 
-    componentDidUpdate(prevProps: FrontPageProps) {
+    componentDidUpdate(prevProps: FrontPageProps): void {
         if (this.props.animationCanStart && !prevProps.animationCanStart) {
             this.startAnimation();
         } else if (
@@ -97,14 +97,14 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         this.cleanupAnimation();
     }
 
-    private startAnimation() {
+    private startAnimation(): void {
         this.sparkAnimationInterval = window.setInterval(() => {
             // Iterate forward in the state machine
-            let starPos = this.state.starPos + 1;
+            const starPos = this.state.starPos + 1;
             if (starPos == 2) {
                 // This must be kicked off inside the interval as the timer may not fire
                 // at the right time and cancel the scroll-jacking
@@ -119,7 +119,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         }, sparkAnimationDurationMs);
     }
 
-    private tryStartScrollJacking() {
+    private tryStartScrollJacking(): void {
         // Return early if scrolljacking is disabled or if it's already set up
         if (this.disableScrollJacking || this.scrollingInterval) {
             return;
@@ -141,7 +141,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         }, 10);
 
         // Listener for scroll events
-        this.scrollListener = () => {
+        this.scrollListener = (): void => {
             // Cancel if the user scrolled separately from the scroll-jacking
             if (lastScrolledToYPosition !== window.scrollY) {
                 this.cancelScrollJacking();
@@ -154,7 +154,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
     /**
      * Remove all listeners and intervals used for the animation
      */
-    private cleanupAnimation() {
+    private cleanupAnimation(): void {
         this.cancelScrollJacking();
 
         window.clearInterval(this.sparkAnimationInterval);
@@ -164,7 +164,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
     /**
      * Stops and cleans up the scroll-jacking.
      */
-    private cancelScrollJacking() {
+    private cancelScrollJacking(): void {
         window.clearInterval(this.scrollingInterval);
         this.scrollingInterval = null;
 
@@ -188,7 +188,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
             : "";
     }
 
-    render() {
+    render(): JSX.Element {
         let starLineIndex = 0;
         return (
             <div

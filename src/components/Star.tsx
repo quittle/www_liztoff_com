@@ -8,7 +8,7 @@ export interface StarProp {
     y: number;
 }
 
-export const Star = (props: StarProp) => (
+export const Star = (props: StarProp): JSX.Element => (
     <span
         className="star"
         data-key={props.offsetId % 10}

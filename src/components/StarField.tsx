@@ -20,11 +20,11 @@ export class StarField extends React.Component<StarFieldProps> {
         this.initializeStarLocations();
     }
 
-    componentDidMount() {
+    componentDidMount(): void {
         this.startShowingStars();
     }
 
-    componentDidUpdate(prevProps: StarFieldProps) {
+    componentDidUpdate(prevProps: StarFieldProps): void {
         const { shouldShow, starWidth, starHeight, starDensity } = this.props;
 
         if (
@@ -42,11 +42,11 @@ export class StarField extends React.Component<StarFieldProps> {
         }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         this.cancelShowingStars();
     }
 
-    render() {
+    render(): React.ReactNode {
         return (
             <div
                 className={this.props.shouldShow ? "show" : ""}
@@ -63,7 +63,7 @@ export class StarField extends React.Component<StarFieldProps> {
         );
     }
 
-    private initializeStarLocations() {
+    private initializeStarLocations(): void {
         const { starWidth, starHeight, starDensity } = this.props;
 
         const numOfStars = starWidth * starHeight * starDensity;
@@ -76,7 +76,7 @@ export class StarField extends React.Component<StarFieldProps> {
         }
     }
 
-    private startShowingStars() {
+    private startShowingStars(): void {
         this.cancelShowingStars();
 
         this.timeout = window.setTimeout(() => {
@@ -84,7 +84,7 @@ export class StarField extends React.Component<StarFieldProps> {
         }, 3000);
     }
 
-    private cancelShowingStars() {
+    private cancelShowingStars(): void {
         if (this.timeout) {
             window.clearTimeout(this.timeout);
             this.timeout = null;

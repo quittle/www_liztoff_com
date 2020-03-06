@@ -10,7 +10,7 @@ export interface StarLineProps {
     translationY?: number;
 }
 
-export const StarLine = (props: StarLineProps) => (
+export const StarLine = (props: StarLineProps): JSX.Element => (
     <span
         className="star-line"
         style={{
@@ -19,7 +19,7 @@ export const StarLine = (props: StarLineProps) => (
                 translate(${props.translationX || 0}px, ${props.translationY ||
                 0}px)
                 rotate(${props.rotationDegrees || 0}deg)`,
-            ["--animation-delay" as any]: (props.index * 2) / 3 + "s"
+            ["--animation-delay" as never]: (props.index * 2) / 3 + "s"
         }}
     />
 );

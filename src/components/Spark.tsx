@@ -11,7 +11,7 @@ export interface SparkProps {
     className: string;
 }
 
-export const Spark = (props: SparkProps) => (
+export const Spark = (props: SparkProps): JSX.Element => (
     <svg id="spark" className={props.className} style={{ width: 100 }}>
         <g transform="translate(20, 30)">
             `

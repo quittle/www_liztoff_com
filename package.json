@@ -8,15 +8,21 @@
         "server": "webpack-dev-server",
         "test": "echo \"Error: no test specified\" && exit 1",
         "prettier": "prettier --check '**'",
-        "prettier-fix": "prettier --write '**'"
+        "prettier-fix": "prettier --write '**'",
+        "eslint": "eslint --ext '.ts,.tsx' src",
+        "eslint-fix": "eslint --fix --ext '.ts,.tsx' src"
     },
     "author": "Dustin Toff",
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/react": "^16.9.23",
         "@types/react-dom": "^16.9.5",
+        "@typescript-eslint/eslint-plugin": "^2.22.0",
+        "@typescript-eslint/parser": "^2.22.0",
         "css-loader": "^3.4.2",
         "css-webpack-plugin": "^1.0.2",
+        "eslint": "^6.8.0",
+        "eslint-plugin-react": "^7.18.3",
         "file-loader": "^4.3.0",
         "node-sass": "^4.13.1",
         "prettier": "^1.19.1",
