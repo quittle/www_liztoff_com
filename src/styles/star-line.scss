@@ -1,5 +1,7 @@
 @import "./colors.scss";
 
+$sparkAnimationDuration: 1200ms;
+
 .star-line {
     // opacity: 0;
     // background-color: $color-star;
@@ -14,6 +16,8 @@
     background-position: right;
     background-size: 1px 17px;
     background-repeat: repeat-y;
+    transform-origin: top;
+    transition: all $sparkAnimationDuration;
 
     &::before {
         content: "";

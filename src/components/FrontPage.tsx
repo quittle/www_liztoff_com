@@ -52,6 +52,17 @@ const sparkStylesRaw: SimpleStyle[] = [
     { x: 130, y: 530, scale: 1 },
     { x: 130, y: 530, scale: 0, _tag: "perspectives" }
 ];
+const starLineTrigger: number[] = [
+    0,
+    0,
+    1,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+]
 const sparkPositions: AnimationList = styleize(sparkStylesRaw);
 
 export interface FrontPageProps {
@@ -125,9 +136,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
             return;
         }
 
-        console.log(document.getElementById("spark").getBoundingClientRect());
-        const offsetY = document.getElementById("spark").getBoundingClientRect()
-            .y;
+        const offsetY = document.getElementById("spark").getBoundingClientRect().y;
 
         // Used to track if the user scrolled separately from the scroll-jacking
         let lastScrolledToYPosition = window.scrollY;
@@ -135,7 +144,6 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         // Constantly scroll to the spark
         this.scrollingInterval = window.setInterval(() => {
             document.getElementById("spark").scrollIntoView();
-            // window.scrollBy(0, window.innerHeight / -2);
             window.scrollBy(0, -offsetY);
             lastScrolledToYPosition = window.scrollY;
         }, 10);
@@ -188,18 +196,22 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
             : "";
     }
 
+    private getStarLinePercentViewable(starLineIndex: number): number {
+        return starLineTrigger[this.state.starPos] >= starLineIndex ? 1 : 0;
+    }
+
     render(): JSX.Element {
         let starLineIndex = 0;
         return (
             <div
                 style={{
-                    textAlign: "center"
+                    textAlign: "center",
                 }}
             >
                 <div
                     style={{
                         paddingTop: "50vh",
-                        transform: "translateY(-25%)"
+                        transform: "translateY(-25%)",
                     }}
                 >
                     <div className="title-small">All it takes is the</div>
@@ -228,27 +240,31 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                 </span>
                 {/* <br />
                 <img src="http://giphygifs.s3.amazonaws.com/media/11lVFn0Di6NOIU/giphy.gif" height={40} /> */}
-
                 <div>
-                    <StarLine index={starLineIndex++} length={100} />
+                    <StarLine
+                        index={starLineIndex++}
+                        length={100}
+                        percentViewable={this.getStarLinePercentViewable(starLineIndex)}
+                    />
                     <br />
                     <StarLine
                         index={starLineIndex++}
                         length={200}
                         rotationDegrees={65}
-                        translationX={-113}
-                        translationY={-37}
+                        translationX={-13}
+                        translationY={20}
+                        percentViewable={this.getStarLinePercentViewable(starLineIndex)}
                     />
                 </div>
                 <div
                     style={{
-                        transform: "translate(-332px, -202px)"
+                        transform: "translate(-332px, -202px)",
                     }}
                 >
                     <div
                         className="title-small"
                         style={{
-                            transform: "translate(48px, 32px)"
+                            transform: "translate(48px, 32px)",
                         }}
                     >
                         to
@@ -261,13 +277,13 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                         )}`}
                     >
                         inspire
-                    </span>{" "}
+                    </span>
                     {/*fil text with background gradient to get the fill effect*/}
                     <br />
                     <div
                         className="title-small"
                         style={{
-                            transform: "translate(84px, -32px)"
+                            transform: "translate(84px, -32px)",
                         }}
                     >
                         imaginations
@@ -276,15 +292,16 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                         index={starLineIndex++}
                         length={450}
                         rotationDegrees={-79}
-                        translationX={243}
-                        translationY={-198}
+                        translationX={-13}
+                        translationY={-30}
+                        percentViewable={this.getStarLinePercentViewable(starLineIndex)}
                     />
                 </div>
-                <div style={{ transform: "translate(155px, -662px)" }}>
+                <div style={{ transform: "translate(155px, -662px)", }}>
                     <div
                         className="title-small"
                         style={{
-                            transform: "translate(48px, 32px)"
+                            transform: "translate(48px, 32px)",
                         }}
                     >
                         change
