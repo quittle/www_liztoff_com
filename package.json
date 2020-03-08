@@ -11,7 +11,8 @@
         "prettier-fix": "prettier --write '**'",
         "eslint": "eslint --ext '.ts,.tsx' src",
         "eslint-fix": "eslint --fix --ext '.ts,.tsx' src",
-        "stylelint": "stylelint src/**/*.scss"
+        "stylelint": "stylelint src/**/*.scss",
+        "check": "npm run prettier && npm run eslint && npm run stylelint"
     },
     "author": "Dustin Toff",
     "license": "Apache-2.0",
