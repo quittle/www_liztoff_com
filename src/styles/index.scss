@@ -1,5 +1,4 @@
 @import "./colors.scss";
-
 @import url("https://fonts.googleapis.com/css?family=Sawarabi+Mincho&display=swap");
 
 @font-face {
@@ -10,7 +9,7 @@
 body {
     width: 100%;
     height: 100%;
-    font-family: "Architex";
+    font-family: "Architex", serif;
     // font-family: 'Sawarabi Mincho'; // nicer font but not spaced for it
     background: $color-sky;
     overflow-x: hidden;
