@@ -17,7 +17,7 @@ export const Star = (props: StarProp): JSX.Element => (
             // width: 3,
             // height: 2,
             top: props.y,
-            left: props.x
+            left: props.x,
         }}
     />
 );

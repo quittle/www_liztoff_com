@@ -6,18 +6,18 @@ module.exports = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: "inline-source-map",
     devServer: {
-        contentBase: "./dist"
+        contentBase: "./dist",
     },
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"],
     },
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "src/index.html"
-        })
+            template: "src/index.html",
+        }),
     ],
 
     module: {
@@ -27,15 +27,15 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "ts-loader"
-                    }
-                ]
+                        loader: "ts-loader",
+                    },
+                ],
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
                 enforce: "pre",
                 test: /\.js$/,
-                loader: "source-map-loader"
+                loader: "source-map-loader",
             },
             {
                 test: /\.s[ac]ss$/i,
@@ -45,8 +45,8 @@ module.exports = {
                     // Translates CSS into CommonJS
                     "css-loader",
                     // Compiles Sass to CSS
-                    "sass-loader"
-                ]
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.ttf$/,
@@ -55,13 +55,13 @@ module.exports = {
                         loader: "file-loader",
                         options: {
                             name: "[name].[ext]",
-                            outputPath: "fonts/"
-                        }
-                    }
-                ]
-            }
-        ]
-    }
+                            outputPath: "fonts/",
+                        },
+                    },
+                ],
+            },
+        ],
+    },
 
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.

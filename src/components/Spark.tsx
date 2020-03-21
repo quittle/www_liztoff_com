@@ -21,8 +21,7 @@ export const Spark = (props: SparkProps): JSX.Element => (
                     fill={Colors.Star}
                     width={lineLength}
                     height="2"
-                    transform={`rotate(${22.5 * (i + 4)}, ${lineLength /
-                        2}, 0) translate(0, -1)`}
+                    transform={`rotate(${22.5 * (i + 4)}, ${lineLength / 2}, 0) translate(0, -1)`}
                 >
                     <animate
                         attributeType="SVG"

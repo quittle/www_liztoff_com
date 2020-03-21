@@ -53,7 +53,7 @@ export class StarField extends React.Component<StarFieldProps> {
                 style={{
                     backgroundColor: Colors.Sky,
                     overflowX: "hidden",
-                    zIndex: -1
+                    zIndex: -1,
                 }}
             >
                 {this.starLocations.map(([x, y], idx) => (
@@ -69,6 +69,7 @@ export class StarField extends React.Component<StarFieldProps> {
         const numOfStars = starWidth * starHeight * starDensity;
         this.starLocations = [];
         for (let i = 0; i < numOfStars; i++) {
+            // prettier-ignore
             this.starLocations.push([
                 Math.random() * starWidth,
                 Math.random() * starHeight

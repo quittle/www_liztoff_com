@@ -8,7 +8,7 @@ const sparkAnimationDurationMs = 1200;
 
 const sparkHolderStyle = {
     display: "inline-block",
-    transition: `transform ${sparkAnimationDurationMs}ms`
+    transition: `transform ${sparkAnimationDurationMs}ms`,
 };
 
 interface SimpleStyle {
@@ -30,7 +30,7 @@ const styleize = (styles: AnimationSimpleStyle): AnimationList => {
         }
         return {
             transform: `translateX(${x}) translateY(${y}) scale(${scale})`,
-            ...(style.color ? { color: style.color } : {})
+            ...(style.color ? { color: style.color } : {}),
         };
     }) as AnimationList;
 };
@@ -50,19 +50,22 @@ const sparkStylesRaw: SimpleStyle[] = [
     { x: -300, y: 380, scale: 0 },
     { x: -300, y: 440, scale: 1 },
     { x: 130, y: 530, scale: 1 },
-    { x: 130, y: 530, scale: 0, _tag: "perspectives" }
+    { x: 130, y: 530, scale: 0, _tag: "perspectives" },
 ];
 const starLineTrigger: number[] = [
     0,
     0,
+    // Down
     1,
+    // Left
     2,
     2,
     2,
     2,
+    // Right
     3,
     3,
-]
+];
 const sparkPositions: AnimationList = styleize(sparkStylesRaw);
 
 export interface FrontPageProps {
@@ -87,7 +90,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         super(props);
 
         this.state = {
-            starPos: 0
+            starPos: 0,
         };
     }
 
@@ -100,10 +103,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
     componentDidUpdate(prevProps: FrontPageProps): void {
         if (this.props.animationCanStart && !prevProps.animationCanStart) {
             this.startAnimation();
-        } else if (
-            !this.props.animationCanStart &&
-            prevProps.animationCanStart
-        ) {
+        } else if (!this.props.animationCanStart && prevProps.animationCanStart) {
             this.cleanupAnimation();
         }
     }
@@ -190,7 +190,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
         return {
             spark: findTagIndex("spark"),
             inspire: findTagIndex("inspire"),
-            perspectives: findTagIndex("perspectives")
+            perspectives: findTagIndex("perspectives"),
         }[textName] <= this.state.starPos
             ? "mainTextHighlight"
             : "";
@@ -233,7 +233,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                 <span
                     style={{
                         ...sparkHolderStyle,
-                        ...sparkPositions[this.state.starPos]
+                        ...sparkPositions[this.state.starPos],
                     }}
                 >
                     <Spark className={`pos${this.state.starPos}`} />
@@ -297,7 +297,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
                         percentViewable={this.getStarLinePercentViewable(starLineIndex)}
                     />
                 </div>
-                <div style={{ transform: "translate(155px, -662px)", }}>
+                <div style={{ transform: "translate(155px, -662px)" }}>
                     <div
                         className="title-small"
                         style={{
