@@ -1,5 +1,6 @@
 /dist
 .gitignore
+.nvmrc
 .prettierignore
 package-lock.json
 *.ttf
