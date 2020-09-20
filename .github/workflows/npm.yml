@@ -1,0 +1,16 @@
+on: [push, pull_request]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Install, Build, Check
+              run: |
+                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+                  . $HOME/.nvm/nvm.sh
+                  nvm install
+                  npm ci
+                  npm run build
+                  npm run check

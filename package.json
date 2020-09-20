@@ -6,13 +6,14 @@
     "scripts": {
         "build": "webpack --mode production",
         "server": "webpack-dev-server",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "npm run check",
         "prettier": "prettier --check '**'",
         "prettier-fix": "prettier --write '**'",
         "eslint": "eslint --ext '.ts,.tsx' src",
         "eslint-fix": "eslint --fix --ext '.ts,.tsx' src",
         "stylelint": "stylelint src/**/*.scss",
-        "check": "npm run prettier && npm run eslint && npm run stylelint"
+        "check": "npm run prettier && npm run eslint && npm run stylelint",
+        "release": "npm run build && npm run test"
     },
     "author": "Dustin Toff",
     "license": "Apache-2.0",
