@@ -14,7 +14,7 @@ interface AppState {
     starsLoaded: boolean;
 }
 
-export class App extends React.Component<{}, AppState> {
+export class App extends React.Component<unknown, AppState> {
     constructor(props: unknown) {
         super(props);
 

@@ -20,7 +20,7 @@ interface SimpleStyle {
 }
 
 const styleize = (styles: AnimationSimpleStyle): AnimationList => {
-    return styles.map(style => {
+    return styles.map((style) => {
         let { x, y, scale } = style;
         if (typeof x === "number") {
             x = `${x}px`;
@@ -184,7 +184,7 @@ export class FrontPage extends React.Component<FrontPageProps, FrontPageState> {
 
     private getMainTextHighlightClass(textName: AnimationTag): string {
         const findTagIndex = (tag: AnimationTag): number => {
-            return sparkStylesRaw.findIndex(entry => entry._tag === tag);
+            return sparkStylesRaw.findIndex((entry) => entry._tag === tag);
         };
 
         return {

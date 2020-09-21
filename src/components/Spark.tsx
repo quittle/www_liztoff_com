@@ -15,7 +15,7 @@ export const Spark = (props: SparkProps): JSX.Element => (
     <svg id="spark" className={props.className} style={{ width: 100 }}>
         <g transform="translate(20, 30)">
             `
-            {lines.map(i => (
+            {lines.map((i) => (
                 <rect
                     key={i}
                     fill={Colors.Star}
@@ -29,7 +29,7 @@ export const Spark = (props: SparkProps): JSX.Element => (
                         attributeName="width"
                         from={lineLength / 2}
                         to={lineLength}
-                        dur={durationMs + "ms"}
+                        dur={`${durationMs}ms`}
                         repeatCount="indefinite"
                     />
                     <animate
@@ -38,7 +38,7 @@ export const Spark = (props: SparkProps): JSX.Element => (
                         attributeName="x"
                         from="0"
                         to={lineLength / 2}
-                        dur={durationMs + "ms"}
+                        dur={`${durationMs}ms`}
                         begin={`${durationMs / i}ms`}
                         repeatCount="indefinite"
                     />
