@@ -42,7 +42,7 @@
         "webpack-dev-server": "^3.11.0"
     },
     "dependencies": {
-        "framer-motion": "^2.7.7",
+        "framer-motion": "^2.9.4",
         "html-webpack-plugin": "^4.5.0",
         "react": "^16.13.1",
         "react-anime": "^3.0.3",
