@@ -23,7 +23,7 @@
         "@types/react-dom": "^16.9.8",
         "@typescript-eslint/eslint-plugin": "^4.6.0",
         "@typescript-eslint/parser": "^4.6.0",
-        "css-loader": "^4.3.0",
+        "css-loader": "^5.0.0",
         "css-webpack-plugin": "^1.0.2",
         "eslint": "^7.12.1",
         "eslint-plugin-react": "^7.21.5",
