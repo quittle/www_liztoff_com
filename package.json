@@ -46,6 +46,6 @@
         "html-webpack-plugin": "^4.5.0",
         "react": "^16.14.0",
         "react-anime": "^3.0.3",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.14.0"
     }
 }
