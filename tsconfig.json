@@ -10,7 +10,5 @@
         "allowJs": true,
         "moduleResolution": "Node"
     },
-    "exclude": [
-        "build"
-    ]
+    "exclude": ["build"]
 }

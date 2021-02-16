@@ -9,7 +9,7 @@ module.exports = {
         contentBase: "./dist",
     },
     output: {
-      publicPath: '/',
+        publicPath: "/",
     },
 
     resolve: {
@@ -74,7 +74,7 @@ module.exports = {
                         },
                     },
                 ],
-            }
+            },
         ],
     },
 };

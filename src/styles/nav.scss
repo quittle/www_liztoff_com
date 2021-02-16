@@ -1,0 +1,32 @@
+nav {
+    display: flex;
+    // height: calc(3 * 1.5em);
+
+    & > a {
+        &::before,
+        &::after {
+            content: "";
+        }
+
+        align-self: center;
+    }
+
+    img {
+        height: 9em;
+        // flex-basis: 1em;
+        float: left;
+    }
+
+    ul {
+        text-align: center;
+        line-height: 3em;
+        margin: 0;
+    }
+
+    li {
+        display: inline;
+        font-size: 1.5em;
+        margin: 0 0.3em;
+        white-space: nowrap;
+    }
+}

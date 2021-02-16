@@ -4,3 +4,5 @@
 .prettierignore
 package-lock.json
 *.ttf
+*.png
+*.svg
