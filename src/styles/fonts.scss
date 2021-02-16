@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Galada&family=Nixie+One&display=swap");
+
+@mixin font-nixie {
+    font-family: "Nixie One", monospace, cursive, serif;
+}
+
+@mixin font-galada {
+    font-family: "Galada", monospace, cursive, serif;
+}

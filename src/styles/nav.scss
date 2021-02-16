@@ -1,6 +1,5 @@
 nav {
     display: flex;
-    // height: calc(3 * 1.5em);
 
     & > a {
         &::before,
@@ -13,7 +12,6 @@ nav {
 
     img {
         height: 9em;
-        // flex-basis: 1em;
         float: left;
     }
 

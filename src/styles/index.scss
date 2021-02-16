@@ -1,10 +1,6 @@
 @import "./colors.scss";
 @import "./nav.scss";
-@import url("https://fonts.googleapis.com/css2?family=Galada&family=Nixie+One&display=swap");
-
-@mixin font-nixie {
-    font-family: "Nixie One", monospace, cursive, serif;
-}
+@import "./fonts.scss";
 
 * {
     box-sizing: border-box;
@@ -19,8 +15,8 @@ body {
     background: url("../images/background-small.png");
     font-size: 20px;
     line-height: 1.5;
-    padding: 1em;
-    max-width: 1000px;
+    padding: 3em;
+    max-width: 1030px;
     margin: 3em auto;
 }
 
@@ -33,19 +29,32 @@ a {
     text-decoration: none;
     font-weight: bold;
 
-    &:hover {
-        text-decoration: underline;
+    &::before,
+    &::after {
+        @include font-nixie;
+
+        display: inline-block;
+        transition: all ease-out 300ms;
     }
 
     &::before {
         content: "{";
-
-        @include font-nixie;
     }
 
     &::after {
         content: "}";
+    }
 
-        @include font-nixie;
+    &:hover {
+        text-decoration: underline;
+        transform: scale(1em, 1em);
+
+        &::before {
+            transform: translateX(-0.5em);
+        }
+
+        &::after {
+            transform: translateX(0.5em);
+        }
     }
 }

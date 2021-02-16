@@ -14,6 +14,7 @@
         "stylelint": "stylelint src/**/*.scss",
         "stylelint-fix": "stylelint src/**/*.scss --fix",
         "check": "npm run prettier && npm run eslint && npm run stylelint",
+        "check-fix": "npm run prettier-fix && npm run eslint-fix && npm run stylelint-fix",
         "release": "npm run build && npm run test"
     },
     "author": "Dustin Toff",

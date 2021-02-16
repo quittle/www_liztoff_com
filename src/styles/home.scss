@@ -1,11 +1,14 @@
+@import "./fonts.scss";
+
 main {
     text-align: center;
 }
 
 #writing-styles {
-    text-align: center;
+    @include font-galada;
+
     font-size: 2em;
-    font-family: "Galada", monospace, cursive, serif;
+    line-height: 2;
 }
 
 li {
