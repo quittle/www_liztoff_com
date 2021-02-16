@@ -2,7 +2,6 @@
     "name": "spark-l",
     "version": "1.0.0",
     "description": "Liz Toff's personal website",
-    "main": "index.tsx",
     "scripts": {
         "build": "webpack --mode production",
         "start": "webpack serve",

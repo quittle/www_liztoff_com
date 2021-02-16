@@ -6,11 +6,12 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
-            - name: Install, Build, Check
+            - name: NVM Install
               run: |
                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
                   . $HOME/.nvm/nvm.sh
                   nvm install
+            - name: Full Build
+              run: |
                   npm ci
-                  npm run build
-                  npm run check
+                  npm run release
