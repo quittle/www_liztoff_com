@@ -1,5 +1,4 @@
-body:not([data-location=""]),
-body:not([data-location="home"]) {
+body:not([data-location=""]) {
     #home {
         display: none;
     }
