@@ -53,27 +53,7 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[ext]",
-                            outputPath: "images/",
-                        },
-                    },
-                ],
-            },
-            {
-                test: /\.ttf$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[ext]",
-                            outputPath: "fonts/",
-                        },
-                    },
-                ],
+                type: "asset/resource",
             },
         ],
     },

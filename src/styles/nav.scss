@@ -28,3 +28,21 @@ nav {
         white-space: nowrap;
     }
 }
+
+main > div {
+    display: none;
+}
+
+body[data-location=""] #home,
+body[data-location="home"] #home {
+    display: initial;
+}
+
+$locations: "about-me", "resume", "contact", "recommendations", "product-copy",
+    "editorial-and-brand-copy";
+
+@each $location in $locations {
+    body[data-location="#{$location}"] ##{$location} {
+        display: initial;
+    }
+}

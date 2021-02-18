@@ -1,0 +1,25 @@
+body:not([data-location=""]),
+body:not([data-location="home"]) {
+    #home {
+        display: none;
+    }
+
+    nav {
+        img {
+            height: 3em;
+        }
+
+        ul {
+            margin-left: 1em;
+            text-align: left;
+        }
+
+        li {
+            font-size: 0.8em;
+        }
+    }
+
+    main {
+        text-align: left;
+    }
+}

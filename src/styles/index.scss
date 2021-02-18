@@ -1,9 +1,12 @@
 @import "./colors.scss";
 @import "./nav.scss";
 @import "./fonts.scss";
+@import "./subpage.scss";
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -15,13 +18,13 @@ body {
     background: url("../images/background-small.png");
     font-size: 20px;
     line-height: 1.5;
-    padding: 3em;
     max-width: 1030px;
-    margin: 3em auto;
+    margin: auto;
+    padding: 3em;
 }
 
 p {
-    margin: 2em 0;
+    margin-bottom: 2em;
 }
 
 a {
@@ -57,4 +60,12 @@ a {
             transform: translateX(0.5em);
         }
     }
+}
+
+h3 {
+    line-height: 2;
+}
+
+main {
+    margin-top: 2em;
 }
