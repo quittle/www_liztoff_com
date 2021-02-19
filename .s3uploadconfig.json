@@ -4,5 +4,10 @@
     },
     "*.pdf": {
         "contentType": "application/pdf"
+    },
+    ".*": {
+        "metadata": {
+            "Cache-Control": "max-age=600"
+        }
     }
 }
