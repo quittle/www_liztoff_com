@@ -1,0 +1,11 @@
+@mixin on-home {
+    @at-root body[data-location=""] & {
+        @content;
+    }
+}
+
+@mixin on-subpage {
+    @at-root body:not([data-location=""]) & {
+        @content;
+    }
+}

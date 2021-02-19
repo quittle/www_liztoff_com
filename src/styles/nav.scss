@@ -1,6 +1,54 @@
+@import "./selectors.scss";
+
 nav {
     display: flex;
     align-items: center;
+
+    input[type="checkbox"] {
+        display: none;
+        width: 3em;
+        height: 3em;
+        appearance: unset;
+        background-image: url("../images/icon-menu.svg");
+        background-position: center;
+
+        &:checked {
+            background-image: url("../images/icon-close.svg");
+        }
+    }
+
+    @include on-home {
+        @media (max-width: 650px) {
+            justify-content: space-between;
+            align-items: end;
+
+            ul {
+                display: none;
+            }
+
+            input[type="checkbox"] {
+                display: initial;
+            }
+
+            input[type="checkbox"]:checked {
+                z-index: 1;
+            }
+
+            input[type="checkbox"]:checked + ul {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(270deg, white, white, transparent);
+                top: 0;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                padding: 2em;
+                padding-top: 7em;
+            }
+        }
+    }
 
     & > a {
         &::before,
