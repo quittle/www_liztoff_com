@@ -1,0 +1,8 @@
+{
+    "*.html": {
+        "contentType": "text/html"
+    },
+    "*.pdf": {
+        "contentType": "application/pdf"
+    }
+}

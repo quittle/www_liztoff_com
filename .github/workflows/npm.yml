@@ -1,17 +1,17 @@
 on: [push, pull_request]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-            - name: NVM Install
-              run: |
-                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-                  . $HOME/.nvm/nvm.sh
-                  nvm install
-            - name: Full Build
-              run: |
-                  npm ci
-                  npm run release
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: NVM Install
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+          . $HOME/.nvm/nvm.sh
+          nvm install
+      - name: Full Build
+        run: |
+          npm ci
+          npm run release

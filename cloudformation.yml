@@ -1,0 +1,117 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  DeploymentContentVersion:
+    Type: String
+    Description: This can be any unique string that identifies the files you are deploying.
+Resources:
+  # Bucket
+  LizToffComBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: liztoff.com
+  LizToffComBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref LizToffComBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Join ["", [!GetAtt LizToffComBucket.Arn, "/*"]]
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+
+  # Deployment
+  S3UploadLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Layers: [arn:aws:lambda:us-east-1:915290536872:layer:S3UploadCustomResource:254]
+      CodeUri: dist
+      Handler: s3-upload-custom-resource.handler
+      Runtime: nodejs12.x
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref LizToffComBucket
+  DeployWebsite:
+    Type: Custom::UploadFilesToS3
+    Properties:
+      ServiceToken: !GetAtt S3UploadLambda.Arn
+      BucketName: !Ref LizToffComBucket
+      ContentVersion: !Ref DeploymentContentVersion
+
+  # CloudFront
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !GetAtt LizToffComBucket.DomainName
+            Id: S3
+            S3OriginConfig:
+              OriginAccessIdentity:
+                !Join [
+                  "",
+                  ["origin-access-identity/cloudfront/", !Ref CloudFrontOriginAccessIdentity],
+                ]
+        Enabled: true
+        DefaultRootObject: "index.html"
+        Aliases:
+          - liztoff.com
+          - www.liztoff.com
+        DefaultCacheBehavior:
+          TargetOriginId: S3
+          SmoothStreaming: false
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        HttpVersion: http2
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Ref LizToffComCertificate
+          MinimumProtocolVersion: TLSv1.1_2016
+          SslSupportMethod: sni-only
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: liztoff.com
+
+  # Certificate
+  LizToffComCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: liztoff.com
+      SubjectAlternativeNames:
+        - "*.liztoff.com"
+      ValidationMethod: DNS
+      DomainValidationOptions:
+        - DomainName: liztoff.com
+          HostedZoneId: Z2QX2AYUZUBNBA
+
+  LizToffComDomainName:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: Z2QX2AYUZUBNBA # liztoff.com
+      Name: liztoff.com
+      Type: A
+      AliasTarget:
+        # Global CloudFront Hosted Zone per
+        # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget-1.html
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt CloudFrontDistribution.DomainName
+  WwwLizToffComDomainName:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: Z2QX2AYUZUBNBA # liztoff.com
+      Name: www.liztoff.com
+      Type: A
+      AliasTarget:
+        # Global CloudFront Hosted Zone per
+        # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget-1.html
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt CloudFrontDistribution.DomainName
