@@ -1,18 +1,16 @@
 nav {
     display: flex;
+    align-items: center;
 
     & > a {
         &::before,
         &::after {
             content: "";
         }
-
-        align-self: center;
     }
 
     img {
-        height: 9em;
-        float: left;
+        height: 13em;
     }
 
     ul {
