@@ -1,9 +1,11 @@
 #!/bin/bash -ex
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
 generated_template="/tmp/liztoff.com-generated-cloudformation.yml"
 
 aws cloudformation package \
-        --template-file "cloudformation.yml" \
+        --template-file "${DIR}/../src/assets/cloudformation.yml" \
         --s3-bucket sam-915290536872 \
         --output-template-file "${generated_template}" \
         --use-json

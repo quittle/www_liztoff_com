@@ -1,5 +1,5 @@
-/dist
-/deploy
+../dist
+../scripts/deploy
 .gitignore
 .nvmrc
 .prettierignore

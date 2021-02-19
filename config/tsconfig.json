@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "rootDir": "../",
         "outDir": "./dist/",
         "sourceMap": true,
         "noImplicitAny": true,
@@ -10,5 +11,5 @@
         "allowJs": true,
         "moduleResolution": "Node"
     },
-    "exclude": ["build"]
+    "include": ["../src"]
 }

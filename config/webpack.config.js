@@ -23,7 +23,7 @@ module.exports = {
             template: "src/index.html",
         }),
         new CopyWebpackPlugin({
-            patterns: [".s3uploadconfig.json"],
+            patterns: ["src/assets/.s3uploadconfig.json"],
         }),
     ],
 
@@ -35,6 +35,9 @@ module.exports = {
                 use: [
                     {
                         loader: "ts-loader",
+                        options: {
+                            configFile: "config/tsconfig.json",
+                        },
                     },
                 ],
             },
