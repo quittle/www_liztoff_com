@@ -4,7 +4,7 @@
     "description": "Liz Toff's personal website",
     "scripts": {
         "build": "webpack --config config/webpack.config.js --mode production",
-        "start": "webpack --config config/webpack.config.js serve",
+        "start": "webpack serve --config config/webpack.config.js",
         "test": "npm run check",
         "prettier": "prettier --config config/.prettierrc.json --ignore-path config/.prettierignore --check '**'",
         "prettier-fix": "prettier --config config/.prettierrc.json --ignore-path config/.prettierignore --write '**'",
