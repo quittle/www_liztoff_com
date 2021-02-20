@@ -1,0 +1,37 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+
+%braces {
+    color: $content-color;
+    text-decoration: none;
+    font-weight: bold;
+
+    &::before,
+    &::after {
+        @include font-nixie;
+
+        display: inline-block;
+        transition: all ease-out 300ms;
+    }
+
+    &::before {
+        content: "{";
+    }
+
+    &::after {
+        content: "}";
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+
+        &::before {
+            transform: translateX(-0.5em);
+        }
+
+        &::after {
+            transform: translateX(0.5em);
+        }
+    }
+}

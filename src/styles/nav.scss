@@ -1,3 +1,4 @@
+@import "./braces.scss";
 @import "./selectors.scss";
 
 nav {
@@ -5,15 +6,35 @@ nav {
     align-items: center;
 
     input[type="checkbox"] {
+        @extend %braces;
+
         display: none;
         width: 3em;
         height: 3em;
         appearance: unset;
         background-image: url("../images/icon-menu.svg");
         background-position: center;
+        position: relative;
 
         &:checked {
             background-image: url("../images/icon-close.svg");
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            top: 0.13em;
+            font-size: 2em;
+        }
+
+        &::before {
+            position: absolute;
+            left: -33%;
+        }
+
+        &::after {
+            position: absolute;
+            right: -33%;
         }
     }
 
@@ -72,6 +93,10 @@ nav {
         font-size: 1.5em;
         margin: 0 0.3em;
         white-space: nowrap;
+
+        a {
+            @extend %braces;
+        }
     }
 }
 
