@@ -3,8 +3,8 @@
 
 %braces {
     color: $content-color;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
 
     &::before,
     &::after {
