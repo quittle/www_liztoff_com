@@ -30,6 +30,24 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html",
+            minify: {
+                collapseWhitespace: true,
+                keepClosingSlash: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true,
+                minifyCSS: true,
+                minifyJS: true,
+                minifyURLs: true,
+                removeAttributeQuotes: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                removeScriptTypeAttributes: true,
+                sortAttributes: true,
+            },
         }),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
