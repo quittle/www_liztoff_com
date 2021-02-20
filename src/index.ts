@@ -1,5 +1,4 @@
 import "./styles/index.scss";
-import "./styles/home.scss";
 
 const setHash = () => {
     const hashLocation = window.location.hash.substring(1);

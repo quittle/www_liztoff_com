@@ -1,5 +1,7 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -18,6 +20,10 @@ module.exports = {
         extensions: [".ts", ".js"],
     },
 
+    optimization: {
+        minimizer: [`...`, new CssMinimizerWebpackPlugin()],
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html",
@@ -25,6 +31,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
         }),
+        new MiniCssExtractPlugin(),
     ],
 
     module: {
@@ -50,8 +57,8 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
+                    // Creates `<link>`s injected into html from the JS modules
+                    MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     "css-loader",
                     // Compiles Sass to CSS
@@ -59,7 +66,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|woff2)$/i,
                 type: "asset/resource",
             },
         ],
