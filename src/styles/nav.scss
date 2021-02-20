@@ -10,11 +10,16 @@ nav {
 
         position: relative;
         display: none;
-        width: 3em;
-        height: 3em;
+
+        width: 1em;
+        height: 1em;
         appearance: unset;
         background-image: url("../images/icon-menu.svg");
         background-position: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        font-size: 2em;
 
         &:checked {
             background-image: url("../images/icon-close.svg");
@@ -23,17 +28,14 @@ nav {
         &::before,
         &::after {
             position: absolute;
-            top: 0.13em;
-            font-size: 2em;
+            top: -0.1em;
         }
 
         &::before {
-            position: absolute;
             left: -33%;
         }
 
         &::after {
-            position: absolute;
             right: -33%;
         }
     }
