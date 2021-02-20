@@ -42,7 +42,7 @@ nav {
 
     @include on-home {
         @media (max-width: 650px) {
-            align-items: end;
+            align-items: start;
             justify-content: space-between;
 
             ul {
