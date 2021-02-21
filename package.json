@@ -6,6 +6,7 @@
         "build-dev": "webpack --config config/webpack.config.js",
         "build-prod": "webpack --config config/webpack.prod.js",
         "start": "webpack serve --config config/webpack.config.js",
+        "start-prod": "webpack serve --config config/webpack.prod.js",
         "test": "npm run check",
         "prettier": "prettier --config config/.prettierrc.json --ignore-path config/.prettierignore --check '**'",
         "prettier-fix": "prettier --config config/.prettierrc.json --ignore-path config/.prettierignore --write '**'",

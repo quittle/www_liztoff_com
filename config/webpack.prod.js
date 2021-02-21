@@ -33,6 +33,10 @@ let config = merge(common, {
     optimization: {
         minimizer: [`...`, new CssMinimizerWebpackPlugin()],
     },
+    devServer: {
+        hot: false,
+        inline: false,
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: "index-[contenthash].css",

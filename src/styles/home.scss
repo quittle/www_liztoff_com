@@ -16,6 +16,8 @@ body[data-location=""] {
         }
 
         li {
+            @extend %braces;
+
             display: block;
         }
     }
