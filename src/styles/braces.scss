@@ -24,8 +24,6 @@
 
     &:hover,
     &:focus {
-        text-decoration: underline;
-
         &::before {
             transform: translateX(-0.5em);
         }
