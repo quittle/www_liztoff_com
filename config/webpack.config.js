@@ -13,7 +13,7 @@ module.exports = {
     // Generate identical files for each subfile
     entry: Object.fromEntries(
         [
-            "",
+            ".",
             "about-me",
             "resume",
             "contact",
