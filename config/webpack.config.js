@@ -10,8 +10,27 @@ module.exports = {
     devServer: {
         contentBase: "./dist",
     },
+    // Generate identical files for each subfile
+    entry: Object.fromEntries(
+        [
+            "",
+            "about-me",
+            "resume",
+            "contact",
+            "recommendations",
+            "product-copy",
+            "editorial-and-brand-copy",
+            "projects",
+            "conversational-and-relatable",
+            "vivid-and-descriptive",
+            "out-of-the-box-and-creative",
+            "elevated-and-knowledgeable",
+        ].map((name) => [`${name}/index`, "./src/index.ts"])
+    ),
     output: {
         publicPath: "/",
+        // Only ever generate a single js file
+        filename: "index.js",
     },
 
     resolve: {
@@ -22,6 +41,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html",
+            filename: "[name].html",
         }),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
