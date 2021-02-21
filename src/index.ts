@@ -2,23 +2,27 @@ import "./styles/index.scss";
 
 let lastHash: string | null = null;
 
-const doesUrlHaveHash = () => window.location.href.includes("#");
+const trimSlashes = (path: string): string => {
+    return path.replace(/^\/*|\/*$/g, "");
+};
 
-const onHashChange = () => {
+const doesUrlHaveHash = (): boolean => window.location.href.includes("#");
+
+const onHashChange = (): void => {
     const hash = window.location.hash;
     const hashLocation = hash.substring(1);
-    const pathLocation = window.location.pathname.substring(1);
+    const pathLocation = trimSlashes(window.location.pathname);
 
     if (lastHash === pathLocation && !doesUrlHaveHash()) {
         return;
     }
 
-    window.history.replaceState(null, "Liz Toff " + hashLocation, `/${hashLocation}`);
+    window.history.replaceState(null, "Liz Toff", `/${hashLocation}`);
     document.body.dataset["location"] = hashLocation;
     lastHash = hashLocation;
 };
 
-window.location.hash = window.location.pathname.substring(1);
+window.location.hash = trimSlashes(window.location.pathname);
 
 onHashChange();
 window.addEventListener("hashchange", onHashChange);
@@ -28,6 +32,6 @@ window.addEventListener("popstate", () => {
         return;
     }
 
-    const pathLocation = document.location.pathname.substring(1);
+    const pathLocation = trimSlashes(document.location.pathname);
     document.body.dataset["location"] = pathLocation;
 });
