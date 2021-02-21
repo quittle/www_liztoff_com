@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "Liz Toff's personal website",
     "scripts": {
-        "build": "webpack --config config/webpack.config.js --mode production",
+        "build-dev": "webpack --config config/webpack.config.js",
+        "build-prod": "webpack --config config/webpack.prod.js",
         "start": "webpack serve --config config/webpack.config.js",
         "test": "npm run check",
         "prettier": "prettier --config config/.prettierrc.json --ignore-path config/.prettierignore --check '**'",
@@ -14,7 +15,7 @@
         "stylelint-fix": "stylelint --config config/.stylelintrc.json src/**/*.scss --fix",
         "check": "npm run prettier && npm run eslint && npm run stylelint",
         "check-fix": "npm run prettier-fix && npm run eslint-fix && npm run stylelint-fix",
-        "release": "npm run build && npm run test",
+        "release": "npm run build-prod && npm run test",
         "deploy": "npm run release && ./scripts/deploy"
     },
     "author": "Dustin Toff",
@@ -41,6 +42,7 @@
         "typescript": "^4.1.5",
         "webpack": "^5.23.0",
         "webpack-cli": "^4.5.0",
-        "webpack-dev-server": "^3.11.2"
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.7.3"
     }
 }

@@ -1,16 +1,12 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
-const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
-
-const IMAGE_REGEX = /\.(png|svg|jpg|jpeg|gif)$/i;
+const { IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
 
 module.exports = {
     mode: "development",
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "inline-source-map",
     devServer: {
         contentBase: "./dist",
     },
@@ -23,44 +19,12 @@ module.exports = {
         extensions: [".ts", ".js"],
     },
 
-    optimization: {
-        minimizer: [`...`, new CssMinimizerWebpackPlugin()],
-    },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html",
-            minify: {
-                collapseWhitespace: true,
-                keepClosingSlash: true,
-                removeComments: true,
-                removeRedundantAttributes: true,
-                removeScriptTypeAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                useShortDoctype: true,
-                minifyCSS: true,
-                minifyJS: true,
-                minifyURLs: true,
-                removeAttributeQuotes: true,
-                removeComments: true,
-                removeRedundantAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                removeScriptTypeAttributes: true,
-                sortAttributes: true,
-            },
         }),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
-        }),
-        new MiniCssExtractPlugin(),
-        new PreloadWebpackPlugin({
-            include: "all",
-            as(entry) {
-                if (IMAGE_REGEX.test(entry)) return "image";
-                if (/\.css$/.test(entry)) return "style";
-                if (/\.js$/.test(entry)) return "script";
-                throw new Error("Unknown entry type: " + entry);
-            },
         }),
     ],
 
@@ -85,10 +49,10 @@ module.exports = {
                 loader: "source-map-loader",
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: SASS_REGEX,
                 use: [
-                    // Creates `<link>`s injected into html from the JS modules
-                    MiniCssExtractPlugin.loader,
+                    // Creates loads the CSS via JS
+                    "style-loader",
                     // Translates CSS into CommonJS
                     "css-loader",
                     // Compiles Sass to CSS
