@@ -1,3 +1,4 @@
+import { resetNavMenu, initMenu } from "./scripts/nav";
 import "./styles/index.scss";
 
 let lastHash: string | null = null;
@@ -7,15 +8,6 @@ const trimSlashes = (path: string): string => {
 };
 
 const doesUrlHaveHash = (): boolean => window.location.href.includes("#");
-
-const resetNavMenu = (): void => {
-    const menuCheckbox = document.querySelector<HTMLInputElement>(
-        "nav input[type=checkbox]:checked"
-    );
-    if (menuCheckbox) {
-        menuCheckbox.checked = false;
-    }
-};
 
 const onHashChange = (): void => {
     resetNavMenu();
@@ -32,6 +24,8 @@ const onHashChange = (): void => {
     document.body.dataset["location"] = hashLocation;
     lastHash = hashLocation;
 };
+
+initMenu();
 
 window.location.hash = trimSlashes(window.location.pathname);
 
