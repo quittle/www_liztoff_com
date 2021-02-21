@@ -1,24 +1,22 @@
 @import "./fonts.scss";
 
-body[data-location=""] {
-    main {
-        text-align: center;
+body[data-location=""] main #home {
+    display: block;
+}
 
-        #home {
-            display: block;
-        }
+#home {
+    text-align: center;
 
-        #writing-styles {
-            @include font-galada;
+    #writing-styles {
+        @include font-galada;
 
-            font-size: 2em;
-            line-height: 2;
-        }
+        font-size: 2em;
+        line-height: 2;
+    }
 
-        li {
-            @extend %braces;
+    li {
+        @extend %braces;
 
-            display: block;
-        }
+        display: block;
     }
 }
