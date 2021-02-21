@@ -10,6 +10,7 @@ common.plugins.find(
     (plugin) => plugin.constructor && plugin.constructor.name === "HtmlWebpackPlugin"
 ).userOptions.minify = {
     collapseWhitespace: true,
+    conservativeCollapse: true,
     keepClosingSlash: true,
     removeComments: true,
     removeRedundantAttributes: true,
