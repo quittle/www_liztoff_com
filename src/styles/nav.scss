@@ -1,5 +1,6 @@
 @import "./braces.scss";
 @import "./selectors.scss";
+@import "./xplat.scss";
 
 nav {
     display: flex;
@@ -13,12 +14,14 @@ nav {
 
         width: 1em;
         height: 1em;
-        appearance: unset;
+        @include appearance(none);
+        border: none;
         background-image: url("../images/icon-menu.svg");
         background-position: center;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+        cursor: pointer;
         font-size: 3em;
 
         &:checked {
