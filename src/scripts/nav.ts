@@ -1,6 +1,6 @@
 const initMenu = (): void => {
     const menuToggle = document.querySelector<HTMLInputElement>("nav input[type=checkbox]");
-    const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-child a");
+    const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-of-type a");
     const startOfMenuItem = document.querySelector("#start-of-menu");
     const endOfMenuItem = document.querySelector("#end-of-menu");
 

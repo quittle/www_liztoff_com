@@ -92,6 +92,10 @@ nav {
         height: 13em;
     }
 
+    & > [tabindex="-1"] {
+        display: none;
+    }
+
     ul {
         margin: 0;
         line-height: 3em;
