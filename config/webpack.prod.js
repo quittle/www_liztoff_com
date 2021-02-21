@@ -34,7 +34,9 @@ let config = merge(common, {
         minimizer: [`...`, new CssMinimizerWebpackPlugin()],
     },
     plugins: [
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "index-[contenthash].css",
+        }),
         new PreloadWebpackPlugin({
             include: "all",
             as(entry) {

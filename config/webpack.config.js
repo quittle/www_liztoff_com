@@ -30,7 +30,7 @@ module.exports = {
     output: {
         publicPath: "/",
         // Only ever generate a single js file
-        filename: "index.js",
+        filename: "index-[contenthash].js",
     },
 
     resolve: {
