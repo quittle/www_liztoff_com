@@ -8,7 +8,18 @@ const trimSlashes = (path: string): string => {
 
 const doesUrlHaveHash = (): boolean => window.location.href.includes("#");
 
+const resetNavMenu = (): void => {
+    const menuCheckbox = document.querySelector<HTMLInputElement>(
+        "nav input[type=checkbox]:checked"
+    );
+    if (menuCheckbox) {
+        menuCheckbox.checked = false;
+    }
+};
+
 const onHashChange = (): void => {
+    resetNavMenu();
+
     const hash = window.location.hash;
     const hashLocation = hash.substring(1);
     const pathLocation = trimSlashes(window.location.pathname);
@@ -28,6 +39,8 @@ onHashChange();
 window.addEventListener("hashchange", onHashChange);
 
 window.addEventListener("popstate", () => {
+    resetNavMenu();
+
     if (doesUrlHaveHash()) {
         return;
     }
