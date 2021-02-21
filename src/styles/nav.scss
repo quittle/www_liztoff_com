@@ -71,7 +71,12 @@ nav {
                 align-items: flex-end;
                 padding: 2em;
                 padding-top: 7em;
-                background: linear-gradient(270deg, white, white, transparent);
+                background: linear-gradient(
+                    270deg,
+                    white 0%,
+                    white 20em,
+                    rgba(255, 255, 255, 0) 100%
+                );
             }
         }
     }
