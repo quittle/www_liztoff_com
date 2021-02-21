@@ -3,6 +3,7 @@ const initMenu = (): void => {
     const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-of-type a");
     const startOfMenuItem = document.querySelector("#start-of-menu");
     const endOfMenuItem = document.querySelector("#end-of-menu");
+    const menu = document.querySelector<HTMLElement>("nav ul");
 
     // Handles all changes to state when the menu is shown/hidden
     const onCheckChange = (): void => {
@@ -16,6 +17,23 @@ const initMenu = (): void => {
     };
     onCheckChange();
     menuToggle.addEventListener("change", onCheckChange);
+
+    menu.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            e.stopPropagation();
+            resetNavMenu();
+        }
+    });
+
+    menuToggle.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            menuToggle.click();
+            e.stopPropagation();
+        } else if (e.key == "Escape") {
+            e.stopPropagation();
+            resetNavMenu();
+        }
+    });
 
     // Wrap around to the last menu item when tabbing backwards
     startOfMenuItem.addEventListener("focusin", (): void => {
