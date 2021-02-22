@@ -123,7 +123,8 @@ body[data-location=""] #home {
 }
 
 $locations: "about-me", "resume", "contact", "recommendations", "product-copy",
-    "editorial-and-brand-copy";
+    "editorial-and-brand-copy", "projects", "conversational-and-relatable", "vivid-and-descriptive",
+    "out-of-the-box-and-creative", "elevated-and-knowledgeable";
 
 @each $location in $locations {
     body[data-location="#{$location}"] ##{$location} {

@@ -25,4 +25,11 @@ body:not([data-location=""]) {
     main {
         text-align: left;
     }
+
+    article {
+        ul,
+        ol {
+            margin-left: 1em;
+        }
+    }
 }
