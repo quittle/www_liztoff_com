@@ -80,6 +80,13 @@ module.exports = {
                 ],
             },
             {
+                test: /src\/html\/.*\.html$/,
+                loader: "html-loader",
+                options: {
+                    esModule: false,
+                },
+            },
+            {
                 test: IMAGE_REGEX,
                 type: "asset/resource",
             },
