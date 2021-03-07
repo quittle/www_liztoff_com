@@ -1,0 +1,26 @@
+#recommendations {
+    li {
+        border: 0.05em solid #ddd;
+        margin-bottom: 3em;
+        list-style: none;
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        > * {
+            padding: 1em;
+        }
+
+        > :first-child {
+            width: 20em;
+            margin: 0 1em 1em 0;
+            background: #ddd;
+            float: left;
+
+            :last-child {
+                font-style: italic;
+            }
+        }
+    }
+}
