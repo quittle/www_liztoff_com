@@ -1,6 +1,5 @@
 @import "./braces.scss";
 @import "./selectors.scss";
-@import "./xplat.scss";
 
 nav {
     display: flex;
@@ -14,8 +13,8 @@ nav {
 
         width: 1em;
         height: 1em;
-        @include appearance(none);
         border: none;
+        appearance: none;
         background-image: url("../images/icon-menu.svg");
         background-position: center;
         background-position: center;

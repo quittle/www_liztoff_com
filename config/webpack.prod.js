@@ -1,4 +1,5 @@
-const { merge, mergeWithRules } = require("webpack-merge");
+const assert = require("assert").strict;
+const { merge } = require("webpack-merge");
 const common = require("./webpack.config.js");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -54,29 +55,10 @@ let config = merge(common, {
     ],
 });
 
-config = mergeWithRules({
-    module: {
-        rules: {
-            test: "match",
-            use: "replace",
-        },
-    },
-})(config, {
-    module: {
-        rules: [
-            {
-                test: SASS_REGEX,
-                use: [
-                    // Creates `<link>`s injected into html from the JS modules
-                    MiniCssExtractPlugin.loader,
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
-                ],
-            },
-        ],
-    },
-});
+// Replace style-loader with MiniCssExtractPlugin in production to extract the
+// stylesheet to a separate, minified file.
+const sassLoaders = config.module.rules.find((rule) => rule.test === SASS_REGEX).use;
+assert.equal(sassLoaders.shift(), "style-loader");
+sassLoaders.unshift(MiniCssExtractPlugin.loader);
 
 module.exports = config;
