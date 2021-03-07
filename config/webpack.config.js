@@ -84,11 +84,29 @@ module.exports = {
                 loader: "html-loader",
                 options: {
                     esModule: false,
+                    sources: {
+                        list: [
+                            // All default supported tags and attributes
+                            "...",
+                            {
+                                tag: "a",
+                                attribute: "href",
+                                type: "src",
+                            },
+                        ],
+                    },
                 },
             },
             {
                 test: IMAGE_REGEX,
                 type: "asset/resource",
+            },
+            {
+                test: /\.pdf$/,
+                type: "asset/resource",
+                generator: {
+                    filename: "[name][ext]",
+                },
             },
         ],
     },

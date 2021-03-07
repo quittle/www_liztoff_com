@@ -1,3 +1,6 @@
+@import "./card.scss";
+@import "./resume.scss";
+
 body:not([data-location=""]) {
     #home {
         display: none;
@@ -22,31 +25,22 @@ body:not([data-location=""]) {
         }
     }
 
-    $card-gap: 1em;
-
     main {
-        column-count: 2;
-        column-gap: $card-gap;
         text-align: left;
-
-        @media (max-width: 650px) {
-            column-count: 1;
-        }
     }
 
     article {
-        display: grid;
-        padding: 2em;
-        border: 0.1em solid #000000;
-        margin-bottom: $card-gap;
-        border-radius: 0.2em;
-        break-inside: avoid;
-        float: left;
-        grid-template-rows: 1fr auto;
-
         ul,
         ol {
             margin-left: 1em;
         }
+    }
+}
+
+#conversational-and-relatable {
+    @include card-holder;
+
+    article {
+        @include card;
     }
 }

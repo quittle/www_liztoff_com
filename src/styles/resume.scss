@@ -1,0 +1,139 @@
+@import "./colors.scss";
+
+@mixin right-pipe {
+    padding-right: 0.5em;
+    border-right: 0.05em solid $content-color;
+    margin-right: 0.5em;
+}
+
+@mixin arrow-list {
+    list-style-type: "➢";
+
+    li {
+        padding-left: 1em;
+        list-style-position: inside;
+    }
+}
+
+@mixin normalize-header {
+    font-weight: normal;
+}
+
+#resume-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+#resume-download {
+    @include button;
+}
+
+#resume-wrapper {
+    h2,
+    h3 {
+        text-align: center;
+    }
+
+    h2,
+    h3,
+    h4 {
+        text-transform: uppercase;
+
+        &::first-letter,
+        .resume-header-word {
+            font-size: 1.5em;
+        }
+    }
+
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    hr {
+        height: 0.1em;
+        border: none;
+        margin: 1em 0;
+        background: $content-color;
+    }
+
+    #resume-header {
+        text-align: center;
+    }
+
+    #resume-summary {
+        text-align: center;
+    }
+
+    #resume-summary-competencies {
+        font-style: italic;
+        ul {
+            display: block;
+            font-style: normal;
+            li {
+                display: inline;
+                @include right-pipe;
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+    }
+
+    #resume-professional-experience ol {
+        text-align: left;
+
+        > li {
+            margin-bottom: 1em;
+        }
+
+        ul {
+            @include arrow-list;
+        }
+    }
+
+    .resume-experience-header {
+        text-transform: uppercase;
+
+        & > :first-child {
+            @include right-pipe;
+        }
+
+        & > :nth-child(2) {
+            font-weight: bold;
+        }
+
+        & > :last-child {
+            float: right;
+        }
+    }
+
+    #resume-education {
+        h4 {
+            @include normalize-header;
+
+            & + * {
+                font-weight: bold;
+            }
+        }
+
+        ul {
+            > li {
+                margin-bottom: 1em;
+            }
+            ul {
+                @include arrow-list;
+            }
+        }
+    }
+
+    #resume-awards {
+        h4 {
+            @include normalize-header;
+        }
+        ul ul {
+            @include arrow-list;
+        }
+    }
+}

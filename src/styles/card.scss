@@ -1,0 +1,36 @@
+$card-gap: 1em;
+
+@mixin card-holder {
+    column-count: 2;
+    column-gap: $card-gap;
+
+    @media (max-width: 650px) {
+        column-count: 1;
+    }
+}
+
+@mixin -simple-button {
+    border: 0.1em solid #000000;
+    border-radius: 0.2em;
+    break-inside: avoid;
+}
+
+@mixin button {
+    @include -simple-button;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2em;
+    text-align: center;
+}
+
+@mixin card {
+    @include -simple-button;
+
+    display: grid;
+    padding: 2em;
+    margin-bottom: $card-gap;
+    float: left;
+    grid-template-rows: 1fr auto;
+}
