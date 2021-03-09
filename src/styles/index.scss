@@ -3,6 +3,7 @@
 @use "./fonts.scss";
 @use "./subpage.scss";
 @use "./home.scss";
+@forward "./editorial-and-brand-copy.scss";
 
 * {
     box-sizing: border-box;
