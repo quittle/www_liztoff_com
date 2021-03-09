@@ -44,6 +44,10 @@ body:not([data-location=""]) {
 #vivid-and-descriptive {
     @include card.card-holder;
 
+    h1 {
+        margin-bottom: 1em;
+    }
+
     article {
         @include card.card;
     }
