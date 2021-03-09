@@ -1,5 +1,6 @@
 @import "./braces.scss";
 @import "./selectors.scss";
+@import "./locations.scss";
 
 nav {
     display: flex;
@@ -120,10 +121,6 @@ main > div {
 body[data-location=""] #home {
     display: initial;
 }
-
-$locations: "about-me", "resume", "contact", "recommendations", "product-copy",
-    "editorial-and-brand-copy", "projects", "conversational-and-relatable", "vivid-and-descriptive",
-    "out-of-the-box-and-creative", "elevated-and-knowledgeable";
 
 @each $location in $locations {
     body[data-location="#{$location}"] ##{$location} {
