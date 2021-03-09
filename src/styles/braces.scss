@@ -1,14 +1,14 @@
-@import "./colors.scss";
-@import "./fonts.scss";
+@use "./colors.scss";
+@use "./fonts.scss";
 
 %braces {
-    color: $content-color;
+    color: colors.$content-color;
     font-weight: bold;
     text-decoration: none;
 
     &::before,
     &::after {
-        @include font-nixie;
+        @include fonts.font-nixie;
 
         display: inline-block;
         transition: all ease-out 300ms;

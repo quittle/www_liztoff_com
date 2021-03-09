@@ -1,6 +1,6 @@
-@import "./card.scss";
-@import "./resume.scss";
-@import "./recommendations.scss";
+@use "./card.scss";
+@use "./resume.scss";
+@use "./recommendations.scss";
 
 body:not([data-location=""]) {
     #home {
@@ -39,9 +39,9 @@ body:not([data-location=""]) {
 }
 
 #conversational-and-relatable {
-    @include card-holder;
+    @include card.card-holder;
 
     article {
-        @include card;
+        @include card.card;
     }
 }

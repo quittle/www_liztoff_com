@@ -1,9 +1,8 @@
-@import "./colors.scss";
-@import "./braces.scss";
-@import "./nav.scss";
-@import "./fonts.scss";
-@import "./subpage.scss";
-@import "./home.scss";
+@use "./colors.scss";
+@use "./nav.scss";
+@use "./fonts.scss";
+@use "./subpage.scss";
+@use "./home.scss";
 
 * {
     box-sizing: border-box;
@@ -12,7 +11,7 @@
 }
 
 body {
-    @include font-nixie;
+    @include fonts.font-nixie;
 
     width: 100%;
     max-width: 1030px;
@@ -46,7 +45,7 @@ address {
 }
 
 a {
-    color: $content-color;
+    color: colors.$content-color;
     font-weight: bold;
     text-decoration: none;
 }

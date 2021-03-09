@@ -1,6 +1,6 @@
-@import "./braces.scss";
-@import "./selectors.scss";
-@import "./locations.scss";
+@use "./braces.scss";
+@use "./selectors.scss";
+@use "./locations.scss";
 
 nav {
     display: flex;
@@ -43,7 +43,7 @@ nav {
         }
     }
 
-    @include on-home {
+    @include selectors.on-home {
         @media (max-width: 650px) {
             align-items: start;
             justify-content: space-between;
@@ -122,7 +122,7 @@ body[data-location=""] #home {
     display: initial;
 }
 
-@each $location in $locations {
+@each $location in locations.$locations {
     body[data-location="#{$location}"] ##{$location} {
         display: block;
     }

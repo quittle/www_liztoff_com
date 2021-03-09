@@ -1,8 +1,9 @@
-@import "./colors.scss";
+@use "./colors.scss";
+@use "./card.scss";
 
 @mixin right-pipe {
     padding-right: 0.5em;
-    border-right: 0.05em solid $content-color;
+    border-right: 0.05em solid colors.$content-color;
     margin-right: 0.5em;
 }
 
@@ -26,7 +27,7 @@
 }
 
 #resume-download {
-    @include button;
+    @include card.button;
 }
 
 #resume-wrapper {
@@ -55,7 +56,7 @@
         height: 0.1em;
         border: none;
         margin: 1em 0;
-        background: $content-color;
+        background: colors.$content-color;
     }
 
     #resume-header {
@@ -68,9 +69,11 @@
 
     #resume-summary-competencies {
         font-style: italic;
+
         ul {
             display: block;
             font-style: normal;
+
             li {
                 display: inline;
                 @include right-pipe;

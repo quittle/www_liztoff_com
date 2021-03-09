@@ -1,4 +1,5 @@
-@import "./fonts.scss";
+@use "./fonts.scss";
+@use "./braces.scss";
 
 body[data-location=""] main #home {
     display: block;
@@ -8,7 +9,7 @@ body[data-location=""] main #home {
     text-align: center;
 
     #writing-styles {
-        @include font-galada;
+        @include fonts.font-galada;
 
         font-size: 2em;
         line-height: 2;
