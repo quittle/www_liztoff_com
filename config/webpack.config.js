@@ -18,7 +18,6 @@ module.exports = {
             "resume",
             "contact",
             "recommendations",
-            "product-copy",
             "editorial-and-brand-copy",
             "projects",
             "conversational-and-relatable",
