@@ -38,7 +38,10 @@ body:not([data-location=""]) {
     }
 }
 
-#conversational-and-relatable {
+#conversational-and-relatable,
+#elevated-and-knowledgeable,
+#out-of-the-box-and-creative,
+#vivid-and-descriptive {
     @include card.card-holder;
 
     article {

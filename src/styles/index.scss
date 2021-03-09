@@ -54,6 +54,14 @@ h3 {
     line-height: 2;
 }
 
+blockquote {
+    margin-left: 2em;
+
+    br {
+        line-height: 2em;
+    }
+}
+
 main {
     margin-top: 2em;
 }
