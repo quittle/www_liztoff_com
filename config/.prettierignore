@@ -9,3 +9,4 @@ package-lock.json
 *.svg
 *.woff2
 *.pdf
+*.ejs
