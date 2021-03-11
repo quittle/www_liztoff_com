@@ -45,14 +45,12 @@
             </ul>
         </nav>
         <main>
-            <%=require('./html/home.html')%>
-            <%=require('./html/conversational-and-relatable.html')%>
-            <%=require('./html/out-of-the-box-and-creative.html')%>
-            <%=require('./html/elevated-and-knowledgeable.html')%>
-            <%=require('./html/about-me.html')%> <%=require('./html/resume.html')%>
-            <%=require('./html/recommendations.html')%>
-            <%=require('./html/vivid-and-descriptive.html')%>
-            <%=require('./html/editorial-and-brand-copy.html')%>
+            <%- include ./html/home.html %> <%- include ./html/conversational-and-relatable.html.ejs
+            %> <%- include ./html/out-of-the-box-and-creative.html.ejs %> <%- include
+            ./html/elevated-and-knowledgeable.html.ejs %><%- include ./html/about-me.html %> <%-
+            include ./html/resume.html %> <%- include ./html/recommendations.html %> <%- include
+            ./html/vivid-and-descriptive.html.ejs %> <%- include
+            ./html/editorial-and-brand-copy.html %>
         </main>
     </body>
 </html>

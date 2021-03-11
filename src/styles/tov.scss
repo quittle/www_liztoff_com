@@ -1,0 +1,77 @@
+@use "./card.scss";
+
+#conversational-and-relatable,
+#elevated-and-knowledgeable,
+#out-of-the-box-and-creative,
+#vivid-and-descriptive {
+    > div {
+        @include card.card-holder;
+    }
+
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    article {
+        @include card.card;
+    }
+}
+
+.tov {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0;
+
+    li {
+        font-size: 1.5em;
+        list-style: none;
+
+        a {
+            padding: 0.5em;
+        }
+    }
+
+    li:first-child:hover {
+        animation: bounce-backward 1s ease;
+    }
+
+    li:last-child:hover {
+        animation: bounce-forward 1s ease;
+    }
+}
+
+@mixin bounce($name, $forward) {
+    $multiplier: 1;
+    @if not $forward {
+        $multiplier: -1;
+    }
+
+    // Stolen with ❤ from https://css-tricks.com/making-css-animations-feel-natural
+    @keyframes bounce-#{$name} {
+        0% {
+            transform: scale(1, 1) translateX(0);
+        }
+        10% {
+            transform: scale(1.1, 0.9) translateX(0);
+        }
+        30% {
+            transform: scale(0.9, 1.1) translateX($multiplier * 0.5em);
+        }
+        50% {
+            transform: scale(1.05, 0.95) translateX(0);
+        }
+        57% {
+            transform: scale(1, 1) translateX($multiplier * 0.1em);
+        }
+        64% {
+            transform: scale(1, 1) translateX(0);
+        }
+        100% {
+            transform: scale(1, 1) translateX(0);
+        }
+    }
+}
+
+@include bounce(forward, true);
+@include bounce(backward, false);

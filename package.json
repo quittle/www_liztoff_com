@@ -30,6 +30,7 @@
         "copy-webpack-plugin": "^7.0.0",
         "css-loader": "^5.0.2",
         "css-minimizer-webpack-plugin": "^1.2.0",
+        "ejs-compiled-loader": "^3.0.0",
         "eslint": "^7.20.0",
         "html-loader": "^2.1.0",
         "html-webpack-plugin": "^5.1.0",

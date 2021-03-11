@@ -1,6 +1,6 @@
-@use "./card.scss";
 @use "./resume.scss";
 @use "./recommendations.scss";
+@forward "./tov.scss";
 
 body:not([data-location=""]) {
     #home {
@@ -35,20 +35,5 @@ body:not([data-location=""]) {
         ol {
             margin-left: 1em;
         }
-    }
-}
-
-#conversational-and-relatable,
-#elevated-and-knowledgeable,
-#out-of-the-box-and-creative,
-#vivid-and-descriptive {
-    @include card.card-holder;
-
-    h1 {
-        margin-bottom: 1em;
-    }
-
-    article {
-        @include card.card;
     }
 }

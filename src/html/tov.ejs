@@ -1,0 +1,17 @@
+<% const PAGES={}; PAGES["conversational-and-relatable"]="Conversational & Relatable" ;
+PAGES["vivid-and-descriptive"]="Vivid & Descriptive" ;
+PAGES["out-of-the-box-and-creative"]="Out-of-the-Box & Creative" ;
+PAGES["elevated-and-knowledgeable"]="Elevated & Knowledgeable" ; const
+pagesEntries=Object.entries(PAGES); const curIndex=pagesEntries.findIndex(entry=> entry[0] ===
+page); const prevPage = pagesEntries[(curIndex + pagesEntries.length - 1) % pagesEntries.length][0];
+const nextPage = pagesEntries[(curIndex + 1) % pagesEntries.length][0]; %>
+
+<ul class="tov">
+    <li>
+        <a href="#<%= prevPage %>">←</a>
+    </li>
+    <li class="tov-selected"> <%= pagesEntries[curIndex][1] %> </li>
+    <li>
+        <a href="#<%= nextPage %>">→</a>
+    </li>
+</ul>
