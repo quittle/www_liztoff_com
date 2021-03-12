@@ -1,4 +1,5 @@
 ../dist
+../dist-contact
 ../scripts/deploy
 .gitignore
 .nvmrc

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Liz Toff's personal website",
     "scripts": {
+        "build-apis": "webpack --config config/webpack.api.js",
         "build-dev": "webpack --config config/webpack.config.js",
         "build-prod": "webpack --config config/webpack.prod.js",
         "start": "webpack serve --config config/webpack.config.js",
@@ -23,6 +24,7 @@
     "author": "Dustin Toff",
     "license": "Apache-2.0",
     "devDependencies": {
+        "@types/aws-lambda": "^8.10.72",
         "@types/jest": "^26.0.20",
         "@typescript-eslint/eslint-plugin": "^4.15.1",
         "@typescript-eslint/parser": "^4.15.1",

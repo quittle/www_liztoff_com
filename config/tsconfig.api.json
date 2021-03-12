@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "../",
+        "outDir": "./dist-contact/",
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "lib": ["ESNext"],
+        "target": "ESNext",
+        "allowJs": false,
+        "moduleResolution": "Node"
+    },
+    "include": ["../lambda"]
+}
