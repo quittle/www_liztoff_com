@@ -30,6 +30,10 @@ body:not([data-location=""]) {
         text-align: left;
     }
 
+    h1 {
+        margin-bottom: 0.5em;
+    }
+
     article {
         ul,
         ol {
