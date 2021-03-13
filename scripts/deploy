@@ -2,6 +2,8 @@
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
+export AWS_DEFAULT_REGION=us-east-1
+
 generated_template="/tmp/liztoff.com-generated-cloudformation.yml"
 
 aws cloudformation package \
