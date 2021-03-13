@@ -1,9 +1,24 @@
 {
+    "*.css": {
+        "contentType": "text/css"
+    },
+    "*.js": {
+        "contentType": "text/javascript"
+    },
     "*.html": {
         "contentType": "text/html"
     },
     "*.pdf": {
         "contentType": "application/pdf"
+    },
+    "*.jpe?g": {
+        "contentType": "image/jpeg"
+    },
+    "*.png": {
+        "contentType": "image/png"
+    },
+    "*.svg": {
+        "contentType": "image/svg+xml"
     },
     ".*": {
         "metadata": {
