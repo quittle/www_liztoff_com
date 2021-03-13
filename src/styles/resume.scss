@@ -10,11 +10,10 @@ $BREAK_POINT_WIDTH: 500px;
 }
 
 @mixin arrow-list {
-    list-style-type: "⚬";
+    list-style: circle inside;
 
     li {
         padding-left: 1em;
-        list-style-position: inside;
     }
 }
 
