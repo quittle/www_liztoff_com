@@ -18,6 +18,10 @@ body[data-location=""] main #home {
         @media (max-width: nav.$MOBILE_MENU_MAX_WIDTH) {
             font-size: 6vw;
         }
+
+        @media (max-width: 475px) {
+            font-size: 5vw;
+        }
     }
 
     li {
