@@ -28,7 +28,6 @@ $card-gap: 1em;
 @mixin card {
     @include -simple-button;
 
-    display: grid;
     padding: 2em;
     margin-bottom: $card-gap;
     float: left;
