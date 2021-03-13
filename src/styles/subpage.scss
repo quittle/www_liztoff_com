@@ -1,6 +1,6 @@
-@use "./resume.scss";
-@use "./recommendations.scss";
 @forward "./tov.scss";
+@forward "./resume.scss";
+@forward "./recommendations.scss";
 
 body:not([data-location=""]) {
     #home {
