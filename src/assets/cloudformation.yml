@@ -31,6 +31,7 @@ Resources:
       Layers: [arn:aws:lambda:us-east-1:915290536872:layer:S3UploadCustomResource:254]
       CodeUri: "../../dist"
       Handler: s3-upload-custom-resource.handler
+      MemorySize: 10240
       Timeout: 180
       Runtime: nodejs12.x
       Policies:
