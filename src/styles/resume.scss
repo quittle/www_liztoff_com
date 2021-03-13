@@ -107,6 +107,7 @@ $BREAK_POINT_WIDTH: 500px;
         text-transform: uppercase;
 
         &::after {
+            display: block;
             clear: both;
             content: "";
         }
