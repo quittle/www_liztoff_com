@@ -1,26 +1,26 @@
 {
-    "*.css": {
+    "**/*.css": {
         "contentType": "text/css"
     },
-    "*.js": {
+    "**/*.js": {
         "contentType": "text/javascript"
     },
-    "*.html": {
+    "**/*.html": {
         "contentType": "text/html"
     },
-    "*.pdf": {
+    "**/*.pdf": {
         "contentType": "application/pdf"
     },
-    "*.jpe?g": {
+    "**/*.jpe?g": {
         "contentType": "image/jpeg"
     },
-    "*.png": {
+    "**/*.png": {
         "contentType": "image/png"
     },
-    "*.svg": {
+    "**/*.svg": {
         "contentType": "image/svg+xml"
     },
-    ".*": {
+    "**/*": {
         "metadata": {
             "Cache-Control": "max-age=600"
         }
