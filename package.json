@@ -18,7 +18,7 @@
         "check": "npm run prettier && npm run eslint && npm run stylelint",
         "check-fix": "npm run prettier-fix && npm run eslint-fix && npm run stylelint-fix",
         "test": "jest --config config/jest.config.js",
-        "release": "npm run build-prod && npm run validate",
+        "release": "npm run build-prod && npm run validate && npm run build-apis",
         "deploy": "npm run release && ./scripts/deploy"
     },
     "author": "Dustin Toff",
