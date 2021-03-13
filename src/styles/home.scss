@@ -1,5 +1,6 @@
 @use "./fonts.scss";
 @use "./braces.scss";
+@use "./nav.scss";
 
 body[data-location=""] main #home {
     display: block;
@@ -13,6 +14,10 @@ body[data-location=""] main #home {
 
         font-size: 2em;
         line-height: 2;
+
+        @media (max-width: nav.$MOBILE_MENU_MAX_WIDTH) {
+            font-size: 6vw;
+        }
     }
 
     li {

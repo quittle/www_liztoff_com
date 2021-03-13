@@ -2,6 +2,8 @@
 @use "./selectors.scss";
 @use "./locations.scss";
 
+$MOBILE_MENU_MAX_WIDTH: 650px;
+
 nav {
     display: flex;
     align-items: center;
@@ -44,7 +46,7 @@ nav {
     }
 
     @include selectors.on-home {
-        @media (max-width: 650px) {
+        @media (max-width: $MOBILE_MENU_MAX_WIDTH) {
             align-items: start;
             justify-content: space-between;
 

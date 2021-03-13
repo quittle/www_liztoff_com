@@ -14,12 +14,17 @@
 
         > :first-child {
             width: 20em;
+            max-width: 100%;
             margin: 0 1em 1em 0;
             background: #ddd;
             float: left;
 
             :last-child {
                 font-style: italic;
+            }
+
+            @media (max-width: 600px) {
+                width: 100%;
             }
         }
     }

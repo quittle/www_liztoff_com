@@ -1,6 +1,8 @@
 @use "./colors.scss";
 @use "./card.scss";
 
+$BREAK_POINT_WIDTH: 500px;
+
 @mixin right-pipe {
     padding-right: 0.5em;
     border-right: 0.05em solid colors.$content-color;
@@ -20,8 +22,10 @@
     font-weight: normal;
 }
 
-#resume h1 {
-    margin-bottom: 0;
+@media (min-width: $BREAK_POINT_WIDTH) {
+    #resume h1 {
+        margin-bottom: 0;
+    }
 }
 
 #resume-title {
@@ -142,5 +146,15 @@
         ul ul {
             @include arrow-list;
         }
+    }
+}
+
+@media (max-width: $BREAK_POINT_WIDTH) {
+    #resume-title {
+        flex-direction: column;
+    }
+
+    #resume-download {
+        padding: 1em;
     }
 }
