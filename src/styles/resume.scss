@@ -104,6 +104,7 @@ $BREAK_POINT_WIDTH: 500px;
     }
 
     .resume-experience-header {
+        margin-bottom: 0.5em;
         text-transform: uppercase;
 
         &::after {
@@ -117,6 +118,7 @@ $BREAK_POINT_WIDTH: 500px;
         }
 
         & > :nth-child(2) {
+            margin-right: 1em;
             font-weight: bold;
         }
 
