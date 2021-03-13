@@ -16,7 +16,7 @@ module.exports = {
             ".",
             "about-me",
             "resume",
-            "contact",
+            // "contact",
             "recommendations",
             "editorial-and-brand-copy",
             "projects",
