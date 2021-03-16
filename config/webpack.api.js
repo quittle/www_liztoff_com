@@ -9,6 +9,7 @@ module.exports = {
     },
     externals: {
         "aws-lambda": "aws-lambda",
+        "aws-sdk": "aws-sdk",
     },
     resolve: {
         extensions: [".ts", ".js"],

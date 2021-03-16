@@ -4,12 +4,29 @@ Parameters:
   DeploymentContentVersion:
     Type: String
     Description: This can be any unique string that identifies the files you are deploying.
+  DomainHostedZoneId:
+    Type: String
+    Description: The fixed hosted zone id that managed the domain liztoff.com in Route 53
+    Default: Z2QX2AYUZUBNBA
+  StackNameSuffix:
+    Type: String
+    Default: ""
+  RootDomain:
+    Type: String
+    Default: "liztoff.com"
+  WwwDomain:
+    Type: String
+    Default: "www.liztoff.com"
+  ApiDomain:
+    Type: String
+    Default: "api.liztoff.com"
+
 Resources:
   # Bucket
   LizToffComBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: liztoff.com
+      BucketName: !Join ["", [liztoff.com, !Ref StackNameSuffix]]
   LizToffComBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -44,13 +61,23 @@ Resources:
       BucketName: !Ref LizToffComBucket
       ContentVersion: !Ref DeploymentContentVersion
 
+  Api:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Domain:
+        CertificateArn: !Ref LizToffComCertificate
+        DomainName: !Ref ApiDomain
+        Route53:
+          HostedZoneId: !Ref DomainHostedZoneId
+
   # Contact Lambda
   ContactLambda:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: "../../dist-contact"
       Handler: index.handler
-      FunctionName: LizToffContactLambda
+      FunctionName: !Join ["", [LizToffContactLambda, !Ref StackNameSuffix]]
       MemorySize: 128
       Role: !GetAtt ContactLambdaRole.Arn
       Runtime: nodejs14.x
@@ -60,14 +87,14 @@ Resources:
           Properties:
             Path: "/contact"
             Method: post
+            RestApiId: !Ref Api
   ContactLambdaRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
-          - Action:
-              - sts:AssumeRole
+          - Action: sts:AssumeRole
             Effect: Allow
             Principal:
               Service:
@@ -81,14 +108,19 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Effect: Allow
-                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/LizToffContactLambda:*
+                Resource: !Sub
+                  - arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${lambdaFunctionName}:*
+                  - lambdaFunctionName: !Join ["", [LizToffContactLambda, !Ref StackNameSuffix]]
+              - Action: ses:SendEmail
+                Effect: Allow
+                Resource: !Sub arn:aws:ses:${AWS::Region}:${AWS::AccountId}:identity/liztoff.com
           PolicyName: lambda
   ContactLambdaLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
       LogGroupName: !Sub
         - /aws/lambda/${lambdaFunctionName}
-        - lambdaFunctionName: !Ref ContactLambda
+        - lambdaFunctionName: !Join ["", [LizToffContactLambda, !Ref StackNameSuffix]]
       RetentionInDays: 90
 
   # CloudFront
@@ -108,8 +140,8 @@ Resources:
         Enabled: true
         DefaultRootObject: "index.html"
         Aliases:
-          - liztoff.com
-          - www.liztoff.com
+          - !Ref RootDomain
+          - !Ref WwwDomain
         DefaultCacheBehavior:
           TargetOriginId: S3
           SmoothStreaming: false
@@ -140,14 +172,14 @@ Resources:
       ValidationMethod: DNS
       DomainValidationOptions:
         - DomainName: liztoff.com
-          HostedZoneId: Z2QX2AYUZUBNBA
+          HostedZoneId: !Ref DomainHostedZoneId
 
   # Domain
   LizToffComDomainName:
     Type: AWS::Route53::RecordSet
     Properties:
-      HostedZoneId: Z2QX2AYUZUBNBA # liztoff.com
-      Name: liztoff.com
+      HostedZoneId: !Ref DomainHostedZoneId
+      Name: !Ref RootDomain
       Type: A
       AliasTarget:
         # Global CloudFront Hosted Zone per
@@ -157,8 +189,8 @@ Resources:
   WwwLizToffComDomainName:
     Type: AWS::Route53::RecordSet
     Properties:
-      HostedZoneId: Z2QX2AYUZUBNBA # liztoff.com
-      Name: www.liztoff.com
+      HostedZoneId: !Ref DomainHostedZoneId
+      Name: !Ref WwwDomain
       Type: A
       AliasTarget:
         # Global CloudFront Hosted Zone per

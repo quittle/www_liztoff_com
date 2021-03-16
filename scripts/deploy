@@ -16,7 +16,8 @@ code_uri="$(jq '.Resources.S3UploadLambda.Properties.CodeUri' "${generated_templ
 
 aws cloudformation deploy \
         --template-file "${generated_template}" \
-        --stack-name liztoff-com \
+        --stack-name "liztoff-com" \
         --capabilities CAPABILITY_IAM \
-        --parameter-overrides "DeploymentContentVersion=${code_uri}" \
-        --no-fail-on-empty-changeset
+        --no-fail-on-empty-changeset \
+        --parameter-overrides \
+        "DeploymentContentVersion=${code_uri}"
