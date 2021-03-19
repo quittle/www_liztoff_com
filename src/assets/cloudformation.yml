@@ -145,6 +145,7 @@ Resources:
         DefaultCacheBehavior:
           TargetOriginId: S3
           SmoothStreaming: false
+          Compress: true
           ForwardedValues:
             QueryString: false
             Cookies:
