@@ -1,14 +1,23 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
+import { emit } from "node:process";
 import { sendEmail } from "./email";
 import { parseRequest } from "./request";
 
-async function processEvent(event: APIGatewayProxyEvent): Promise<number> {
+interface EventResult {
+    statusCode: number;
+    reason: string;
+}
+
+async function processEvent(event: APIGatewayProxyEvent): Promise<EventResult> {
     let formData;
     try {
         formData = parseRequest(event);
     } catch (e) {
         console.warn("Unable to parse request", e);
-        return 400;
+        return {
+            statusCode: 400,
+            reason: (e as Error).message,
+        };
     }
 
     try {
@@ -16,7 +25,7 @@ async function processEvent(event: APIGatewayProxyEvent): Promise<number> {
             toAddress: "liztoff@gmail.com",
             fromAddress: "api+contact@liztoff.com",
             replyToAddress: formData.email,
-            subject: "Test email",
+            subject: "Contact Form Submission - liztoff.com",
             body: `
             From: ${formData.name} <${formData.email}>
             Message >>>
@@ -26,10 +35,17 @@ async function processEvent(event: APIGatewayProxyEvent): Promise<number> {
         });
     } catch (e) {
         console.error("Unable to send email", e);
-        return 500;
+
+        return {
+            statusCode: 500,
+            reason: "Server Error. Try again later.",
+        };
     }
 
-    return 200;
+    return {
+        statusCode: 200,
+        reason: "Submitted Successfully.",
+    };
 }
 
 const handler: APIGatewayProxyHandler = async (
@@ -37,15 +53,16 @@ const handler: APIGatewayProxyHandler = async (
 ): Promise<APIGatewayProxyResult> => {
     console.log("Request Event", event);
 
-    let statusCode = await processEvent(event);
+    let result = await processEvent(event);
 
     const response: APIGatewayProxyResult = {
-        body: "{}",
+        body: JSON.stringify({ result: result.reason }),
         headers: {
             "Content-Type": "text/plain",
+            "Access-Control-Allow-Origin": "*",
         },
         isBase64Encoded: false,
-        statusCode: statusCode,
+        statusCode: result.statusCode,
     };
 
     console.log("Response", response);

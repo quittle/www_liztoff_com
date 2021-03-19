@@ -1,0 +1,66 @@
+@use "sass:color";
+@use "./card.scss";
+@use "./colors.scss";
+
+#contact {
+    h1 {
+        text-align: center;
+    }
+
+    input:not([type="submit"]),
+    textarea {
+        display: block;
+        padding: 0.3em;
+        border: 0.1em solid colors.$content-color;
+        margin-bottom: 1em;
+    }
+
+    input:not([type="submit"]) {
+        width: 50%;
+
+        @media (max-width: 500px) {
+            width: 100%;
+        }
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    input[type="submit"] {
+        @include card.button;
+        float: right;
+        font-size: 1.2em;
+
+        &.submitting {
+            animation: contact-submitting 4s infinite alternate ease-in-out;
+            background: linear-gradient(
+                60deg,
+                transparent,
+                color.adjust(colors.$accent-color-blue, $alpha: -0.75),
+                transparent
+            );
+            background-position: 0 50%;
+            background-size: 300% 300%;
+        }
+    }
+}
+
+@keyframes contact-submitting {
+    from {
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: 100%;
+    }
+}
+
+#contact-footer {
+    display: flex;
+}
+
+#contact-error {
+    flex-grow: 1;
+    color: colors.$error;
+    font-weight: bold;
+}

@@ -29,6 +29,23 @@ body {
     }
 }
 
+input,
+textarea {
+    font-size: 20px;
+    line-height: 1.5;
+
+    @media (max-width: 800px) {
+        font-size: 16px;
+    }
+}
+
+input,
+button,
+textarea {
+    @include fonts.font-nixie;
+    background: colors.$input-background;
+}
+
 p {
     margin-bottom: 2em;
 }

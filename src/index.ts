@@ -1,4 +1,5 @@
 import { resetNavMenu, initMenu } from "./scripts/nav";
+import { initContact } from "./scripts/contact";
 import "./styles/index.scss";
 
 let lastHash: string | null = null;
@@ -26,6 +27,7 @@ const onHashChange = (): void => {
 };
 
 initMenu();
+initContact();
 
 window.location.hash = trimSlashes(window.location.pathname);
 

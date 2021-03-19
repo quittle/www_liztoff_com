@@ -1,6 +1,7 @@
-@forward "./tov.scss";
-@forward "./resume.scss";
+@forward "./contact.scss";
 @forward "./recommendations.scss";
+@forward "./resume.scss";
+@forward "./tov.scss";
 
 body:not([data-location=""]) {
     #home {

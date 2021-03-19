@@ -1,3 +1,6 @@
+@use "./colors.scss";
+@use "./fonts.scss";
+
 $card-gap: 1em;
 
 @mixin card-holder {
@@ -17,11 +20,13 @@ $card-gap: 1em;
 
 @mixin button {
     @include -simple-button;
+    @include fonts.font-nixie;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 2em;
+    background: colors.$input-background;
     text-align: center;
 }
 
