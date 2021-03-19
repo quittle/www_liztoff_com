@@ -18,6 +18,7 @@ nav {
         height: 1em;
         border: none;
         appearance: none;
+        background: none;
         background-image: url("../images/icon-menu.svg");
         background-position: center;
         background-position: center;
@@ -25,6 +26,7 @@ nav {
         background-size: contain;
         cursor: pointer;
         font-size: 3em;
+        line-height: normal;
 
         &:checked {
             background-image: url("../images/icon-close.svg");
