@@ -19,7 +19,7 @@ module.exports = {
             "contact",
             "recommendations",
             "editorial-and-brand-copy",
-            "projects",
+            "other-projects",
             "conversational-and-relatable",
             "vivid-and-descriptive",
             "out-of-the-box-and-creative",
