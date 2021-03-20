@@ -1,5 +1,6 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const { IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
 
 module.exports = {
@@ -43,6 +44,7 @@ module.exports = {
             template: "!!ejs-compiled-loader?!src/index.html",
             filename: "[name].html",
         }),
+        new FaviconsWebpackPlugin("./src/images/favicon-huge.png"),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
         }),
