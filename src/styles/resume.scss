@@ -21,8 +21,10 @@ $BREAK_POINT_WIDTH: 500px;
     font-weight: normal;
 }
 
-@media (min-width: $BREAK_POINT_WIDTH) {
-    #resume h1 {
+#resume h1 {
+    flex-grow: 1;
+
+    @media (min-width: $BREAK_POINT_WIDTH) {
         margin-bottom: 0;
     }
 }
@@ -35,6 +37,14 @@ $BREAK_POINT_WIDTH: 500px;
 
 #resume-download {
     @include card.button;
+}
+
+#resume-linkedin {
+    line-height: 1em;
+
+    img {
+        height: 3em;
+    }
 }
 
 #resume-wrapper {
