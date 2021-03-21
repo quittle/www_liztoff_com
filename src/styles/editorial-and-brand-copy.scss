@@ -17,9 +17,16 @@
         color: white;
         list-style: none;
 
+        h2,
+        p {
+            text-shadow: 0 0 0.2em black;
+        }
+
         h2 {
+            width: 60%;
             margin-top: 1em;
             font-size: 3.5em;
+            line-height: 1em;
             text-transform: uppercase;
         }
 
