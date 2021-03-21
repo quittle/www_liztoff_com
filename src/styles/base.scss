@@ -1,6 +1,8 @@
 @use "./colors.scss";
 @use "./fonts.scss";
 
+$body-padding: 3em;
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -13,7 +15,7 @@ body {
     width: 100%;
     max-width: 1030px;
     height: 100%;
-    padding: 3em;
+    padding: $body-padding;
     margin: auto;
     background: white;
     font-size: 20px;

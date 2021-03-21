@@ -2,10 +2,27 @@
 // easier to maintain than manually downloading the files.
 @import url(https://fonts.googleapis.com/css2?family=Galada&family=Nixie+One&display=swap);
 
+@font-face {
+    font-display: swap;
+    font-family: "Founders Grotesk";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/src/fonts/FoundersGroteskRegular.eot");
+    src: url("/src/fonts/FoundersGroteskRegular.eot?#iefix") format("embedded-opentype"),
+        url("/src/fonts/FoundersGroteskRegular.woff2") format("woff2"),
+        url("/src/fonts/FoundersGroteskRegular.woff") format("woff"),
+        url("/src/fonts/FoundersGroteskRegular.ttf") format("truetype"),
+        url("/src/fonts/FoundersGroteskRegular.svg#FoundersGroteskRegular") format("svg");
+}
+
 @mixin font-nixie {
     font-family: "Nixie One", monospace, cursive, serif;
 }
 
 @mixin font-galada {
     font-family: "Galada", monospace, cursive, serif;
+}
+
+@mixin font-founders-grotesk {
+    font-family: "Founders Grotesk", sans-serif;
 }

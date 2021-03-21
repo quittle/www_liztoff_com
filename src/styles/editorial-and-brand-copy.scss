@@ -1,10 +1,40 @@
-#editorial-and-brand-copy {
-    li {
-        margin-bottom: 3em;
-        list-style: none;
-    }
+@use "./fonts.scss";
+@use "./base.scss";
 
+#editorial-and-brand-copy {
     img {
         max-width: 100%;
+    }
+
+    li {
+        @include fonts.font-founders-grotesk;
+        position: relative;
+        padding: 3em;
+        margin-bottom: 3em;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        list-style: none;
+
+        h2 {
+            margin-top: 1em;
+            font-size: 3.5em;
+            text-transform: uppercase;
+        }
+
+        p {
+            width: 80%;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            width: 100vw;
+            margin-left: -1 * base.$body-padding;
+
+            p {
+                width: 100%;
+            }
+        }
     }
 }

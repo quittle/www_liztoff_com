@@ -1,7 +1,7 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const { IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
+const { FONT_REGEX, IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
 
 module.exports = {
     mode: "development",
@@ -115,6 +115,10 @@ module.exports = {
             },
             {
                 test: IMAGE_REGEX,
+                type: "asset/resource",
+            },
+            {
+                test: FONT_REGEX,
                 type: "asset/resource",
             },
             {
