@@ -17,6 +17,14 @@
         color: white;
         list-style: none;
 
+        transition: all cubic-bezier(0.94, 0.02, 0.19, 1.38) 700ms;
+
+        &:hover,
+        &:focus {
+            transform: scale(1.05);
+            transition-delay: 300ms;
+        }
+
         h2,
         p {
             text-shadow: 0 0 0.2em black;
