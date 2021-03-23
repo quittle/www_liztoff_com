@@ -9,6 +9,22 @@ body[data-location=""] main #home {
 #home {
     text-align: center;
 
+    #home-tov-header {
+        width: 80%;
+        margin: auto;
+        font-size: 1.3em;
+        font-weight: bold;
+
+        @media (max-width: nav.$MOBILE_MENU_MAX_WIDTH) {
+            width: initial;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 475px) {
+            font-size: 1.1em;
+        }
+    }
+
     #writing-styles {
         @include fonts.font-galada;
 
