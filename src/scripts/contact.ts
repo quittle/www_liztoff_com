@@ -1,11 +1,9 @@
+import { StringObject } from "./types";
+
 const CLASS_SUBMITTING = "submitting";
 
 interface ContactResponse {
     result?: string;
-}
-
-interface StringObject {
-    [name: string]: string;
 }
 
 function formUrlEncode(formData: StringObject): string {

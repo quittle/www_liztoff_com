@@ -1,3 +1,17 @@
+const PAGES = {
+    "": "Home",
+    "conversational-and-relatable": "Conversational & Relatable",
+    "vivid-and-descriptive": "Vivid & Descriptive",
+    "out-of-the-box-and-creative": "Out-of-the-Box & Creative",
+    "elevated-and-knowledgeable": "Elevated & Knowledgeable",
+    "about-me": "About Me",
+    resume: "Résumé",
+    contact: "Get in touch",
+    recommendations: "Recommendations",
+    "editorial-and-brand-copy": "Editorial & Brand Copy",
+    "other-projects": "Other Projects",
+};
+
 const initMenu = (): void => {
     const menuToggle = document.querySelector<HTMLInputElement>("nav input[type=checkbox]");
     const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-of-type a");
@@ -64,4 +78,4 @@ const resetNavMenu = (): void => {
     }
 };
 
-export { resetNavMenu, initMenu };
+export { resetNavMenu, initMenu, PAGES };

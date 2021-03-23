@@ -1,6 +1,7 @@
-import { resetNavMenu, initMenu } from "./scripts/nav";
+import { resetNavMenu, initMenu, PAGES } from "./scripts/nav";
 import { initContact } from "./scripts/contact";
 import "./styles/index.scss";
+import { StringObject } from "./scripts/types";
 
 let lastHash: string | null = null;
 
@@ -21,7 +22,9 @@ const onHashChange = (): void => {
         return;
     }
 
-    window.history.replaceState(null, "Liz Toff", `/${hashLocation}`);
+    window.history.replaceState(null, "", `/${hashLocation}`);
+    const pageName = (PAGES as StringObject)[hashLocation];
+    document.title = pageName ? `Liz Toff | ${pageName}` : "Liz Toff";
     document.body.dataset["location"] = hashLocation;
     lastHash = hashLocation;
 };
