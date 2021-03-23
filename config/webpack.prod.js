@@ -45,11 +45,11 @@ let config = merge(common, {
         }),
         new PreloadWebpackPlugin({
             include: "all",
+            fileBlacklist: [FONT_REGEX, /\.map$/],
             as(entry) {
                 if (IMAGE_REGEX.test(entry)) return "image";
                 if (/\.css$/.test(entry)) return "style";
                 if (/\.js$/.test(entry)) return "script";
-                if (FONT_REGEX.test(entry)) return "font";
                 throw new Error("Unknown entry type: " + entry);
             },
         }),

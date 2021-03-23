@@ -116,10 +116,16 @@ module.exports = {
             {
                 test: IMAGE_REGEX,
                 type: "asset/resource",
+                generator: {
+                    filename: "i/[hash][ext]",
+                },
             },
             {
                 test: FONT_REGEX,
                 type: "asset/resource",
+                generator: {
+                    filename: "f/[hash][ext]",
+                },
             },
             {
                 test: /\.pdf$/,
