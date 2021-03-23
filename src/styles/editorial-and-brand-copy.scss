@@ -1,9 +1,14 @@
 @use "./fonts.scss";
-@use "./base.scss";
 
 #editorial-and-brand-copy {
     img {
         max-width: 100%;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     li {
@@ -43,10 +48,13 @@
             margin: 0;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 1300px) {
             width: 100vw;
-            margin-left: -1 * base.$body-padding;
+            padding: 6em;
+        }
 
+        @media (max-width: 600px) {
+            padding: 3em;
             p {
                 width: 100%;
             }
