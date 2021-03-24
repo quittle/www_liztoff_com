@@ -1,0 +1,39 @@
+<!-- n() normalizes string to account for prettier wrapping the strings -->
+<% const n = (s) => s.replace("\n", " "); const title = n(`Liz Toff`), siteName = n(`Liz Toff`),
+description = n(`Maryland-area copywriter with a passion for creative writing. Her ever-fresh
+approach to writing is fortified by a dedication to improving interpersonal collaboration and team
+resources.`), imageAlt = n(`Liz Toff - Copywriter`), image =
+require('./images/liz-logo-blue-small.png'), url = n(`https://liztoff.com`); %>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+        name="keywords"
+        content="Copywriter, SEO copywriter, Creative Copywriter, Maryland Copywriter, Baltimore Copywriter, Washington DC Copywriter, Crofton copywriter, Marketing Copywriter, Fashion Copywriter, Copy writer, Copy Editor, Freelance Copy writer, Freelance Copywriter, Freelance Writer, Online Writer, Online Copywriter, Creative Writer, Marketing Writer, Digital Copywriter, Elizabeth Toff, Liz Toff"
+    />
+    <meta name="description" content="<%= description %>" />
+
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="twitter:title" content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="twitter:description" content="<%= description %>" />
+    <meta property="og:image" content="<%= image %>" />
+    <meta name="twitter:image" content="<%= image %>" />
+    <meta property="og:url" content="<%= url %>" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta property="og:site_name" content="<%= siteName %>" />
+    <meta name="twitter:image:alt" content="<%= imageAlt %>" />
+
+    <title><%= title %></title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TB3PVF6HX3"></script>
+    <noscript>
+        <style>
+            main > div {
+                display: initial !important;
+            }
+        </style>
+    </noscript>
+</head>
