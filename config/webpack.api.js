@@ -1,3 +1,6 @@
+const process = require("process");
+const webpack = require("webpack");
+
 module.exports = {
     mode: "production",
     entry: [`${__dirname}/../lambda/contact/index.ts`],
@@ -14,6 +17,11 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".js"],
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            RECAPTCHA_SECRET: JSON.stringify(process.env.RECAPTCHA_SECRET),
+        }),
+    ],
     module: {
         rules: [
             {

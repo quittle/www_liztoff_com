@@ -44,7 +44,10 @@ module.exports = {
             template: "!!ejs-compiled-loader?!src/index.html",
             filename: "[name].html",
         }),
-        new FaviconsWebpackPlugin("./src/images/favicon-huge.png"),
+        new FaviconsWebpackPlugin({
+            logo: "./src/images/favicon-huge.png",
+            prefix: "/",
+        }),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],
         }),
@@ -60,6 +63,14 @@ module.exports = {
                         loader: "babel-loader",
                         options: {
                             presets: ["@babel/preset-env"],
+                            plugins: [
+                                [
+                                    "@babel/plugin-transform-runtime",
+                                    {
+                                        regenerator: true,
+                                    },
+                                ],
+                            ],
                         },
                     },
                     {

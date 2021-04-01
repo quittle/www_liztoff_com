@@ -31,6 +31,7 @@
         @include card.button;
         float: right;
         font-size: 1.2em;
+        text-align: center;
 
         &.submitting {
             animation: contact-submitting 4s infinite alternate ease-in-out;
@@ -57,6 +58,23 @@
 
 #contact-footer {
     display: flex;
+
+    @media (max-width: 950px) {
+        flex-direction: column;
+
+        > * {
+            margin-bottom: 1em;
+        }
+
+        input[type="submit"] {
+            align-self: flex-end;
+        }
+    }
+}
+
+#contact-error,
+#contact .g-recaptcha {
+    flex-grow: 1;
 }
 
 #contact-error {

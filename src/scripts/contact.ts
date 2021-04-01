@@ -33,6 +33,19 @@ function initContact(): void {
     const submitButton = document.querySelector<HTMLInputElement>("#contact input[type=submit]");
 
     contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        contactError.innerText = "";
+
+        const recaptchaInput = document.querySelector<HTMLInputElement>(
+            "#contact [name=g-recaptcha-response]"
+        );
+
+        if (recaptchaInput.value === "") {
+            contactError.innerText = "Please complete reCAPTCHA";
+            return;
+        }
+
         submitButton.classList.add(CLASS_SUBMITTING);
         formInputs.forEach((input) => (input.disabled = true));
 

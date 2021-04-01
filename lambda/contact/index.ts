@@ -1,5 +1,4 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
-import { emit } from "node:process";
 import { sendEmail } from "./email";
 import { parseRequest } from "./request";
 
@@ -11,7 +10,7 @@ interface EventResult {
 async function processEvent(event: APIGatewayProxyEvent): Promise<EventResult> {
     let formData;
     try {
-        formData = parseRequest(event);
+        formData = await parseRequest(event);
     } catch (e) {
         console.warn("Unable to parse request", e);
         return {

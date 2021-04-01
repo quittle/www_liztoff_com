@@ -5,9 +5,13 @@
 .nvmrc
 .prettierignore
 package-lock.json
-*.ttf
+*.eot
+*.jpg
+*.pdf
 *.png
 *.svg
+*.ttf
+*.webp
+*.woff
 *.woff2
-*.pdf
 tov.ejs
