@@ -1,5 +1,5 @@
 <!-- n() normalizes string to account for prettier wrapping the strings -->
-<% const n = (s) => s.replace("\n", " "); const title = n(`Liz Toff`), siteName = n(`Liz Toff`),
+<% const n = (s) => s.replace(/\n/g, " "); const title = n(`Liz Toff`), siteName = n(`Liz Toff`),
 description = n(`Maryland-area copywriter with a passion for creative writing. Her ever-fresh
 approach to writing is fortified by a dedication to improving interpersonal collaboration and team
 resources.`), imageAlt = n(`Liz Toff - Copywriter`), image =

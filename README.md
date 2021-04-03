@@ -1,8 +1,8 @@
-# <img src="src/images/liz-logo-blue-small.png" alt="Logo - Liz Toff - Copywriter" height="80px"> Source code for [liztoff.com](https://liztoff.com)  [![Build Status](https://github.com/quittle/www_liztoff_com/workflows/.github/workflows/npm.yml/badge.svg)](https://github.com/quittle/www_liztoff_com/actions/workflows/npm.yml)
+# <img src="src/images/liz-logo-blue-small.png" alt="Logo - Liz Toff - Copywriter" height="80px"> Source code for [liztoff.com](https://liztoff.com) [![Build Status](https://github.com/quittle/www_liztoff_com/workflows/.github/workflows/npm.yml/badge.svg)](https://github.com/quittle/www_liztoff_com/actions/workflows/npm.yml)
 
 ## Get Started Developing
 
-1. Install [`nvm`](https://github.com/nvm-sh/nvm). *Not a hard requirement, but helps eliminate potential issues.*
+1. Install [`nvm`](https://github.com/nvm-sh/nvm). _Not a hard requirement, but helps eliminate potential issues._
 1. `$ nvm install` - Initialize the local node environment with the version of Node validated against.
 1. `$ npm install` - Install all node dependencies.
 1. `$ npm run release` - Perform all build steps and validations. Don't worry, does not deploy the site despite its name.
