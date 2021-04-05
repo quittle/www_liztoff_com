@@ -169,9 +169,15 @@ $BREAK_POINT_WIDTH: 500px;
 @media (max-width: $BREAK_POINT_WIDTH) {
     #resume-title {
         flex-direction: column;
+        margin-bottom: 1em;
     }
 
     #resume-download {
         padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    #resume-linkedin {
+        text-align: center;
     }
 }

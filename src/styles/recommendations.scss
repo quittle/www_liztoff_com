@@ -4,6 +4,25 @@
         margin-bottom: 3em;
         list-style: none;
 
+        blockquote {
+            & > :first-child::before {
+                content: "“";
+            }
+
+            & > :last-child::after {
+                content: "”";
+            }
+
+            & > :first-child::before,
+            & > :last-child::after {
+                display: inline;
+                color: #9d9d9d;
+                font-size: 4em;
+                line-height: 0;
+                vertical-align: bottom;
+            }
+        }
+
         p {
             margin-bottom: 1em;
         }
