@@ -1,10 +1,10 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: friday
-    time: "18:00"
-    timezone: Europe/London
-  open-pull-requests-limit: 99
+    - package-ecosystem: npm
+      directory: "/"
+      schedule:
+          interval: weekly
+          day: friday
+          time: "18:00"
+          timezone: America/New_York
+      open-pull-requests-limit: 99
