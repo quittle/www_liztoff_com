@@ -55,7 +55,7 @@
         "prettier": "^2.3.0",
         "s3-upload-custom-resource-lambda-layer": "^1.0.2",
         "sass": "^1.32.13",
-        "sass-loader": "^11.0.1",
+        "sass-loader": "^11.1.1",
         "source-map-loader": "^2.0.1",
         "style-loader": "^2.0.0",
         "stylelint": "^13.13.1",
