@@ -22,3 +22,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           RECAPTCHA_SECRET: ${{ secrets.RECAPTCHA_SECRET }}
         run: npm run deploy
+  automerge:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v2.0.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
