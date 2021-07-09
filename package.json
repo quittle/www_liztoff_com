@@ -28,7 +28,7 @@
         "@babel/preset-env": "^7.14.7",
         "@types/aws-lambda": "^8.10.78",
         "@types/aws-sdk": "^2.7.0",
-        "@types/ejs": "^3.0.6",
+        "@types/ejs": "^3.0.7",
         "@types/jest": "^26.0.24",
         "@types/node": "^15.14.0",
         "@types/xml2js": "^0.4.9",
