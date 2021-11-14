@@ -37,7 +37,7 @@ let config = merge(common, {
     },
     devServer: {
         hot: false,
-        inline: false,
+        liveReload: false,
     },
     plugins: [
         new MiniCssExtractPlugin({

@@ -13,6 +13,7 @@
 
     li {
         @include fonts.font-founders-grotesk;
+
         position: relative;
         padding: 3em;
         margin-bottom: 3em;
@@ -21,7 +22,6 @@
         background-size: cover;
         color: white;
         list-style: none;
-
         transition: all cubic-bezier(0.94, 0.02, 0.19, 1.38) 700ms;
 
         &:hover,
@@ -55,6 +55,7 @@
 
         @media (max-width: 600px) {
             padding: 3em;
+
             p {
                 width: 100%;
             }

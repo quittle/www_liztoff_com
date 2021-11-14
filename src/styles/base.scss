@@ -45,6 +45,7 @@ input,
 button,
 textarea {
     @include fonts.font-nixie;
+
     background: colors.$input-background;
 }
 

@@ -6,6 +6,7 @@ body[data-location=""] main #home {
     display: block;
 }
 
+// stylelint-disable-next-line no-descending-specificity
 #home {
     text-align: center;
 
@@ -15,7 +16,7 @@ body[data-location=""] main #home {
         font-size: 1.3em;
         font-weight: bold;
 
-        @media (max-width: nav.$MOBILE_MENU_MAX_WIDTH) {
+        @media (max-width: nav.$mobile-menu-max-width) {
             width: initial;
             font-size: 1.2em;
         }
@@ -31,7 +32,7 @@ body[data-location=""] main #home {
         font-size: 2em;
         line-height: 2;
 
-        @media (max-width: nav.$MOBILE_MENU_MAX_WIDTH) {
+        @media (max-width: nav.$mobile-menu-max-width) {
             font-size: 6vw;
         }
 

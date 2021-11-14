@@ -9,7 +9,7 @@ module.exports = {
     // Enable sourcemaps for debugging webpack's output.
     devtool: "inline-source-map",
     devServer: {
-        contentBase: "./dist",
+        static: "./dist",
     },
     // Generate identical files for each subfile
     entry: Object.fromEntries(

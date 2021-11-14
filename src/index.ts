@@ -29,21 +29,27 @@ const onHashChange = (): void => {
     lastHash = hashLocation;
 };
 
-initMenu();
-initContact();
+const windowInit = window as unknown as { init: boolean };
 
-window.location.hash = trimSlashes(window.location.pathname);
+if (!windowInit.init) {
+    windowInit.init = true;
 
-onHashChange();
-window.addEventListener("hashchange", onHashChange);
+    initMenu();
+    initContact();
 
-window.addEventListener("popstate", () => {
-    resetNavMenu();
+    window.location.hash = trimSlashes(window.location.pathname);
 
-    if (doesUrlHaveHash()) {
-        return;
-    }
+    onHashChange();
+    window.addEventListener("hashchange", onHashChange);
 
-    const pathLocation = trimSlashes(document.location.pathname);
-    document.body.dataset["location"] = pathLocation;
-});
+    window.addEventListener("popstate", () => {
+        resetNavMenu();
+
+        if (doesUrlHaveHash()) {
+            return;
+        }
+
+        const pathLocation = trimSlashes(document.location.pathname);
+        document.body.dataset["location"] = pathLocation;
+    });
+}

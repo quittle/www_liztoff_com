@@ -29,6 +29,7 @@
 
     input[type="submit"] {
         @include card.button;
+
         float: right;
         font-size: 1.2em;
         text-align: center;
@@ -51,6 +52,7 @@
     from {
         background-position-x: 0%;
     }
+
     to {
         background-position-x: 100%;
     }

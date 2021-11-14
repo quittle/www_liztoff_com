@@ -1,6 +1,6 @@
 // Google will help ensure the correct font variant is downloaded, which is
 // easier to maintain than manually downloading the files.
-@import url(https://fonts.googleapis.com/css2?family=Galada&family=Nixie+One&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Galada&family=Nixie+One&display=swap");
 
 @font-face {
     font-display: swap;
@@ -20,7 +20,7 @@
 }
 
 @mixin font-galada {
-    font-family: "Galada", monospace, cursive, serif;
+    font-family: Galada, monospace, cursive, serif;
 }
 
 @mixin font-founders-grotesk {
