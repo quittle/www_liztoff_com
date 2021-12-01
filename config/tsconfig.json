@@ -3,6 +3,7 @@
         "rootDir": "../",
         "outDir": "./dist/",
         "sourceMap": true,
+        "esModuleInterop": true,
         "noImplicitAny": true,
         "module": "es2015",
         "lib": ["es6", "dom", "dom.iterable"],
