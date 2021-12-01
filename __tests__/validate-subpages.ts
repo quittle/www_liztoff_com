@@ -37,25 +37,27 @@ describe("subpages", () => {
         const tovContents = fs.readFileSync(`${__dirname}/../src/html/tov.ejs`).toString();
         const ejsTemplate = ejs.compile(tovContents);
         let successfulParsings = 0;
-        await Object.entries(navPages).map(async ([page, name]) => {
-            let htmlPartial;
-            try {
-                htmlPartial = ejsTemplate({ page });
-            } catch (e) {
-                if (e.message.includes("Cannot read property '1' of undefined")) {
-                    // Not all nav pages are supported by tov and fail with this exception
-                    return;
-                } else {
-                    throw e;
+        await Promise.all(
+            Object.entries(navPages).map(async ([page, name]) => {
+                let htmlPartial;
+                try {
+                    htmlPartial = ejsTemplate({ page });
+                } catch (e) {
+                    if (e.message.includes("Cannot read properties of undefined (reading '1')")) {
+                        // Not all nav pages are supported by tov and fail with this exception
+                        return;
+                    } else {
+                        throw e;
+                    }
                 }
-            }
-            const result = await xml2js.parseStringPromise(htmlPartial, { trim: true });
-            const pageTitle = result.ul.li[1]["_"]; // The text contents of the second li
+                const result = await xml2js.parseStringPromise(htmlPartial, { trim: true });
+                const pageTitle = result.ul.li[1]["_"]; // The text contents of the second li
 
-            expect(pageTitle).toBe(name);
+                expect(pageTitle).toBe(name);
 
-            successfulParsings++;
-        });
+                successfulParsings++;
+            })
+        );
         expect(successfulParsings).toBe(4);
     });
 });
