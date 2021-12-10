@@ -53,7 +53,7 @@
         "postcss-loader": "^6.2.1",
         "postcss-preset-env": "^7.0.1",
         "prettier": "^2.5.1",
-        "s3-upload-custom-resource-lambda-layer": "^1.0.2",
+        "s3-upload-custom-resource-lambda-layer": "^1.0.3",
         "sass": "^1.45.0",
         "sass-loader": "^12.4.0",
         "source-map-loader": "^3.0.0",
