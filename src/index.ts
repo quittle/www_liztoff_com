@@ -1,4 +1,5 @@
 import { resetNavMenu, initMenu, PAGES } from "./scripts/nav";
+import { initAilaEmails } from "./scripts/aila-emails";
 import { initContact } from "./scripts/contact";
 import "./styles/index.scss";
 import { StringObject } from "./scripts/types";
@@ -27,6 +28,8 @@ const onHashChange = (): void => {
     document.title = pageName ? `Liz Toff | ${pageName}` : "Liz Toff";
     document.body.dataset["location"] = hashLocation;
     lastHash = hashLocation;
+
+    window.scrollTo(0, 0);
 };
 
 const windowInit = window as unknown as { init: boolean };
@@ -35,6 +38,7 @@ if (!windowInit.init) {
     windowInit.init = true;
 
     initMenu();
+    initAilaEmails();
     initContact();
 
     window.location.hash = trimSlashes(window.location.pathname);

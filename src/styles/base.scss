@@ -1,5 +1,6 @@
 @use "./colors.scss";
 @use "./fonts.scss";
+@use "./dimens.scss";
 
 $body-padding: 3em;
 
@@ -19,7 +20,7 @@ body {
     margin: auto;
     background: white;
     font-size: 20px;
-    line-height: 1.5;
+    line-height: dimens.$line-height;
     overflow-x: hidden;
 
     @media (max-width: 800px) {
@@ -34,7 +35,7 @@ body {
 input,
 textarea {
     font-size: 20px;
-    line-height: 1.5;
+    line-height: dimens.$line-height;
 
     @media (max-width: 800px) {
         font-size: 16px;
@@ -51,6 +52,7 @@ textarea {
 
 p {
     margin-bottom: 2em;
+    font-weight: bold;
 }
 
 article {
@@ -81,4 +83,13 @@ blockquote {
 
 main {
     margin-top: 2em;
+
+    img {
+        // Re-enable image loading post CSS load
+        display: initial;
+    }
+}
+
+.noscroll {
+    overflow: hidden;
 }

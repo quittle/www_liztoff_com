@@ -21,6 +21,7 @@ module.exports = {
             "recommendations",
             "editorial-and-brand-copy",
             "other-projects",
+            "aila-emails",
             "conversational-and-relatable",
             "vivid-and-descriptive",
             "out-of-the-box-and-creative",

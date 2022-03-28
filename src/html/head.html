@@ -38,4 +38,14 @@ resources.`), imageAlt = n(`Liz Toff - Copywriter`), image =
             }
         </style>
     </noscript>
+    <style>
+        main img {
+            /*
+            Hack to force images to lazy load after CSS loads. Without this images may initiate
+            bandwidth-intensive requests, even with loading="lazy", as CSS might not be available
+            immediately.
+            */
+            display: none;
+        }
+    </style>
 </head>

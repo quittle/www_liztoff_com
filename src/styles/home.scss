@@ -10,10 +10,9 @@ body[data-location=""] main #home {
 #home {
     text-align: center;
 
-    #home-tov-header {
+    h2 {
         width: 80%;
-        margin: auto;
-        font-size: 1.3em;
+        margin: 1em auto 0;
         font-weight: bold;
 
         @media (max-width: nav.$mobile-menu-max-width) {
@@ -29,7 +28,7 @@ body[data-location=""] main #home {
     #writing-styles {
         @include fonts.font-galada;
 
-        font-size: 2em;
+        font-size: 1.5em;
         line-height: 2;
 
         @media (max-width: nav.$mobile-menu-max-width) {

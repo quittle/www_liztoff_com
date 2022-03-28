@@ -1,0 +1,106 @@
+@use "./close-button.scss";
+@use "./dimens.scss";
+
+$card-width: 20em;
+
+#aila-emails {
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 1em;
+
+        li {
+            display: block;
+        }
+    }
+
+    img {
+        width: $card-width;
+        height: $card-width;
+        object-fit: cover;
+        object-position: top;
+        transition: object-position 200ms ease-in-out;
+    }
+
+    figure {
+        width: $card-width;
+        display: inline-block;
+        background: #ededfa;
+        padding: 1em;
+        box-sizing: content-box;
+        position: relative;
+
+        &:hover,
+        &:focus {
+            img {
+                object-position: bottom;
+                transition-duration: 3s;
+            }
+
+            &::before {
+                position: absolute;
+                content: "Click to View";
+                background: #2227;
+                height: 100%;
+                width: 100%;
+                color: #eee;
+                top: 0;
+                left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-shadow: 0 0 5px black;
+            }
+        }
+    }
+
+    figcaption {
+        text-align: center;
+        height: dimens.$line-height * 2em;
+        margin-bottom: 0.5em;
+    }
+
+    #aila-emails-preview {
+        display: none;
+
+        &.show {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #fffe;
+            padding: 3em;
+        }
+
+        #aila-emails-preview-contents {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            max-width: 1000px;
+            height: 100%;
+            margin: auto;
+        }
+
+        #aila-emails-preview-header {
+            display: flex;
+            align-items: flex-start;
+
+            button {
+                @extend %close-button;
+
+                padding: 0.5em 0;
+                flex-basis: 2em;
+                max-width: 1em;
+                margin-left: 2em;
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

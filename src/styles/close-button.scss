@@ -1,0 +1,33 @@
+@use "./braces.scss";
+
+%close-button {
+    @extend %braces;
+
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border: none;
+    appearance: none;
+    background: none;
+    background-image: url("../images/icon-close.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    font-size: 3em;
+    line-height: normal;
+
+    &::before,
+    &::after {
+        position: absolute;
+        top: -0.1em;
+    }
+
+    &::before {
+        left: -33%;
+    }
+
+    &::after {
+        right: -33%;
+    }
+}
