@@ -1,0 +1,25 @@
+<div id="aila-flyers">
+    <h1>Marketing Flyers for AILA</h1>
+    <p>
+        As a resource for our members, AILA provides flyers that practitioners can give to their
+        clients, explaining specific immigration law topics. These were written by our legal team
+        and then I edited the text for readability, clarity, and style before then laying them out
+        in InDesign.
+    </p>
+    <ul>
+        <!-- prettier-ignore -->
+        <% for (const filename of [
+                'flyer-daca-pdf',
+                'flyer-H-1B-Not-Selected-Foreign-National-Jan-2022',
+                'flyer-how-a-bill-comes-law-June-2021',
+                'flyer-nvi-Jan-2022',
+                'flyer-Protecting-Permanent-Residence-Jan-2022',
+            ]) {
+            const src = require(`./resources/aila-flyers/${filename}.pdf`) + "#view=fit&toolbar=0&navpanes=0";
+        %>
+        <li>
+            <iframe frameborder="0" src="<%= src %>" loading="lazy"> </iframe>
+        </li>
+        <% } %>
+    </ul>
+</div>

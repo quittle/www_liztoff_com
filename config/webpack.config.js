@@ -22,6 +22,8 @@ module.exports = {
             "editorial-and-brand-copy",
             "other-projects",
             "aila-emails",
+            "aila-flyers",
+            "aila-other-projects",
             "conversational-and-relatable",
             "vivid-and-descriptive",
             "out-of-the-box-and-creative",

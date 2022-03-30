@@ -1,0 +1,22 @@
+@use "sass:math";
+
+#aila-flyers {
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    li {
+        display: block;
+    }
+
+    iframe {
+        $width: 400px;
+
+        width: $width;
+        height: math.div($width, 8.5) * 11;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,59 @@
+@use "sass:math";
+@use "./card.scss";
+
+#aila-other-projects {
+    li {
+        display: block;
+    }
+
+    details > div {
+        background: #efefef;
+
+        // The 0.1px hack is to allow margin at the bottom of the contents to render. Otherwise it
+        // collapses with no perceive padding
+        padding: 2em 2em 0.1px;
+    }
+
+    #aila-75th-video iframe {
+        $height: 15em;
+
+        height: $height;
+        width: math.div($height, 9) * 16; // 16:9 aspect ratio
+        max-width: 100%;
+    }
+
+    summary {
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        padding-bottom: 1em;
+    }
+
+    #aila-presidents-letter {
+        text-align: center;
+
+        iframe {
+            $proportions: math.div(8.5, 11);
+            $height: 600px;
+
+            width: $height * $proportions;
+            height: $height;
+        }
+
+        a {
+            @include card.button;
+
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            iframe {
+                display: none;
+            }
+
+            a {
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -1,9 +1,11 @@
-<!-- n() normalizes string to account for prettier wrapping the strings -->
-<% const n = (s) => s.replace(/\n/g, " "); const title = n(`Liz Toff`), siteName = n(`Liz Toff`),
-description = n(`Maryland-area copywriter with a passion for creative writing. Her ever-fresh
-approach to writing is fortified by a dedication to improving interpersonal collaboration and team
-resources.`), imageAlt = n(`Liz Toff - Copywriter`), image =
-`https://liztoff.com${require('./images/liz-logo-blue-small.png')}`, url = n(`https://liztoff.com`);
+<!-- prettier-ignore -->
+<%
+    const title = "Liz Toff";
+    const siteName = "Liz Toff";
+    const description = "Maryland-area copywriter with a passion for creative writing. Her ever-fresh approach to writing is fortified by a dedication to improving interpersonal collaboration and team resources.";
+    const imageAlt = "Liz Toff - Copywriter";
+    const image = `https://liztoff.com${require('./images/liz-logo-blue-small.png')}`;
+    const url = "https://liztoff.com";
 %>
 
 <head>
@@ -39,11 +41,12 @@ resources.`), imageAlt = n(`Liz Toff - Copywriter`), image =
         </style>
     </noscript>
     <style>
-        main img {
+        main img,
+        iframe {
             /*
-            Hack to force images to lazy load after CSS loads. Without this images may initiate
-            bandwidth-intensive requests, even with loading="lazy", as CSS might not be available
-            immediately.
+            Hack to force images and iframes to lazy load after CSS loads. Without this images may
+            initiate bandwidth-intensive requests, even with loading="lazy", as CSS might not be
+            available immediately.
             */
             display: none;
         }

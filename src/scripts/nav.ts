@@ -1,6 +1,8 @@
 const PAGES = {
     "": "Home",
     "aila-emails": "AILA Emails",
+    "aila-flyers": "AILA Flyers",
+    "aila-other-projects": "AILA Projects",
     "conversational-and-relatable": "Conversational & Relatable",
     "vivid-and-descriptive": "Vivid & Descriptive",
     "out-of-the-box-and-creative": "Out-of-the-Box & Creative",

@@ -69,6 +69,11 @@ a {
     text-decoration: none;
 }
 
+h2 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
 h3 {
     line-height: 2;
 }
@@ -84,8 +89,9 @@ blockquote {
 main {
     margin-top: 2em;
 
-    img {
-        // Re-enable image loading post CSS load
+    img,
+    iframe {
+        // Re-enable loading post CSS load
         display: initial;
     }
 }
