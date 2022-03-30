@@ -7,138 +7,33 @@
         I&rsquo;ve composed for AILA using HubSpot.
     </p>
     <ul>
+        <!-- prettier-ignore -->
+        <% for (const [title, email] of [
+                ['Get Ready for AILA&rsquo;s 2022 Annual Conference', 'get-ready-for-ailas-2022-annual-conference'],
+                ['Give the Gift of Pro Bono This Holiday Season', 'give-the-gift-of-pro-bono-this-holiday-season'],
+                ['Improve Your Resume, Get Published, and Connect', 'improve-your-resume-get-published-and-connect'],
+                ['Solo, Small, Medium, or Large?', 'solo-small-medium-or-large'],
+                ['Let Your Voice Be Heard', 'let-your-voice-be-heard'],
+                ['Thank You and Happy New Year from AILA', 'thank-you-and-happy-new-year-from-aila'],
+                ['Support Your Practice with the Four Pillars of Immigration', 'support-your-practice-with-the-four-pillars-of-immigration'],
+                ['Celebrate AILA&rsquo;s 75th Birthday with $75 Off Kurzban&rsquo;s!', 'celebrate-ailas-75th-birthday-with-75-off-kurzbans'],
+                ['Explore Pro Bono Resources from Our Afghan Response Task Force', 'explore-pro-bono-resources-from-our-afghan-response-task-force'],
+
+            ]) {
+        %>
         <li>
-            <a
-                href="https://email.aila.org/get-ready-for-ailas-2022-annual-conference"
-                target="_blank"
-            >
+            <a href="https://email.aila.org/<%= email %>" target="_blank">
                 <figure>
-                    <figcaption>Get Ready for AILA&rsquo;s 2022 Annual Conference</figcaption>
+                    <figcaption><%- title %></figcaption>
                     <img
-                        src="<%=require('./images/aila-email/get-ready-for-ailas-2022-annual-conference.png')%>"
+                        src="<%=require(`./images/aila-email/${email}.png`)%>"
                         alt="Email Preview"
                         loading="lazy"
                     />
                 </figure>
             </a>
         </li>
-        <li>
-            <a
-                href="https://email.aila.org/give-the-gift-of-pro-bono-this-holiday-season"
-                target="_blank"
-            >
-                <figure>
-                    <figcaption>Give the Gift of Pro Bono This Holiday Season</figcaption>
-                    <img
-                        src="<%=require('./images/aila-email/give-the-gift-of-pro-bono-this-holiday-season.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a
-                href="https://email.aila.org/improve-your-resume-get-published-and-connect"
-                target="_blank"
-            >
-                <figure>
-                    <figcaption>Improve Your Resume, Get Published, and Connect</figcaption>
-                    <img
-                        src="<%=require('./images/aila-email/improve-your-resume-get-published-and-connect.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a href="https://email.aila.org/solo-small-medium-or-large" target="_blank">
-                <figure>
-                    <figcaption>Solo, Small, Medium, or Large?</figcaption>
-                    <img
-                        src="<%=require('./images/aila-email/solo-small-medium-or-large.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a href="https://email.aila.org/let-your-voice-be-heard" target="_blank">
-                <figure>
-                    <figcaption>Let Your Voice Be Heard</figcaption>
-                    <img
-                        src="<%=require('./images/aila-email/let-your-voice-be-heard.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a href="https://email.aila.org/thank-you-and-happy-new-year-from-aila" target="_blank">
-                <figure>
-                    <figcaption>Thank You and Happy New Year from AILA</figcaption>
-                    <img
-                        src="<%=require('./images/aila-email/thank-you-and-happy-new-year-from-aila.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a
-                href="https://email.aila.org/support-your-practice-with-the-four-pillars-of-immigration"
-                target="_blank"
-            >
-                <figure>
-                    <figcaption
-                        >Support Your Practice with the Four Pillars of Immigration</figcaption
-                    >
-                    <img
-                        src="<%=require('./images/aila-email/support-your-practice-with-the-four-pillars-of-immigration.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a
-                href="https://email.aila.org/celebrate-ailas-75th-birthday-with-75-off-kurzbans"
-                target="_blank"
-            >
-                <figure>
-                    <figcaption
-                        >Celebrate AILA&rsquo;s 75th Birthday with $75 Off
-                        Kurzban&rsquo;s!</figcaption
-                    >
-                    <img
-                        src="<%=require('./images/aila-email/celebrate-ailas-75th-birthday-with-75-off-kurzbans.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
-        <li>
-            <a
-                href="https://email.aila.org/explore-pro-bono-resources-from-our-afghan-response-task-force"
-            >
-                <figure>
-                    <figcaption
-                        >Explore Pro Bono Resources from Our Afghan Response Task Force</figcaption
-                    >
-                    <img
-                        src="<%=require('./images/aila-email/explore-pro-bono-resources-from-our-afghan-response-task-force.png')%>"
-                        alt="Email Preview"
-                        loading="lazy"
-                    />
-                </figure>
-            </a>
-        </li>
+        <% } %>
     </ul>
 
     <section id="aila-emails-preview">
