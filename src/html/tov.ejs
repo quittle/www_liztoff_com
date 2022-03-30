@@ -1,23 +1,34 @@
 <%
-const PAGES = {
+const TOV_PAGES = {
     "conversational-and-relatable": "Conversational & Relatable",
     "vivid-and-descriptive": "Vivid & Descriptive",
     "out-of-the-box-and-creative": "Out-of-the-Box & Creative",
     "elevated-and-knowledgeable": "Elevated & Knowledgeable",
 };
-const pagesEntries = Object.entries(PAGES);
-const curIndex = pagesEntries.findIndex(entry=> entry[0] === page);
-const prevPage = pagesEntries[(curIndex + pagesEntries.length - 1) % pagesEntries.length][0];
-const nextPage = pagesEntries[(curIndex + 1) % pagesEntries.length][0];
-const curPage = pagesEntries[curIndex][1];
+const AILA_PAGES = {
+    "aila-emails": "Emails",
+    "aila-flyers": "Flyers",
+    "aila-other-projects": "Other Projects",
+};
+const pages = TOV_PAGES[page]
+    ? TOV_PAGES
+    : AILA_PAGES[page]
+        ? AILA_PAGES
+        : new UnsupportedTovPageNameException() // Fake exception to get a meaningful error message
+
+const pagesEntries = Object.entries(pages);
+const curIndex = pagesEntries.findIndex(entry => entry[0] === page);
+const prevPage = pagesEntries[(curIndex + pagesEntries.length - 1) % pagesEntries.length];
+const nextPage = pagesEntries[(curIndex + 1) % pagesEntries.length];
+const curPage = pagesEntries[curIndex];
 %>
 
 <ul class="tov">
     <li>
-        <a href="#<%= prevPage %>">←</a>
+        <a href="#<%= prevPage[0] %>" title="<%= prevPage[1] %>">←</a>
     </li>
-    <li class="tov-selected"> <%= curPage %> </li>
+    <li class="tov-selected"> <%= curPage[1] %> </li>
     <li>
-        <a href="#<%= nextPage %>">→</a>
+        <a href="#<%= nextPage[0] %>" title="<%= nextPage[1] %>">→</a>
     </li>
 </ul>

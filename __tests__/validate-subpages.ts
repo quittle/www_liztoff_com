@@ -43,7 +43,7 @@ describe("subpages", () => {
                 try {
                     htmlPartial = ejsTemplate({ page });
                 } catch (e) {
-                    if (e.message.includes("Cannot read properties of undefined (reading '1')")) {
+                    if (e.message.includes("UnsupportedTovPageNameException is not defined")) {
                         // Not all nav pages are supported by tov and fail with this exception
                         return;
                     } else {
@@ -53,11 +53,14 @@ describe("subpages", () => {
                 const result = await xml2js.parseStringPromise(htmlPartial, { trim: true });
                 const pageTitle = result.ul.li[1]["_"]; // The text contents of the second li
 
-                expect(pageTitle).toBe(name);
+                // AILA pages don't include that prefix
+                const trimmedName = name.replace(/^AILA /, "");
+
+                expect(pageTitle).toBe(trimmedName);
 
                 successfulParsings++;
             })
         );
-        expect(successfulParsings).toBe(4);
+        expect(successfulParsings).toBe(7);
     });
 });
