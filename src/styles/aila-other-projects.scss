@@ -6,6 +6,28 @@
         display: block;
     }
 
+    h2,
+    h3 {
+        a::after {
+            content: "";
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: text-top;
+            margin-left: 0.5em;
+            background-image: url("../images/icon-open-link.svg");
+            background-size: contain;
+        }
+    }
+
+    iframe.pdf {
+        $proportions: math.div(8.5, 11);
+        $height: 600px;
+
+        width: $height * $proportions;
+        height: $height;
+    }
+
     details > div {
         background: #efefef;
 
@@ -29,18 +51,17 @@
         padding-bottom: 1em;
     }
 
+    #aila-brochures {
+        h2 {
+            text-align: left;
+        }
+    }
+
+    #aila-brochures,
     #aila-presidents-letter {
         text-align: center;
 
-        iframe {
-            $proportions: math.div(8.5, 11);
-            $height: 600px;
-
-            width: $height * $proportions;
-            height: $height;
-        }
-
-        a {
+        & > a {
             @include card.button;
 
             display: none;

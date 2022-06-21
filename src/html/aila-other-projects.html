@@ -1,5 +1,5 @@
 <div id="aila-other-projects">
-    <% const page = "aila-other-projects"; %> <%- include tov %>
+    <% const page="aila-other-projects" ; %> <%- include tov %>
     <h1>Other AILA Projects</h1>
     <p>
         As AILA&rsquo;s one and only creative writer, a number of one-off projects fell to me to
@@ -61,9 +61,58 @@
                 </div>
             </details>
         </li>
-        <li id="aila-presidents-letter">
-            <h2> President&rsquo;s Letter for AILA&rsquo;s Annual Conference Program </h2>
+        <li id="aila-brochures">
+            <h2> Membership Brochures </h2>
+
+            <h3>
+                <a
+                    href="<%=require('./resources/aila-brochures/Member Brochure.pdf')%>"
+                    target="_blank"
+                >
+                    AILA Member Brochure</a
+                >
+            </h3>
             <iframe
+                class="pdf"
+                src="<%=require('./resources/aila-brochures/Member Brochure.pdf')%>#view=fit&toolbar=0&navpanes=0"
+                frameborder="0"
+                loading="lazy"
+                >Unsupported</iframe
+            >
+            <a href="<%=require('./resources/aila-brochures/Member Brochure.pdf')%>"
+                >Click to View</a
+            >
+
+            <h3>
+                <a
+                    href="<%=require('./resources/aila-brochures/Law Student Brochure.pdf')%>"
+                    target="_blank"
+                >
+                    AILA Law Student Member Brochure</a
+                >
+            </h3>
+            <iframe
+                class="pdf"
+                src="<%=require('./resources/aila-brochures/Law Student Brochure.pdf')%>#view=fit&toolbar=0&navpanes=0"
+                frameborder="0"
+                loading="lazy"
+                >Unsupported</iframe
+            >
+            <a href="<%=require('./resources/aila-brochures/Law Student Brochure.pdf')%>"
+                >Click to View</a
+            >
+        </li>
+        <li id="aila-presidents-letter">
+            <h2>
+                <a
+                    href="<%=require('./resources/2022-AILA-Annual-Conference-on-Immigration-Law-Program-Letter-from-the-President.pdf')%>"
+                    target="_blank"
+                >
+                    President&rsquo;s Letter for AILA&rsquo;s Annual Conference Program
+                </a>
+            </h2>
+            <iframe
+                class="pdf"
                 src="<%=require('./resources/2022-AILA-Annual-Conference-on-Immigration-Law-Program-Letter-from-the-President.pdf')%>#view=fit&toolbar=0&navpanes=0"
                 frameborder="0"
                 loading="lazy"
