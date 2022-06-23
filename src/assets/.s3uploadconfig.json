@@ -5,6 +5,9 @@
     "**/*.js": {
         "contentType": "text/javascript"
     },
+    "**/*.json": {
+        "contentType": "application/json"
+    },
     "**/*.html": {
         "contentType": "text/html"
     },

@@ -57,7 +57,7 @@ Resources:
       Handler: s3-upload-custom-resource.handler
       MemorySize: 10240
       Timeout: 180
-      Runtime: nodejs12.x
+      Runtime: nodejs16.x
       Policies:
         - S3CrudPolicy:
             BucketName: !Ref LizToffComBucket
@@ -87,7 +87,7 @@ Resources:
       FunctionName: !Join ["", [LizToffContactLambda, !Ref StackNameSuffix]]
       MemorySize: 128
       Role: !GetAtt ContactLambdaRole.Arn
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       Events:
         HttpPost:
           Type: Api

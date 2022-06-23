@@ -4,7 +4,8 @@ const common = require("./webpack.config.js");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
-const { FONT_REGEX, IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const { FONT_REGEX, IMAGE_REGEX, LARGE_ICONS, SASS_REGEX } = require("./webpack-utils");
 
 // Enable minification on HtmlWebpackPlugin plugin
 common.plugins.find(
@@ -40,6 +41,16 @@ let config = merge(common, {
         liveReload: false,
     },
     plugins: [
+        new FaviconsWebpackPlugin({
+            logo: "./src/images/liz-logo-blue-small.png",
+            prefix: "/",
+            favicons: {
+                appName: "Liz Toff",
+                icons: LARGE_ICONS,
+                developerName: null,
+                developerURL: null,
+            },
+        }),
         new MiniCssExtractPlugin({
             filename: "index-[contenthash].css",
         }),

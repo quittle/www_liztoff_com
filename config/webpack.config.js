@@ -1,7 +1,7 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-const { FONT_REGEX, IMAGE_REGEX, SASS_REGEX } = require("./webpack-utils");
+const { FONT_REGEX, IMAGE_REGEX, SASS_REGEX, SMALL_ICONS } = require("./webpack-utils");
 
 module.exports = {
     mode: "development",
@@ -47,8 +47,14 @@ module.exports = {
             filename: "[name].html",
         }),
         new FaviconsWebpackPlugin({
-            logo: "./src/images/favicon-huge.png",
+            logo: "./src/images/favicon-lt.png",
             prefix: "/",
+            favicons: {
+                appName: "Liz Toff",
+                icons: SMALL_ICONS,
+                developerName: null,
+                developerURL: null,
+            },
         }),
         new CopyWebpackPlugin({
             patterns: ["src/assets/.s3uploadconfig.json"],

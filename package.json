@@ -1,7 +1,7 @@
 {
-    "name": "spark-l",
+    "name": "www_liztoff_com",
     "version": "1.0.0",
-    "description": "Liz Toff's personal website",
+    "description": "Maryland-area copywriter with a passion for creative writing. Her ever-fresh approach to writing is fortified by a dedication to improving interpersonal collaboration and team resources.",
     "scripts": {
         "build-apis": "webpack --config config/webpack.api.js",
         "build-dev": "webpack --config config/webpack.config.js",

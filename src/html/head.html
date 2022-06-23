@@ -1,8 +1,10 @@
 <!-- prettier-ignore -->
 <%
+    const packageJson = require('../package.json');
+
     const title = "Liz Toff";
     const siteName = "Liz Toff";
-    const description = "Maryland-area copywriter with a passion for creative writing. Her ever-fresh approach to writing is fortified by a dedication to improving interpersonal collaboration and team resources.";
+    const description = packageJson.description;
     const imageAlt = "Liz Toff - Copywriter";
     const image = `https://liztoff.com${require('./images/liz-logo-blue-small.png')}`;
     const url = "https://liztoff.com";
