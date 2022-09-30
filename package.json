@@ -59,7 +59,7 @@
         "source-map-loader": "^4.0.0",
         "style-loader": "^3.3.1",
         "stylelint": "^14.12.1",
-        "stylelint-config-idiomatic-order": "^8.1.0",
+        "stylelint-config-idiomatic-order": "^9.0.0",
         "stylelint-config-standard-scss": "^5.0.0",
         "stylelint-scss": "^4.3.0",
         "ts-jest": "^27.1.4",
