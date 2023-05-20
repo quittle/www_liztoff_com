@@ -20,7 +20,7 @@ body[data-location=""] main #home {
             font-size: 1.2em;
         }
 
-        @media (max-width: 475px) {
+        @media (width <= 475px) {
             font-size: 1.1em;
         }
     }
@@ -35,7 +35,7 @@ body[data-location=""] main #home {
             font-size: 6vw;
         }
 
-        @media (max-width: 475px) {
+        @media (width <= 475px) {
             font-size: 5vw;
         }
     }

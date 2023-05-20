@@ -23,7 +23,7 @@ body {
     line-height: dimens.$line-height;
     overflow-x: hidden;
 
-    @media (max-width: 800px) {
+    @media (width <= 800px) {
         font-size: 16px;
     }
 
@@ -37,7 +37,7 @@ textarea {
     font-size: 20px;
     line-height: dimens.$line-height;
 
-    @media (max-width: 800px) {
+    @media (width <= 800px) {
         font-size: 16px;
     }
 }

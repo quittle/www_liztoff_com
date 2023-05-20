@@ -7,7 +7,7 @@ $card-gap: 1em;
     column-count: 2;
     column-gap: $card-gap;
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
         column-count: 1;
     }
 }

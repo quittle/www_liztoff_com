@@ -42,7 +42,7 @@
                 font-style: italic;
             }
 
-            @media (max-width: 600px) {
+            @media (width <= 600px) {
                 width: 100%;
             }
         }

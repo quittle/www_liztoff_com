@@ -18,7 +18,7 @@
     input:not([type="submit"]) {
         width: 50%;
 
-        @media (max-width: 500px) {
+        @media (width <= 500px) {
             width: 100%;
         }
     }
@@ -61,7 +61,7 @@
 #contact-footer {
     display: flex;
 
-    @media (max-width: 950px) {
+    @media (width <= 950px) {
         flex-direction: column;
 
         > * {

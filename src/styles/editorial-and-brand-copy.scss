@@ -47,12 +47,12 @@
             margin: 0;
         }
 
-        @media (max-width: 1300px) {
+        @media (width <= 1300px) {
             width: 100vw;
             padding: 6em;
         }
 
-        @media (max-width: 600px) {
+        @media (width <= 600px) {
             padding: 3em;
 
             p {
