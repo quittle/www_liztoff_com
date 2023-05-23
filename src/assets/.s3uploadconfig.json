@@ -24,8 +24,6 @@
         "contentType": "image/svg+xml"
     },
     "**/*": {
-        "metadata": {
-            "Cache-Control": "max-age=600"
-        }
+        "cacheControl": "max-age=600"
     }
 }
