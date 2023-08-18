@@ -44,7 +44,7 @@
         "ejs-compiled-loader": "^3.1.0",
         "eslint": "^8.47.0",
         "favicons": "^7.1.4",
-        "favicons-webpack-plugin": "^6.0.0",
+        "favicons-webpack-plugin": "^6.0.1",
         "html-loader": "^4.2.0",
         "html-webpack-plugin": "^5.5.3",
         "jest": "^29.6.2",
