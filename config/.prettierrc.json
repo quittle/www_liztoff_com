@@ -16,5 +16,6 @@
                 "parser": "html"
             }
         }
-    ]
+    ],
+    "plugins": ["prettier-plugin-ejs"]
 }
