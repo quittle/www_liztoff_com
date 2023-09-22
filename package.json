@@ -42,7 +42,7 @@
         "css-minimizer-webpack-plugin": "^5.0.1",
         "ejs": "^3.1.9",
         "ejs-compiled-loader": "^3.1.0",
-        "eslint": "^8.49.0",
+        "eslint": "^8.50.0",
         "favicons": "^7.1.4",
         "favicons-webpack-plugin": "^6.0.1",
         "html-loader": "^4.2.0",
