@@ -52,7 +52,7 @@
         "postcss": "^8.4.31",
         "postcss-loader": "^7.3.3",
         "postcss-preset-env": "^9.3.0",
-        "prettier": "^2.8.8",
+        "prettier": "^3.1.0",
         "prettier-plugin-ejs": "^0.0.18",
         "s3-upload-custom-resource-lambda-layer": "^1.1.0",
         "sass": "^1.69.5",
