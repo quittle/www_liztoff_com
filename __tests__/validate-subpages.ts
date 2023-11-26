@@ -50,7 +50,9 @@ describe("subpages", () => {
                         throw e;
                     }
                 }
-                const result = await xml2js.parseStringPromise(htmlPartial, { trim: true });
+                const result = await xml2js.parseStringPromise(htmlPartial, {
+                    trim: true,
+                });
                 const pageTitle = result.ul.li[1]["_"]; // The text contents of the second li
 
                 // AILA pages don't include that prefix
