@@ -57,7 +57,7 @@
         "s3-upload-custom-resource-lambda-layer": "^1.1.0",
         "sass": "^1.69.7",
         "sass-loader": "^14.0.0",
-        "source-map-loader": "^4.0.2",
+        "source-map-loader": "^5.0.0",
         "style-loader": "^3.3.4",
         "stylelint": "^15.11.0",
         "stylelint-config-idiomatic-order": "^10.0.0",
