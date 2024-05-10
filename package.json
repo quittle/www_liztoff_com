@@ -55,7 +55,7 @@
         "prettier": "^3.2.5",
         "prettier-plugin-ejs": "^1.0.0",
         "s3-upload-custom-resource-lambda-layer": "^1.2.0",
-        "sass": "^1.76.0",
+        "sass": "^1.77.0",
         "sass-loader": "^14.2.1",
         "source-map-loader": "^5.0.0",
         "style-loader": "^4.0.0",
