@@ -76,7 +76,10 @@ nav {
     ul {
         margin: 0;
         line-height: 3em;
-        text-align: center;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     li {

@@ -34,7 +34,7 @@ let config = merge(common, {
     mode: "production",
     devtool: "source-map",
     optimization: {
-        minimizer: [`...`, new CssMinimizerWebpackPlugin()],
+        minimizer: ["...", new CssMinimizerWebpackPlugin()],
     },
     devServer: {
         hot: false,

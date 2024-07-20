@@ -24,6 +24,10 @@ body:not([data-location=""]) {
         ul {
             margin-left: 1em;
             line-height: 1.5;
+
+            // Change back from flex but still align center
+            display: initial;
+            text-align: center;
         }
 
         li {
