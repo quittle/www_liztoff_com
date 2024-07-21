@@ -87,7 +87,7 @@ Resources:
       FunctionName: !Join ["", [LizToffContactLambda, !Ref StackNameSuffix]]
       MemorySize: 128
       Role: !GetAtt ContactLambdaRole.Arn
-      Runtime: nodejs16.x
+      Runtime: nodejs20.x
       Events:
         HttpPost:
           Type: Api
