@@ -1,11 +1,11 @@
-@forward "./contact.scss";
-@forward "./other-projects.scss";
-@forward "./recommendations.scss";
-@forward "./resume.scss";
-@forward "./aila-emails.scss";
-@forward "./aila-flyers.scss";
-@forward "./aila-other-projects.scss";
-@forward "./tov.scss";
+@forward "./contact";
+@forward "./other-projects";
+@forward "./recommendations";
+@forward "./resume";
+@forward "./aila-emails";
+@forward "./aila-flyers";
+@forward "./aila-other-projects";
+@forward "./tov";
 
 body:not([data-location=""]) {
     #home {

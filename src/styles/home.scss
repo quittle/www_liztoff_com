@@ -1,6 +1,6 @@
-@use "./fonts.scss";
-@use "./braces.scss";
-@use "./nav.scss";
+@use "./fonts";
+@use "./braces";
+@use "./nav";
 
 body[data-location=""] main #home {
     display: block;

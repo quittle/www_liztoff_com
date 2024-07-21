@@ -1,5 +1,5 @@
-@use "./colors.scss";
-@use "./card.scss";
+@use "./colors";
+@use "./card";
 
 // Does not match ordering that makes sense given page layout
 // stylelint-disable no-descending-specificity

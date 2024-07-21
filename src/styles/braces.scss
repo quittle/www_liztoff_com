@@ -1,5 +1,5 @@
-@use "./colors.scss";
-@use "./fonts.scss";
+@use "./colors";
+@use "./fonts";
 
 %braces {
     color: colors.$content-color;
