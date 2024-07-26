@@ -26,7 +26,7 @@
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.24.7",
         "@babel/preset-env": "^7.24.8",
-        "@types/aws-lambda": "^8.10.141",
+        "@types/aws-lambda": "^8.10.142",
         "@types/aws-sdk": "^2.7.0",
         "@types/ejs": "^3.1.5",
         "@types/jest": "^29.5.12",
