@@ -25,7 +25,7 @@
     "license": "Apache-2.0",
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.24.7",
-        "@babel/preset-env": "^7.25.0",
+        "@babel/preset-env": "^7.25.3",
         "@types/aws-lambda": "^8.10.142",
         "@types/aws-sdk": "^2.7.0",
         "@types/ejs": "^3.1.5",
