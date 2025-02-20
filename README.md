@@ -1,4 +1,4 @@
-# <img src="src/images/liz-logo-blue-small.png" alt="Logo - Liz Toff - Copywriter" height="80px"> Source code for [liztoff.com](https://liztoff.com) [![Build Status](https://github.com/quittle/www_liztoff_com/workflows/.github/workflows/npm.yml/badge.svg)](https://github.com/quittle/www_liztoff_com/actions/workflows/npm.yml)
+# <img src="src/images/liz-logo-blue-small.png" alt="Logo - Liz Toff - Copywriter" height="80px"> Source code for [liztoff.com](https://liztoff.com) [![Build Status](https://github.com/quittle/www_liztoff_com/actions/workflows/npm.yml/badge.svg?branch=main)](https://github.com/quittle/www_liztoff_com/actions/workflows/npm.yml?query=branch%3Amain)
 
 ## Get Started Developing
 
