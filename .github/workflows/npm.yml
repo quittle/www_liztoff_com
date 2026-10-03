@@ -7,7 +7,7 @@ jobs:
       max-parallel: 1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: NVM Install
         run: |
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -29,6 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3.3.0
+      - uses: fastify/github-action-merge-dependabot@v3.15.0
         with:
           github-token: ${{secrets.DEPENDABOT_PAT}}
