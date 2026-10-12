@@ -26,7 +26,7 @@ const onHashChange = (): void => {
     window.history.replaceState(null, "", `/${hashLocation}`);
     const pageName = (PAGES as StringObject)[hashLocation];
     document.title = pageName ? `Liz Toff | ${pageName}` : "Liz Toff";
-    document.body.dataset["location"] = hashLocation;
+    document.body.dataset.location = hashLocation;
     lastHash = hashLocation;
 
     window.scrollTo(0, 0);
@@ -54,6 +54,6 @@ if (!windowInit.init) {
         }
 
         const pathLocation = trimSlashes(document.location.pathname);
-        document.body.dataset["location"] = pathLocation;
+        document.body.dataset.location = pathLocation;
     });
 }

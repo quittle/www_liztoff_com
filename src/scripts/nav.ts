@@ -75,9 +75,7 @@ const resetNavMenu = (): void => {
 
         // Just setting checked won't trigger the callback so fire
         // the change event.
-        const event = document.createEvent("HTMLEvents");
-        event.initEvent("change");
-        menuCheckbox.dispatchEvent(event);
+        menuCheckbox.dispatchEvent(new Event("change"));
     }
 };
 

@@ -1,5 +1,3 @@
-interface StringObject {
-    [name: string]: string;
-}
+type StringObject = Record<string, string>;
 
 export { StringObject };
