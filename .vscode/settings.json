@@ -2,7 +2,7 @@
     "prettier.configPath": "config/.prettierrc.json",
     "prettier.ignorePath": "config/.prettierignore",
     "eslint.options": {
-        "configFile": "config/.eslintrc.json"
+        "configFile": "config/eslint.config.js"
     },
     "stylelint.configFile": "config/.stylelintrc.json"
 }
