@@ -68,7 +68,7 @@ function initContact(): void {
                     contactError.innerText = `Error: ${errorMessage}`;
                 }
             })
-            .catch((e) => {
+            .catch((e: unknown) => {
                 console.error("Unable to submit form", e);
                 contactError.innerText = `Error: ${(e as Error).message}`;
             })
