@@ -4,11 +4,11 @@
         "rootDir": "../",
         "outDir": "./dist-contact/",
         "noImplicitAny": true,
-        "module": "CommonJS",
+        "module": "Node16",
         "lib": ["ESNext"],
         "target": "ESNext",
         "allowJs": false,
-        "moduleResolution": "Node"
+        "moduleResolution": "Node16"
     },
     "include": ["../lambda"]
 }

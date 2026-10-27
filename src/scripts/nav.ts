@@ -16,11 +16,15 @@ const PAGES = {
 };
 
 const initMenu = (): void => {
-    const menuToggle = document.querySelector<HTMLInputElement>("nav input[type=checkbox]");
-    const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-of-type a");
-    const startOfMenuItem = document.querySelector("#start-of-menu");
-    const endOfMenuItem = document.querySelector("#end-of-menu");
-    const menu = document.querySelector<HTMLElement>("nav ul");
+    const menuToggle = document.querySelector<HTMLInputElement>(
+        "nav input[type=checkbox]"
+    ) as HTMLInputElement;
+    const lastMenuItem = document.querySelector<HTMLElement>(
+        "nav ul li:last-of-type a"
+    ) as HTMLElement;
+    const startOfMenuItem = document.querySelector("#start-of-menu") as HTMLElement;
+    const endOfMenuItem = document.querySelector("#end-of-menu") as HTMLElement;
+    const menu = document.querySelector<HTMLElement>("nav ul") as HTMLElement;
 
     // Handles all changes to state when the menu is shown/hidden
     const onCheckChange = (): void => {
