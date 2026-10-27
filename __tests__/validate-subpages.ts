@@ -43,7 +43,10 @@ describe("subpages", () => {
                 try {
                     htmlPartial = ejsTemplate({ page });
                 } catch (e) {
-                    if (e.message.includes("UnsupportedTovPageNameException is not defined")) {
+                    if (
+                        e instanceof Error &&
+                        e.message.includes("UnsupportedTovPageNameException is not defined")
+                    ) {
                         // Not all nav pages are supported by tov and fail with this exception
                         return;
                     } else {

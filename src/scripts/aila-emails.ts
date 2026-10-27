@@ -7,13 +7,13 @@ function getPreviewElements(): {
     tabStart: HTMLElement;
     tabEnd: HTMLElement;
 } {
-    const wrapper = document.getElementById("aila-emails-preview");
-    const closeButton = wrapper.querySelector("button");
-    const header = wrapper.querySelector("h2");
-    const headerLink = header.querySelector("a");
-    const iframe = wrapper.querySelector("iframe");
-    const tabStart = document.getElementById("aila-emails-preview-start");
-    const tabEnd = document.getElementById("aila-emails-preview-end");
+    const wrapper = document.getElementById("aila-emails-preview") as HTMLElement;
+    const closeButton = wrapper.querySelector("button") as HTMLButtonElement;
+    const header = wrapper.querySelector("h2") as HTMLHeadingElement;
+    const headerLink = header.querySelector("a") as HTMLAnchorElement;
+    const iframe = wrapper.querySelector("iframe") as HTMLIFrameElement;
+    const tabStart = document.getElementById("aila-emails-preview-start") as HTMLElement;
+    const tabEnd = document.getElementById("aila-emails-preview-end") as HTMLElement;
     return {
         wrapper,
         closeButton,
@@ -54,7 +54,7 @@ function hidePreview(): void {
     document.body.classList.remove("noscroll");
 
     const curUrl = wrapper.dataset.url;
-    const curLink = document.querySelector<HTMLAnchorElement | undefined>(`a[href="${curUrl}"]`);
+    const curLink = document.querySelector<HTMLAnchorElement>(`a[href="${curUrl}"]`);
     if (curLink) {
         curLink.focus();
     }
@@ -73,7 +73,7 @@ export function initAilaEmails(): void {
 
             const link = emailLink.href;
             wrapper.dataset.url = link;
-            const caption = emailLink.querySelector("figcaption");
+            const caption = emailLink.querySelector("figcaption") as HTMLElement;
             const captionText = caption.innerText;
             showPreview(link, captionText);
             e.preventDefault();

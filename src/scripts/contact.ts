@@ -25,12 +25,14 @@ function getFormData(form: HTMLFormElement): StringObject {
 }
 
 function initContact(): void {
-    const contactForm = document.querySelector<HTMLFormElement>("#contact form");
+    const contactForm = document.querySelector<HTMLFormElement>("#contact form") as HTMLFormElement;
     const formInputs = document.querySelectorAll<HTMLInputElement>(
         "#contact input, #contact textarea"
     );
-    const contactError = document.getElementById("contact-error");
-    const submitButton = document.querySelector<HTMLInputElement>("#contact input[type=submit]");
+    const contactError = document.getElementById("contact-error") as HTMLElement;
+    const submitButton = document.querySelector<HTMLInputElement>(
+        "#contact input[type=submit]"
+    ) as HTMLInputElement;
 
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -39,7 +41,7 @@ function initContact(): void {
 
         const recaptchaInput = document.querySelector<HTMLInputElement>(
             "#contact [name=g-recaptcha-response]"
-        );
+        ) as HTMLInputElement;
 
         if (recaptchaInput.value === "") {
             contactError.innerText = "Please complete reCAPTCHA";
