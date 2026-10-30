@@ -4,8 +4,8 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 export default [
     js.configs.recommended,
     tsPlugin.configs["flat/eslint-recommended"],
-    ...tsPlugin.configs["flat/recommended"],
-    ...tsPlugin.configs["flat/recommended-type-checked"],
+    ...tsPlugin.configs["flat/strict-type-checked"],
+    ...tsPlugin.configs["flat/stylistic-type-checked"],
     {
         languageOptions: {
             parserOptions: {

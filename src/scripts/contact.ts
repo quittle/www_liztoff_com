@@ -25,14 +25,18 @@ function getFormData(form: HTMLFormElement): StringObject {
 }
 
 function initContact(): void {
-    const contactForm = document.querySelector<HTMLFormElement>("#contact form") as HTMLFormElement;
+    const contactForm = document.querySelector<HTMLFormElement>("#contact form");
     const formInputs = document.querySelectorAll<HTMLInputElement>(
         "#contact input, #contact textarea"
     );
-    const contactError = document.getElementById("contact-error") as HTMLElement;
-    const submitButton = document.querySelector<HTMLInputElement>(
-        "#contact input[type=submit]"
-    ) as HTMLInputElement;
+    const contactError = document.getElementById("contact-error");
+    const submitButton = document.querySelector<HTMLInputElement>("#contact input[type=submit]");
+    if (!contactForm || !contactError || !submitButton) {
+        console.warn(
+            "initContact: contact form, contact-error, or submit button not found; skipping contact form setup"
+        );
+        return;
+    }
 
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -41,9 +45,9 @@ function initContact(): void {
 
         const recaptchaInput = document.querySelector<HTMLInputElement>(
             "#contact [name=g-recaptcha-response]"
-        ) as HTMLInputElement;
+        );
 
-        if (recaptchaInput.value === "") {
+        if (!recaptchaInput || recaptchaInput.value === "") {
             contactError.innerText = "Please complete reCAPTCHA";
             return;
         }
@@ -66,11 +70,12 @@ function initContact(): void {
                     contactError.innerText = "";
                     requestSucceeded = true;
                 } else {
-                    const errorMessage = ((await response.json()) as ContactResponse).result;
+                    const errorMessage =
+                        ((await response.json()) as ContactResponse).result ?? "Unknown error";
                     contactError.innerText = `Error: ${errorMessage}`;
                 }
             })
-            .catch((e) => {
+            .catch((e: unknown) => {
                 console.error("Unable to submit form", e);
                 contactError.innerText = `Error: ${(e as Error).message}`;
             })
