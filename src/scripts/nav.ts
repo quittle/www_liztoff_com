@@ -16,15 +16,17 @@ const PAGES = {
 };
 
 const initMenu = (): void => {
-    const menuToggle = document.querySelector<HTMLInputElement>(
-        "nav input[type=checkbox]"
-    ) as HTMLInputElement;
-    const lastMenuItem = document.querySelector<HTMLElement>(
-        "nav ul li:last-of-type a"
-    ) as HTMLElement;
-    const startOfMenuItem = document.querySelector("#start-of-menu") as HTMLElement;
-    const endOfMenuItem = document.querySelector("#end-of-menu") as HTMLElement;
-    const menu = document.querySelector<HTMLElement>("nav ul") as HTMLElement;
+    const menuToggle = document.querySelector<HTMLInputElement>("nav input[type=checkbox]");
+    const lastMenuItem = document.querySelector<HTMLElement>("nav ul li:last-of-type a");
+    const startOfMenuItem = document.querySelector("#start-of-menu");
+    const endOfMenuItem = document.querySelector("#end-of-menu");
+    const menu = document.querySelector<HTMLElement>("nav ul");
+    if (!menuToggle || !lastMenuItem || !startOfMenuItem || !endOfMenuItem || !menu) {
+        console.warn(
+            "initMenu: menu toggle, last menu item, start-of-menu, end-of-menu, or menu not found; skipping menu setup"
+        );
+        return;
+    }
 
     // Handles all changes to state when the menu is shown/hidden
     const onCheckChange = (): void => {
@@ -79,9 +81,7 @@ const resetNavMenu = (): void => {
 
         // Just setting checked won't trigger the callback so fire
         // the change event.
-        const event = document.createEvent("HTMLEvents");
-        event.initEvent("change");
-        menuCheckbox.dispatchEvent(event);
+        menuCheckbox.dispatchEvent(new Event("change"));
     }
 };
 
